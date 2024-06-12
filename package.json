@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^7.7.0",
     "@tailus/themer": "^0.0.5",
     "@tailus/themer-button": "^0.0.7",
     "@tailus/themer-card": "^0.0.1",
