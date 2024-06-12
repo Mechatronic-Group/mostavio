@@ -1,8 +1,7 @@
-# Atom
+# MostAvio
 
-Modern free Tailwind CSS, Astro landing page template for startups | built with Tailus Themer
+Website for MostAvio. Based on Theme [Atom-Astro](https://github.com/Tailus-UI/atom-astro)
 
-![Tailus Atom cover](./public/cover.webp)
 
 ## 🚀 Project Structure
 
