@@ -1,0 +1,105 @@
+---
+import { cn } from "@lib/utils";
+import Container from "./Container.astro";
+import { button } from "@tailus/themer-button";
+import Frame from "./Frame.astro";
+import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
+import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
+import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
+import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
+
+let videos: Array<string> = [Video1, Video2, Video3, Video4];
+let activeVideo: number = 0;
+---
+
+<section class="relative overflow-hidden scroll-mt-24" id="home">
+    <video
+        id="carouselVideo"
+        class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
+        autoplay
+        muted
+        loop
+        playsinline
+        src={videos[activeVideo]}
+        data-videos={JSON.stringify(videos)}
+        transition:persist
+    >
+    </video>
+    <div class="absolute top-20 lg:w-2/3 text-center mx-auto">
+        <h2
+            class="text-gray-900 dark:text-white font-bold text-4xl sm:text-5xl md:text-6xl"
+        >
+            Experience the Future of Flight
+        </h2>
+    </div>
+    <div
+        class="absolute bottom-32 left-1/2 transform -translate-x-1/2 space-x-2 z-10"
+    >
+        {
+            videos.map((_, index) => (
+                <button
+                    class={`dot inline-block h-2 w-2 rounded-full bg-white ${index === activeVideo ? "opacity-100" : ""}`}
+                    data-index={index}
+                />
+            ))
+        }
+    </div>
+    <script>
+        const videoElement: HTMLVideoElement = document.getElementById(
+            "carouselVideo",
+        ) as HTMLVideoElement;
+        const dots = document.querySelectorAll(".dot");
+        const videos = JSON.parse(videoElement.getAttribute("data-videos"));
+        let activeVideo = 0;
+
+        function updateVideo() {
+            videoElement.classList.add("blur");
+            setTimeout(() => {
+                videoElement.src = videos[activeVideo];
+                videoElement.load();
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle("opacity-100", activeVideo === index);
+                });
+            }, 250);
+            videoElement.classList.remove("blur");
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                activeVideo = Number(dot.getAttribute("data-index"));
+                updateVideo();
+            });
+        });
+    </script>
+</section>
+
+<style>
+    .blur {
+        filter: blur(5px);
+    }
+    section {
+        position: relative;
+    }
+    section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 0)
+        );
+    }
+    section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+</style>

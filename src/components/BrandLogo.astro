@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import LogoWhite from "../assets/LogoWhite.png";
+import LogoBlack from "../assets/LogoBlack.png";
+---
+
+<a href="/" aria-label="mostAvio logo">
+    <Image
+        src={LogoWhite}
+        alt="mostAvio logo"
+        class="h-7 w-auto py-1 dark:block hidden"
+    />
+    <Image
+        src={LogoBlack}
+        alt="mostAvio logo"
+        class="h-7 w-auto py-1 dark:hidden"
+    />
+</a>
