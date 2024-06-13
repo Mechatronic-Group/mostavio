@@ -1,21 +1,31 @@
 ---
 import Container from "./Container.astro";
+import Frame from "./Frame.astro";
+import { cn } from "@lib/utils";
+import { button } from "@tailus/themer-button";
 
 interface FocusTextProps {
     header?: string;
     description?: string;
+    link?: string;
+    ctaLabel?: string;
 }
 
-const { header, description } = Astro.props as FocusTextProps;
+const {
+    header,
+    description,
+    link,
+    ctaLabel = "Learn More",
+} = Astro.props as FocusTextProps;
 ---
 
 <section>
     <Container>
-        <div class="relative min-h-64 my-48">
-            <div class="m-auto space-y-6 md:w-8/12 lg:w-7/12">
+        <div class="relative">
+            <div class="mt-6 m-auto space-y-12 md:w-10/12 lg:w-10/12">
                 {
                     header && (
-                        <h2 class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl">
+                        <h2 class="text-center text-5xl font-bold text-gray-800 dark:text-white md:text-6xl">
                             {header}
                         </h2>
                     )
@@ -25,6 +35,23 @@ const { header, description } = Astro.props as FocusTextProps;
                         <p class="text-center text-lg text-gray-600 dark:text-gray-300">
                             {description}
                         </p>
+                    )
+                }
+                {
+                    link && (
+                        <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
+                            <Frame>
+                                <a
+                                    href={link}
+                                    class={cn(
+                                        button.primary.lg,
+                                        "relative z-[1]",
+                                    )}
+                                >
+                                    {ctaLabel}
+                                </a>
+                            </Frame>
+                        </div>
                     )
                 }
             </div>

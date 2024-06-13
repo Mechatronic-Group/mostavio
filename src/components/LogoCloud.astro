@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import Ontario from "../assets/partners/ontario.png";
+import Openai from "../assets/partners/openai.png";
+import Figma from "../assets/partners/figma.png";
+import Braille from "../assets/partners/braille.png";
+import Autodesk from "../assets/partners/autodesk.png";
+import Airbus from "../assets/partners/airbus.png";
+---
+
+<section class="py-16 text-gray-800 dark:text-white">
+    <div class="mb-8">
+        <h6 class="text-lg text-center font-bold">Strategic Partners</h6>
+    </div>
+    <div
+        class="m-auto
+        py-12
+        space-y-8
+        border-y-2
+        px-6
+        md:px-12
+        lg:px-40"
+    >
+        <div class="scrollbar-transparent overflow-x-auto lg:overflow-hidden">
+            <div
+                class="-mx-6 flex space-x-6 px-6 md:space-x-12 lg:justify-between"
+            >
+                <Image
+                    src={Ontario}
+                    loading="lazy"
+                    class="h-12 w-auto transition"
+                    alt="logo"
+                />
+                <Image
+                    src={Openai}
+                    loading="lazy"
+                    class="h-12 w-auto transition"
+                    alt="logo"
+                />
+                <Image
+                    src={Figma}
+                    loading="lazy"
+                    class="h-12 w-auto transition"
+                    alt="logo"
+                />
+                <Image
+                    src={Braille}
+                    loading="lazy"
+                    class="h-12 w-auto transition"
+                    alt="logo"
+                />
+                <Image
+                    src={Autodesk}
+                    loading="lazy"
+                    class="h-12 w-auto transition"
+                    alt="logo"
+                />
+                <Image
+                    src={Airbus}
+                    loading="lazy"
+                    class="h-12 w-auto transition"
+                    alt="logo"
+                />
+            </div>
+        </div>
+    </div>
+</section>

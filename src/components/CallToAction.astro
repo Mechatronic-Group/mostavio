@@ -3,6 +3,20 @@ import Container from "./Container.astro";
 import Frame from "./Frame.astro";
 import { cn } from "@lib/utils";
 import { button } from "@tailus/themer-button";
+
+interface FocusTextProps {
+  header?: string;
+  description?: string;
+  link?: string;
+  ctaLabel?: string;
+}
+
+const {
+  header,
+  description,
+  link,
+  ctaLabel = "Learn More",
+} = Astro.props as FocusTextProps;
 ---
 
 <div class="relative">
@@ -14,25 +28,34 @@ import { button } from "@tailus/themer-button";
   <Container>
     <div class="relative">
       <div class="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
-        <h2
-          class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl"
-        >
-          Get Started now
-        </h2>
-        <p class="text-center text-lg text-gray-600 dark:text-gray-300">
-          Be part of millions people around the world using tailus in modern
-          UIS.
-        </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
-          <Frame>
-            <a
-              href="https://beta.tailus.io/demo"
-              class={cn(button.primary.lg, "relative z-[1]")}
-            >
-              Start Building
-            </a>
-          </Frame>
-        </div>
+        {
+          header && (
+            <h2 class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl">
+              {header}
+            </h2>
+          )
+        }
+        {
+          description && (
+            <p class="text-center text-lg text-gray-600 dark:text-gray-300">
+              {description}
+            </p>
+          )
+        }
+        {
+          link && (
+            <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
+              <Frame>
+                <a
+                  href="https://beta.tailus.io/demo"
+                  class={cn(button.primary.lg, "relative z-[1]")}
+                >
+                  {ctaLabel}
+                </a>
+              </Frame>
+            </div>
+          )
+        }
       </div>
     </div>
   </Container>

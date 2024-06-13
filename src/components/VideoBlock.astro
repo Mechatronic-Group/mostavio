@@ -1,0 +1,20 @@
+---
+interface VideoBlockProps {
+    videoSrc?: string;
+}
+const { videoSrc } = Astro.props as VideoBlockProps;
+---
+
+<section class="relative overflow-hidden scroll-mt-24 bg-gradient-default">
+    <video
+        id="carouselVideo"
+        class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
+        autoplay
+        muted
+        loop
+        playsinline
+        src={videoSrc}
+        transition:persist
+    >
+    </video>
+</section>
