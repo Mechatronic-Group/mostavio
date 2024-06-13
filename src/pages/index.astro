@@ -3,12 +3,13 @@ import Stats from "../components/Stats.astro";
 import HeroSection from "../components/HeroSection.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
-import Testimonials from "../components/Testimonials.astro";
-import CallToAction from "../components/CallToAction.astro";
-import BentoGrid from "@components/BentoGrid.astro";
-import SpeedSection from "@components/SpeedSection.astro";
-import AboutSection from "@components/AboutSection.astro";
+// import Testimonials from "../components/Testimonials.astro";
+// import CallToAction from "../components/CallToAction.astro";
+// import BentoGrid from "@components/BentoGrid.astro";
+// import SpeedSection from "@components/SpeedSection.astro";
+// import AboutSection from "@components/AboutSection.astro";
 import FocusText from "@components/FocusText.astro";
+import Carousel from "@components/Carousel.astro";
 
 import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
 import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
@@ -45,7 +46,7 @@ let focusText2 = {
 			description={focusText2.description}
 			link={focusText2.link}
 		/>
-		<VideoBlock videoSrc={Video3} />
+		<Carousel />
 		<FocusText
 			header={focusText2.header}
 			description={focusText2.description}

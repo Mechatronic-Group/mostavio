@@ -18,7 +18,6 @@ let activeVideo: number = 0;
         class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
         autoplay
         muted
-        loop
         playsinline
         src={videos[activeVideo]}
         data-videos={JSON.stringify(videos)}
@@ -42,7 +41,7 @@ let activeVideo: number = 0;
         {
             videos.map((_, index) => (
                 <button
-                    class={`dot inline-block h-2 w-2 rounded-full bg-white ${index === activeVideo ? "opacity-100" : ""}`}
+                    class={`swiper-pagination-bullet inline-block h-2 w-2 rounded-full bg-white ${index === activeVideo ? "swiper-pagination-bullet-active" : ""}`}
                     data-index={index}
                 />
             ))
@@ -63,7 +62,7 @@ let activeVideo: number = 0;
         const videoElement: HTMLVideoElement = document.getElementById(
             "carouselVideo",
         ) as HTMLVideoElement;
-        const dots = document.querySelectorAll(".dot");
+        const dots = document.querySelectorAll(".swiper-pagination-bullet");
         const videos = JSON.parse(videoElement.getAttribute("data-videos"));
         let activeVideo = 0;
 
@@ -73,7 +72,10 @@ let activeVideo: number = 0;
                 videoElement.src = videos[activeVideo];
                 videoElement.load();
                 dots.forEach((dot, index) => {
-                    dot.classList.toggle("opacity-100", activeVideo === index);
+                    dot.classList.toggle(
+                        "swiper-pagination-bullet-active",
+                        activeVideo === index,
+                    );
                 });
             }, 250);
             videoElement.classList.remove("blur");
@@ -84,6 +86,10 @@ let activeVideo: number = 0;
                 activeVideo = Number(dot.getAttribute("data-index"));
                 updateVideo();
             });
+        });
+        videoElement.addEventListener("ended", () => {
+            activeVideo = (activeVideo + 1) % videos.length;
+            updateVideo();
         });
     </script>
 </section>
