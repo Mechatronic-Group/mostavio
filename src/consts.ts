@@ -5,10 +5,10 @@ export const SITE_IMAGE = '/og.png';
 
 
 export const internalLinks = [
-    { title: "Home", url: "#" },
-    { title: "About", url: "#" },
-    { title: "Guide", url: "#" },
-    { title: "Blocks", url: "#" },
+    { title: "Home", url: "/#home" },
+    { title: "Company", url: "/company" },
+    { title: "Aircraft", url: "/aircraft" },
+    { title: "News", url: "/news" },
     { title: "Contact", url: "#" },
     { title: "Terms of Use", url: "#" },
 ];

@@ -9,10 +9,11 @@ import BentoGrid from "@components/BentoGrid.astro";
 import SpeedSection from "@components/SpeedSection.astro";
 import AboutSection from "@components/AboutSection.astro";
 import FocusText from "@components/FocusText.astro";
-import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
+
 import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
 import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
+import FlightVideo from "../assets/videos/lilium.mp4";
 
 import VideoBlock from "@components/VideoBlock.astro";
 import LogoCloud from "@components/LogoCloud.astro";
@@ -38,20 +39,20 @@ let focusText2 = {
 			header={foucsText1.header}
 			description={foucsText1.description}
 		/>
-		<VideoBlock videoSrc={Video1} />
-		<FocusText
-			header={focusText2.header}
-			description={focusText2.description}
-			link={focusText2.link}
-		/>
 		<VideoBlock videoSrc={Video2} />
 		<FocusText
 			header={focusText2.header}
 			description={focusText2.description}
 			link={focusText2.link}
 		/>
+		<VideoBlock videoSrc={Video3} />
+		<FocusText
+			header={focusText2.header}
+			description={focusText2.description}
+			link={focusText2.link}
+		/>
 		<LogoCloud />
-		<VideoBlock videoSrc={Video4} />
+		<VideoBlock videoSrc={FlightVideo} />
 		<!-- <AboutSection />
 		<BentoGrid />
 		<SpeedSection />
