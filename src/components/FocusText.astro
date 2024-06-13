@@ -9,15 +9,10 @@ interface FocusTextProps {
 const { header, description } = Astro.props as FocusTextProps;
 ---
 
-<section>
-    <div
-        aria-hidden
-        class="opacity-0 dark:opacity-35 absolute [background-image:radial-gradient(theme(colors.gray.500),transparent_50%)] top-0 w-[1000px] z-10 h-[800px] left-1/2 -translate-x-1/2 -translate-y-1/3 pointer-events-none"
-    >
-    </div>
+<section class="bg-gradient-default">
     <Container>
-        <div class="relative">
-            <div class="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
+        <div class="relative min-h-64 my-48">
+            <div class="m-auto space-y-6 md:w-8/12 lg:w-7/12">
                 {
                     header && (
                         <h2 class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl">
@@ -36,15 +31,3 @@ const { header, description } = Astro.props as FocusTextProps;
         </div>
     </Container>
 </section>
-
-<style>
-    .section {
-        background: linear-gradient(
-            180deg,
-            rgba(9, 9, 11, 0) 0%,
-            #09090b 25%,
-            #09090b 81%,
-            rgba(9, 9, 11, 0) 100%
-        );
-    }
-</style>
