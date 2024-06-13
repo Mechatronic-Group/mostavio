@@ -1,12 +1,9 @@
 ---
-import { cn } from "@lib/utils";
-import Container from "./Container.astro";
-import { button } from "@tailus/themer-button";
-import Frame from "./Frame.astro";
 import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
 import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
 import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
+import { externalLinks } from "consts";
 
 let videos: Array<string> = [Video1, Video2, Video3, Video4];
 let activeVideo: number = 0;
@@ -25,15 +22,19 @@ let activeVideo: number = 0;
         transition:persist
     >
     </video>
-    <div class="absolute top-20 lg:w-2/3 text-center mx-auto">
+    <div class="absolute inset-0 top-1/4 text-center mx-auto">
         <h2
-            class="text-gray-900 dark:text-white font-bold text-4xl sm:text-5xl md:text-6xl"
+            class="m-4 md:m-8 text-gray-900 dark:text-white font-bold text-4xl sm:text-5xl md:text-6xl"
         >
             Experience the Future of Flight
         </h2>
+        <span class="text-gray-900 dark:text-white m-4 py-4"
+            >Transforming Urban Air Mobility with Next-Generation eVTOL
+            Technology</span
+        >
     </div>
     <div
-        class="absolute bottom-32 left-1/2 transform -translate-x-1/2 space-x-2 z-10"
+        class="absolute bottom-24 left-1/2 transform -translate-x-1/2 space-x-2 z-10"
     >
         {
             videos.map((_, index) => (
@@ -41,6 +42,17 @@ let activeVideo: number = 0;
                     class={`dot inline-block h-2 w-2 rounded-full bg-white ${index === activeVideo ? "opacity-100" : ""}`}
                     data-index={index}
                 />
+            ))
+        }
+    </div>
+    <div
+        class="absolute bottom-8 md:bottom-24 right-8 md:right-20 text-gray-950 dark:text-white flex gap-4 z-10"
+    >
+        {
+            externalLinks.map((item, index) => (
+                <button class="relative align-middle select-none" type="button">
+                    <item.icon />
+                </button>
             ))
         }
     </div>

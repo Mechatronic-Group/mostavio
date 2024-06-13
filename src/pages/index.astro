@@ -8,11 +8,22 @@ import CallToAction from "../components/CallToAction.astro";
 import BentoGrid from "@components/BentoGrid.astro";
 import SpeedSection from "@components/SpeedSection.astro";
 import AboutSection from "@components/AboutSection.astro";
+import FocusText from "@components/FocusText.astro";
+
+let foucsText1 = {
+	header: null,
+	description:
+		"At MostAvio, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. Join us as we redefine the skies.",
+};
 ---
 
 <Layout title="Welcome to MostAvio.">
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
 		<HeroCarousal />
+		<FocusText
+			header={foucsText1.header}
+			description={foucsText1.description}
+		/>
 		<AboutSection />
 		<BentoGrid />
 		<SpeedSection />
