@@ -20,23 +20,25 @@ const { media, content } = Astro.props as MediaProps;
 >
     <div id="media" data-media={JSON.stringify(media)}>
         {
-            isVideo(media[activeMedia]) ? (
-                <video
-                    id="carouselVideo"
-                    class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
-                    autoplay
-                    muted
-                    playsinline
-                    src={media[activeMedia]}
-                    transition:persist
-                />
-            ) : (
-                <Image
-                    id="carouselImage"
-                    class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
-                    src={media[activeMedia]}
-                    alt="MOSTAVIO HERO"
-                />
+            media.map((src, index) =>
+                isVideo(src) ? (
+                    <video
+                        id={`media-${index}`}
+                        class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
+                        autoplay={index === activeMedia}
+                        muted
+                        playsinline
+                        src={src}
+                        transition:persist
+                    />
+                ) : (
+                    <Image
+                        id={`media-${index}`}
+                        class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
+                        src={src}
+                        alt="MOSTAVIO HERO"
+                    />
+                ),
             )
         }
     </div>
@@ -60,6 +62,7 @@ const { media, content } = Astro.props as MediaProps;
         {
             media.map((_, index) => (
                 <button
+                    id={`dot-${index}`}
                     class={`swiper-pagination-bullet inline-block h-2 w-2 rounded-full bg-white ${index === activeMedia ? "swiper-pagination-bullet-active" : ""}`}
                     data-index={index}
                 />
@@ -80,40 +83,50 @@ const { media, content } = Astro.props as MediaProps;
     <script>
         import { isVideo } from "@lib/utils"; // this js is for runtime; above it is for build time
         const wrapperElement = document.getElementById("media");
-        const imageElement: HTMLImageElement = document.getElementById(
-            "carouselImage",
-        ) as HTMLImageElement;
         const dots = document.querySelectorAll(".swiper-pagination-bullet");
         const media = JSON.parse(wrapperElement.getAttribute("data-media"));
+        let intervalId;
+
+        // Start the interval for the first media
         let activeMedia = 0;
-        let timeoutId;
+        updateMedia();
 
         function updateMedia() {
-            clearTimeout(timeoutId);
-            if (isVideo(media[activeMedia])) {
-                const videoElement: HTMLVideoElement = document.getElementById(
-                    "carouselVideo",
-                ) as HTMLVideoElement;
-                videoElement.classList.add("blur");
-                setTimeout(() => {
-                    videoElement.src = media[activeMedia];
-                    videoElement.load();
-                    dots.forEach((dot, index) => {
-                        dot.classList.toggle(
-                            "swiper-pagination-bullet-active",
-                            activeMedia === index,
-                        );
-                    });
-                }, 250);
-                videoElement.classList.remove("blur");
-            } else {
-                imageElement.src = media[activeMedia];
-                timeoutId = setTimeout(nextMedia, 2000);
-            }
+            media.forEach((src, index) => {
+                const mediaElement = document.getElementById(`media-${index}`);
+                const dot = document.getElementById(`dot-${index}`);
+                mediaElement.classList.toggle("hidden", activeMedia !== index);
+                dot.classList.toggle(
+                    "swiper-pagination-bullet-active",
+                    activeMedia === index,
+                );
+
+                if (isVideo(src)) {
+                    const videoElement = mediaElement as HTMLVideoElement;
+                    videoElement.addEventListener("ended", nextMedia);
+                    if (activeMedia === index) {
+                        videoElement.classList.add("blur");
+                        videoElement.setAttribute("autoplay", "true");
+                        videoElement.play();
+                    } else {
+                        videoElement.pause();
+                    }
+                    videoElement.classList.remove("blur");
+                } else {
+                    if (activeMedia === index) {
+                        setTimeout(nextMedia, 5000);
+                    }
+                }
+            });
         }
 
         function nextMedia() {
             activeMedia = (activeMedia + 1) % media.length;
+            // Clear the interval after it has been called once
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
             updateMedia();
         }
 
@@ -123,7 +136,6 @@ const { media, content } = Astro.props as MediaProps;
                 updateMedia();
             });
         });
-        videoElement.addEventListener("ended", nextMedia);
     </script>
 </section>
 
