@@ -81,7 +81,8 @@ const { media, content } = Astro.props as MediaProps;
         }
     </div>
     <script>
-        import { isVideo } from "@lib/utils"; // this js is for runtime; above it is for build time
+        // this js is for runtime; above it is for build time
+        import { isVideo } from "@lib/utils";
         const wrapperElement = document.getElementById("media");
         const dots = document.querySelectorAll(".swiper-pagination-bullet");
         const media = JSON.parse(wrapperElement.getAttribute("data-media"));

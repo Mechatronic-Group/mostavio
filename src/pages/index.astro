@@ -14,26 +14,29 @@ import VideoBlock from "@components/VideoBlock.astro";
 import LogoCloud from "@components/LogoCloud.astro";
 
 // Media
-import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
-import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
-import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
-import FlightVideo from "../assets/videos/lilium.mp4";
+import Video1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.webm";
+import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4";
+import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
+import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
+import FlightVideo from "../assets/hero_media/lilium.mp4";
 
 let foucsText1 = {
 	header: null,
 	description:
-		"At MOSTAVIO, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. Join us as we redefine the skies.",
+		"At MOSTAVIO, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, \
+		and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. \
+		Join us as we redefine the skies.",
 };
 
 let focusText2 = {
 	header: "The Pinnacle of Air Travel",
 	description:
-		"Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. This single-seat eVTOL features a carbon fiber exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, it’s built for both speed and safety.",
+		"Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. This single-seat eVTOL features a carbon fiber \
+		exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, it’s built for both speed and safety.",
 	link: "/aircraft",
 };
 
-let media: Array<string> = [Video1, Video2, Video3, Video4];
+let media: Array<string | ImageMetadata> = [Video1, Video2, Video3, Video4];
 ---
 
 <Layout title="Welcome to MOSTAVIO.">

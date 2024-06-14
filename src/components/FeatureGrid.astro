@@ -1,0 +1,61 @@
+---
+import { cn } from "@lib/utils";
+import { Image } from "astro:assets";
+import Container from "./Container.astro";
+import { button } from "@tailus/themer-button";
+import Frame from "./Frame.astro";
+
+interface FeatureItemProps {
+    icon: string;
+    header?: string;
+    preHeader?: string;
+    description?: string;
+}
+export interface FeatureGridProps {
+    content: FeatureItemProps[];
+}
+
+let activeMedia: number = 0;
+const { content } = Astro.props as FeatureGridProps;
+---
+
+<section class="relative overflow-hidden scroll-mt-24" id="feature">
+    <Container>
+        <div class="relative ml-auto">
+            <div class="lg:w-2/3 text-center mt-6 m-auto">
+                <div
+                    class="py-8 mt-16 gap-4 dark:border-gray-800 flex-wrap flex justify-between"
+                >
+                    {
+                        content.map((each, _) => (
+                            <div>
+                                {each?.icon && (
+                                    <Image
+                                        class="w-12 h-12 m-auto mb-5"
+                                        src={each.icon}
+                                        alt="Feature Icon"
+                                    />
+                                )}
+                                {each.preHeader && (
+                                    <span class="text-gray-600 dark:text-gray-400 text-base">
+                                        {each.preHeader}
+                                    </span>
+                                )}
+                                {each.header && (
+                                    <h2 class="my-2 text-lg font-semibold text-gray-700 dark:text-white">
+                                        {each.header}
+                                    </h2>
+                                )}
+                                {each.description && (
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                        {each.description}
+                                    </p>
+                                )}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </Container>
+</section>
