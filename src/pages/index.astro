@@ -10,19 +10,20 @@ import Layout from "../layouts/Layout.astro";
 // import AboutSection from "@components/AboutSection.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
+import VideoBlock from "@components/VideoBlock.astro";
+import LogoCloud from "@components/LogoCloud.astro";
 
+// Media
+import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
 import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
 import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/videos/lilium.mp4";
 
-import VideoBlock from "@components/VideoBlock.astro";
-import LogoCloud from "@components/LogoCloud.astro";
-
 let foucsText1 = {
 	header: null,
 	description:
-		"At MostAvio, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. Join us as we redefine the skies.",
+		"At MOSTAVIO, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. Join us as we redefine the skies.",
 };
 
 let focusText2 = {
@@ -31,11 +32,13 @@ let focusText2 = {
 		"Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. This single-seat eVTOL features a carbon fiber exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, it’s built for both speed and safety.",
 	link: "/aircraft",
 };
+
+let media: Array<string> = [Video1, Video2, Video3, Video4];
 ---
 
-<Layout title="Welcome to MostAvio.">
+<Layout title="Welcome to MOSTAVIO.">
 	<main class="space-y-20 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
-		<HeroCarousal />
+		<HeroCarousal media={media} />
 		<FocusText
 			header={foucsText1.header}
 			description={foucsText1.description}

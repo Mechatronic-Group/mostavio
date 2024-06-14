@@ -1,47 +1,66 @@
 ---
-import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
-import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
-import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
+import { Image } from "astro:assets";
 import { externalLinks } from "consts";
+import { isVideo } from "@lib/utils";
 
-let videos: Array<string> = [Video1, Video2, Video3, Video4];
-let activeVideo: number = 0;
+export interface MediaProps {
+    media: Array<string>;
+    content?: {
+        header?: string;
+        description?: string;
+    };
+}
+let activeMedia: number = 0;
+const { media, content } = Astro.props as MediaProps;
 ---
 
 <section
     class="relative overflow-hidden scroll-mt-24 bg-gradient-default"
     id="home"
 >
-    <video
-        id="carouselVideo"
-        class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
-        autoplay
-        muted
-        playsinline
-        src={videos[activeVideo]}
-        data-videos={JSON.stringify(videos)}
-        transition:persist
-    >
-    </video>
+    <div id="media" data-media={JSON.stringify(media)}>
+        {
+            isVideo(media[activeMedia]) ? (
+                <video
+                    id="carouselVideo"
+                    class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
+                    autoplay
+                    muted
+                    playsinline
+                    src={media[activeMedia]}
+                    transition:persist
+                />
+            ) : (
+                <Image
+                    id="carouselImage"
+                    class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
+                    src={media[activeMedia]}
+                    alt="MOSTAVIO HERO"
+                />
+            )
+        }
+    </div>
     <div class="absolute inset-0 top-1/4 text-center mx-auto">
         <h2
             class="m-4 md:m-8 text-gray-900 dark:text-white font-bold text-4xl sm:text-5xl md:text-6xl"
         >
-            Experience the Future of Flight
+            {content?.header || "Experience the Future of Flight"}
         </h2>
-        <span class="text-gray-900 dark:text-white m-4 py-4"
-            >Transforming Urban Air Mobility with Next-Generation eVTOL
-            Technology</span
-        >
+        <div class="text-gray-900 dark:text-white m-auto py-4 max-w-xl">
+            {
+                content?.description ||
+                    "Transforming Urban Air Mobility with Next-Generation eVTOL Technology"
+            }
+        </div>
     </div>
+
     <div
         class="absolute bottom-24 left-1/2 transform -translate-x-1/2 space-x-2 z-10"
     >
         {
-            videos.map((_, index) => (
+            media.map((_, index) => (
                 <button
-                    class={`swiper-pagination-bullet inline-block h-2 w-2 rounded-full bg-white ${index === activeVideo ? "swiper-pagination-bullet-active" : ""}`}
+                    class={`swiper-pagination-bullet inline-block h-2 w-2 rounded-full bg-white ${index === activeMedia ? "swiper-pagination-bullet-active" : ""}`}
                     data-index={index}
                 />
             ))
@@ -59,38 +78,52 @@ let activeVideo: number = 0;
         }
     </div>
     <script>
-        const videoElement: HTMLVideoElement = document.getElementById(
-            "carouselVideo",
-        ) as HTMLVideoElement;
+        import { isVideo } from "@lib/utils"; // this js is for runtime; above it is for build time
+        const wrapperElement = document.getElementById("media");
+        const imageElement: HTMLImageElement = document.getElementById(
+            "carouselImage",
+        ) as HTMLImageElement;
         const dots = document.querySelectorAll(".swiper-pagination-bullet");
-        const videos = JSON.parse(videoElement.getAttribute("data-videos"));
-        let activeVideo = 0;
+        const media = JSON.parse(wrapperElement.getAttribute("data-media"));
+        let activeMedia = 0;
+        let timeoutId;
 
-        function updateVideo() {
-            videoElement.classList.add("blur");
-            setTimeout(() => {
-                videoElement.src = videos[activeVideo];
-                videoElement.load();
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle(
-                        "swiper-pagination-bullet-active",
-                        activeVideo === index,
-                    );
-                });
-            }, 250);
-            videoElement.classList.remove("blur");
+        function updateMedia() {
+            clearTimeout(timeoutId);
+            if (isVideo(media[activeMedia])) {
+                const videoElement: HTMLVideoElement = document.getElementById(
+                    "carouselVideo",
+                ) as HTMLVideoElement;
+                videoElement.classList.add("blur");
+                setTimeout(() => {
+                    videoElement.src = media[activeMedia];
+                    videoElement.load();
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle(
+                            "swiper-pagination-bullet-active",
+                            activeMedia === index,
+                        );
+                    });
+                }, 250);
+                videoElement.classList.remove("blur");
+            } else {
+                imageElement.src = media[activeMedia];
+                timeoutId = setTimeout(nextMedia, 2000);
+            }
+        }
+
+        function nextMedia() {
+            activeMedia = (activeMedia + 1) % media.length;
+            updateMedia();
         }
 
         dots.forEach((dot, index) => {
             dot.addEventListener("click", () => {
-                activeVideo = Number(dot.getAttribute("data-index"));
-                updateVideo();
+                activeMedia = Number(dot.getAttribute("data-index"));
+                updateMedia();
             });
         });
-        videoElement.addEventListener("ended", () => {
-            activeVideo = (activeVideo + 1) % videos.length;
-            updateVideo();
-        });
+        videoElement.addEventListener("ended", nextMedia);
     </script>
 </section>
 
@@ -118,5 +151,13 @@ let activeVideo: number = 0;
         width: 100%;
         height: 25%;
         background: linear-gradient(to top, rgb(12 11 10), rgba(0, 0, 0, 0));
+    }
+    .swiper-button::after {
+        font-size: 32px;
+        color: rgb(215, 119, 22);
+    }
+    .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+        background: #fff;
+        opacity: 0.5;
     }
 </style>

@@ -1,6 +1,6 @@
-# MostAvio
+# MOSTAVIO
 
-Website for MostAvio. Based on Theme [Atom-Astro](https://github.com/Tailus-UI/atom-astro)
+Website for MOSTAVIO. Based on Theme [Atom-Astro](https://github.com/Tailus-UI/atom-astro)
 
 
 ## 🚀 Project Structure

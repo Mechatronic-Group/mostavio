@@ -11,3 +11,6 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const isImage = (src: string) => /\.(jpeg|jpg|gif|png|svg|ico|webp|tif)$/i.test(src);
+export const isVideo = (src: string) => /\.(mp4|webm|ogg|mov|avi|flv|wmv)$/i.test(src);

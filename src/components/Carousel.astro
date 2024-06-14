@@ -8,21 +8,45 @@ import slide03 from "../assets/slides/image_38.png";
 <section>
     <div class="swiper container">
         <div class="swiper-wrapper">
-            <!-- Slides -->
             <div class="swiper-slide h-96 w-auto">
-                <Image class="h-96 w-auto object-cover" src={slide01} alt="" />
+                <Image
+                    class="h-96 w-auto object-cover"
+                    src={slide01}
+                    alt=""
+                    loading="lazy"
+                />
             </div>
             <div class="swiper-slide">
-                <Image class="h-96 w-auto object-cover" src={slide02} alt="" />
+                <Image
+                    class="h-96 w-auto object-cover"
+                    src={slide02}
+                    alt=""
+                    loading="lazy"
+                />
             </div>
             <div class="swiper-slide">
-                <Image class="h-96 w-auto object-cover" src={slide03} alt="" />
+                <Image
+                    class="h-96 w-auto object-cover"
+                    src={slide03}
+                    alt=""
+                    loading="lazy"
+                />
             </div>
             <div class="swiper-slide max-h-96">
-                <Image class="h-96 w-auto object-cover" src={slide02} alt="" />
+                <Image
+                    class="h-96 w-auto object-cover"
+                    src={slide02}
+                    alt=""
+                    loading="lazy"
+                />
             </div>
             <div class="swiper-slide">
-                <Image class="h-96 w-auto object-cover" src={slide03} alt="" />
+                <Image
+                    class="h-96 w-auto object-cover"
+                    src={slide03}
+                    alt=""
+                    loading="lazy"
+                />
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -46,8 +70,7 @@ import slide03 from "../assets/slides/image_38.png";
 </style>
 
 <script>
-    import Swiper from "swiper";
-    import { Navigation, Pagination } from "swiper/modules";
+    import Swiper, { Navigation, Pagination } from "swiper";
     import "swiper/css/bundle";
 
     export const swiperConfig = {

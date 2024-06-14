@@ -1,22 +1,45 @@
 ---
-import Stats from '../components/Stats.astro';
-import HeroSection from '../components/HeroSection.astro';
-import Layout from '../layouts/Layout.astro';
-import Testimonials from '../components/Testimonials.astro';
-import CallToAction from '../components/CallToAction.astro';
-import BentoGrid from '@components/BentoGrid.astro';
-import SpeedSection from '@components/SpeedSection.astro';
-import AboutSection from '@components/AboutSection.astro';
+import Stats from "../components/Stats.astro";
+import HeroSection from "../components/HeroSection.astro";
+import Layout from "../layouts/Layout.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CallToAction from "../components/CallToAction.astro";
+import BentoGrid from "@components/BentoGrid.astro";
+import SpeedSection from "@components/SpeedSection.astro";
+import AboutSection from "@components/AboutSection.astro";
+import HeroCarousal from "@components/HeroCarousal.astro";
+
+// Media
+import Video1 from "../assets/videos/Cybertruck-Built-For-Any-Planet-Desktop.webm";
+import Video2 from "../assets/videos/Cybertruck-Beyond-Prepared-Desktop.mp4";
+import Video3 from "../assets/videos/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
+import Video4 from "../assets/videos/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
+
+import slide01 from "../assets/slides/image_32.png";
+let media: Array<string | ImageMetadata> = [
+	slide01,
+	Video1,
+	Video2,
+	Video3,
+	Video4,
+];
+
+let bannerContent = {
+	header: "Introducing the Prototype",
+	description:
+		"Our revolutionary eVTOL prototype combines sleek design with cutting-edge technology to redefine personal air travel. Engineered for efficiency and safety, this aircraft is set to transform the way you commute.",
+};
 ---
 
 <Layout title="Welcome to MostAvio.">
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
-		<HeroSection/>
+		<HeroCarousal media={media} content={bannerContent} />
+		<!-- <HeroSection/>
 		<AboutSection />
 		<BentoGrid />
 		<SpeedSection />
 		<Stats/>
 		<Testimonials/>
-		<CallToAction/>
+		<CallToAction/> -->
 	</main>
 </Layout>
