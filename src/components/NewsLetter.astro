@@ -1,0 +1,50 @@
+---
+import Container from "./Container.astro";
+import { cn } from "@lib/utils";
+import { button } from "@tailus/themer-button";
+---
+
+<section>
+    <Container>
+        <div class="relative">
+            <div class="mt-6 m-auto space-y-12 md:w-6/12 lg:w-6/12">
+                <h2
+                    class="text-center text-5xl font-bold text-gray-800 dark:text-white md:text-6xl"
+                >
+                    Stay Informed
+                </h2>
+                <p class="text-center text-lg text-gray-600 dark:text-gray-300">
+                    Stay informed with the most recent news and media coverage
+                    about MostAvio. Discover our latest technological
+                    advancements, partnerships, and more.
+                </p>
+                <form action="" class="space-y-8">
+                    <div class="space-y-4 text-center">
+                        <label
+                            for="username"
+                            class="text-gray-600 dark:text-gray-300"
+                            >Subscribe to our newsletter ?</label
+                        >
+                        <div class="relative flex items-center">
+                            <input
+                                type="email"
+                                name="email"
+                                autocomplete="email"
+                                placeholder="Email"
+                                class="focus:outline-none block w-full rounded-full placeholder-gray-500 bg-gray-100 dark:bg-gray-800 dark:border-gray-600 pl-12 pr-4 h-12 text-gray-600 transition duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 focus:ring-primary"
+                            />
+                            <div class="absolute right-1">
+                                <button
+                                    type="submit"
+                                    class={cn(button.primary.lg, "relative")}
+                                >
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </Container>
+</section>

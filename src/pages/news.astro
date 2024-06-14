@@ -7,16 +7,25 @@ import CallToAction from "../components/CallToAction.astro";
 import BentoGrid from "@components/BentoGrid.astro";
 import SpeedSection from "@components/SpeedSection.astro";
 import AboutSection from "@components/AboutSection.astro";
+import HeroCarousal from "@components/HeroCarousal.astro";
+
+// Media
+import slide01 from "../assets/hero_media/image_32.png";
+
+let media: Array<string | ImageMetadata> = [slide01];
+let bannerContent = {
+	header: "Latest News and Updates",
+};
 ---
 
 <Layout title="Welcome to MOSTAVIO.">
-	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
-		<HeroSection />
-		<AboutSection />
+	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
+		<HeroCarousal media={media} content={bannerContent} />
+		<!-- <AboutSection />
 		<BentoGrid />
 		<SpeedSection />
 		<Stats />
 		<Testimonials />
-		<CallToAction />
+		<CallToAction /> -->
 	</main>
 </Layout>

@@ -9,6 +9,9 @@ import AboutSection from "@components/AboutSection.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 import FeatureGrid from "@components/FeatureGrid.astro";
 import Carousel from "@components/Carousel.astro";
+import VideoBlock from "@components/VideoBlock.astro";
+import FocusText from "@components/FocusText.astro";
+import NewsLetter from "@components/NewsLetter.astro";
 
 // Media
 import Video1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.webm";
@@ -22,8 +25,8 @@ import BatteryIcon from "../assets/icons/Battery.png";
 import SpeedIcon from "../assets/icons/Speed.png";
 import TicketIcon from "../assets/icons/Ticket.png";
 import ChargingStationIcon from "../assets/icons/ChargingStation.png";
-import VideoBlock from "@components/VideoBlock.astro";
-import FocusText from "@components/FocusText.astro";
+import NaturalIcon from "../assets/icons/Natural.png";
+import ChipIcon from "../assets/icons/Chip.png";
 
 let media: Array<string | ImageMetadata> = [
 	slide01,
@@ -62,6 +65,21 @@ let featureContent = [
 	},
 ];
 
+let featureContent2 = [
+	{
+		icon: ChipIcon,
+		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+	},
+	{
+		icon: NaturalIcon,
+		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+	},
+	{
+		icon: SpeedIcon,
+		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+	},
+];
+
 let focusText1 = {
 	header: "Revolutionary Design",
 	description:
@@ -83,13 +101,28 @@ let focusText3 = {
 		"Safety is our top priority. Our eVTOL aircraft is equipped with a state-of-the-art autopilot system that ensures a smooth, stable flight \
 		experience. The aircraft also features redundant systems, including multiple batteries and motors, to ensure maximum safety and reliability.",
 };
+
+let focusText4 = {
+	header: "Sustainable Aviation",
+	description:
+		"Our eVTOL is designed with the environment in mind. Utilizing electric propulsion and sustainable materials, we aim to reduce \
+		carbon footprints and noise pollution, promoting a cleaner and quieter urban environment.",
+};
+
+let focusText5 = {
+	header: "Shipping Begins 2025",
+	description:
+		"Join the future of urban air mobility by preordering your MostAvio eVTOL. Secure your place in line and be among the first to \
+		experience the ultimate in personal transportation. Our eVTOL aircraft is priced at $250,000. Early adopters can enjoy special \
+		financing options and priority delivery.",
+};
 ---
 
 <Layout title="Welcome to MostAvio.">
-	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
+	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<FeatureGrid content={featureContent} />
-		<VideoBlock videoSrc={Video2} />
+		<VideoBlock videoSrc={Video3} />
 		<FocusText
 			header={focusText1.header}
 			description={focusText1.description}
@@ -105,11 +138,21 @@ let focusText3 = {
 			description={focusText3.description}
 			link="/aircraft"
 		/>
-		<!-- <AboutSection /> -->
-		<!-- <BentoGrid /> -->
-		<!-- <SpeedSection /> -->
-		<!-- <Stats /> -->
-		<!-- <Testimonials /> -->
-		<!-- <CallToAction /> -->
+		<BentoGrid />
+		<FeatureGrid content={featureContent2} bordered />
+		<VideoBlock videoSrc={Video2} />
+		<FocusText
+			header={focusText4.header}
+			description={focusText4.description}
+			link="/aircraft"
+		/>
+		<Carousel />
+		<FocusText
+			header={focusText5.header}
+			description={focusText5.description}
+			link="/aircraft"
+		/>
+		<VideoBlock videoSrc={Video3} />
+		<NewsLetter />
 	</main>
 </Layout>

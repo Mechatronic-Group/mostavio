@@ -12,23 +12,24 @@ interface FeatureItemProps {
     description?: string;
 }
 export interface FeatureGridProps {
+    bordered?: boolean;
     content: FeatureItemProps[];
 }
 
 let activeMedia: number = 0;
-const { content } = Astro.props as FeatureGridProps;
+const { content, bordered = false } = Astro.props as FeatureGridProps;
 ---
 
 <section class="relative overflow-hidden scroll-mt-24" id="feature">
     <Container>
         <div class="relative ml-auto">
-            <div class="lg:w-2/3 text-center mt-6 m-auto">
+            <div class=`text-center mt-6 m-auto`>
                 <div
-                    class="py-8 mt-16 gap-4 dark:border-gray-800 flex-wrap flex justify-between"
+                    class={`py-8 mt-16 gap-1 lg:gap-4 flex-wrap flex justify-between ${bordered && "border-y border-gray-800 dark:border-white"}`}
                 >
                     {
                         content.map((each, _) => (
-                            <div>
+                            <div class={`max-w-80 ${bordered && "my-14"}`}>
                                 {each?.icon && (
                                     <Image
                                         class="w-12 h-12 m-auto mb-5"
