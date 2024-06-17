@@ -8,19 +8,95 @@ import BentoGrid from "@components/BentoGrid.astro";
 import SpeedSection from "@components/SpeedSection.astro";
 import AboutSection from "@components/AboutSection.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
+import Posts from "@components/Posts.astro";
 
 // Media
 import slide01 from "../assets/hero_media/image_32.png";
+import Newsletter from "@components/NewsLetter.astro";
 
 let media: Array<string | ImageMetadata> = [slide01];
 let bannerContent = {
 	header: "Latest News and Updates",
 };
+
+let posts = [
+	{
+		slug: "mostavio-achieves-key-certification-milestone",
+		header: "MostAvio Achieves Key Certification Milestone",
+		date: "June 12, 2024",
+		tags: ["Certification"],
+		featured: true,
+		thumbnail:
+			"https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+		intro: "We are thrilled to announce that MostAvio's eVTOL prototype has successfully passed a major certification milestone, \
+		bringing us closer to commercial launch. This achievement underscores our commitment to safety and innovation in urban air mobility.",
+		link: "/news/mostavio-achieves-key-certification-milestone",
+	},
+	{
+		slug: "mostavio-secures-50-million-in-series-b-funding",
+		header: "MostAvio Secures $50 Million in Series B Funding",
+		date: "April 12, 2024",
+		thumbnail:
+			"https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+		featured: false,
+		tags: ["Announcement"],
+		intro: "We are pleased to announce that MostAvio has secured $50 million in Series B funding. This investment will accelerate our \
+		development and testing phases, enabling us to bring our eVTOL to market faster.",
+		link: "/news/mostavio-secures-50-million-in-series-b-funding",
+	},
+	{
+		slug: "mostavio-announces-new-partnership-with-uber",
+		header: "MostAvio Announces New Partnership with Uber",
+		date: "April 12, 2024",
+		humbnail:
+			"https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+		featured: true,
+		tags: ["Partnership"],
+		intro: "We are excited to announce a new partnership with Uber to explore the future of urban air mobility. This collaboration will focus on \
+		developing innovative solutions to transform the way people move in cities.",
+		link: "/news/mostavio-announces-new-partnership-with-uber",
+	},
+	{
+		slug: "strategic-partnership-with-tesla",
+		header: "Strategic Partnership with Tesla",
+		date: "April 12, 2024",
+		thumbnail:
+			"https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+		featured: false,
+		tags: ["Partnership"],
+		intro: "MostAvio has entered into a strategic partnership with Tesla Innovations to enhance our sustainability efforts. This collaboration will focus on developing \
+		eco-friendly battery technology and advancing our zero-emission goals.",
+		link: "/news/strategic-partnership-with-tesla",
+	},
+	{
+		slug: "launch-of-mostavios-new-rd-facility-in-north-york-on",
+		header: "Launch of MostAvio’s New R&D Facility in North York, ON",
+		tags: ["Announcement"],
+		featured: true,
+		thumbnail:
+			"https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
+		intro: "MostAvio has officially opened a state-of-the-art research and development facility in Toronto. This new center will drive innovation and support our ongoing \
+		efforts to revolutionize urban air transportation.",
+		link: "/news/launch-of-mostavios-new-rd-facility-in-north-york-on",
+	},
+	{
+		slug: "forbes-the-future-of-urban-air-mobility-with-mostavio",
+		header: "Forbes: The Future of Urban Air Mobility with MostAvio",
+		date: "April 12, 2024",
+		thumbnail: null,
+		featured: false,
+		tags: ["Announcement"],
+		intro: "Forbes explores how MostAvio is poised to transform urban transportation with its innovative eVTOL aircraft.",
+		link: "/news/forbes-the-future-of-urban-air-mobility-with-mostavio",
+	},
+];
 ---
 
 <Layout title="Welcome to MOSTAVIO.">
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
+		<Posts posts={posts} />
+		<Newsletter />
 		<!-- <AboutSection />
 		<BentoGrid />
 		<SpeedSection />

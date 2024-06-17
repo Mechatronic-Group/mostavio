@@ -1,0 +1,75 @@
+---
+import Container from "./Container.astro";
+
+interface Job {
+    title: string;
+    description?: string;
+    location?: string;
+    team?: string;
+    link?: string;
+}
+
+const { content } = Astro.props as { content: Job[] };
+---
+
+<section>
+    <Container>
+        <div class="relative">
+            <div class="my-12 m-auto space-y-12 md:w-10/12 lg:w-10/12">
+                <h2
+                    class="text-center text-5xl font-bold text-gray-800 dark:text-white md:text-6xl"
+                >
+                    Current Openings
+                </h2>
+
+                <p class="text-center text-lg text-gray-600 dark:text-gray-300">
+                    Join the MostAvio team and be part of the future of urban
+                    transportation. Explore our current job openings and apply
+                    to become a part of our innovative team.
+                </p>
+            </div>
+        </div>
+    </Container>
+    <div class="grid gap-8 mb-8">
+        {
+            content.map((job, index) => (
+                <div
+                    class={`group p-6 sm:p-8 bg-white border-t ${
+                        index === content.length - 1 ? "border-b" : ""
+                    } border-gray-100 dark:shadow-none dark:border-gray-700  dark:bg-stone-950 bg-opacity-50  shadow-2xl shadow-gray-600/10 flex flex-col md:flex-row md:space-x-10`}
+                >
+                    <div class="md:w-1/2 md:pl-40">
+                        <div class="mt-6 relative">
+                            <span class="inline-flex text-gray-600 dark:text-gray-300">
+                                <span class="font-bold">{job?.team}</span>{" "}
+                                &nbsp;
+                                {"-"}&nbsp;
+                                <span class="text-base">{job.location}</span>
+                            </span>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
+                                {job.title}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        {job?.description && (
+                            <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+                                {job?.description}
+                            </p>
+                        )}
+
+                        <a
+                            class="inline-block"
+                            target="_blank"
+                            href={job?.link || "/job-post"}
+                        >
+                            <span class="text-info dark:text-blue-300">
+                                Apply
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>

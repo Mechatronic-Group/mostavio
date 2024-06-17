@@ -2,14 +2,13 @@
 import { cn } from "@lib/utils";
 import { Image } from "astro:assets";
 import Container from "./Container.astro";
-import { button } from "@tailus/themer-button";
-import Frame from "./Frame.astro";
 
 interface FeatureItemProps {
     icon: string;
     header?: string;
     preHeader?: string;
     description?: string;
+    headerClass?: string;
 }
 export interface FeatureGridProps {
     bordered?: boolean;
@@ -43,7 +42,12 @@ const { content, bordered = false } = Astro.props as FeatureGridProps;
                                     </span>
                                 )}
                                 {each.header && (
-                                    <h2 class="my-2 text-lg font-semibold text-gray-700 dark:text-white">
+                                    <h2
+                                        class={cn(
+                                            "my-2 font-semibold text-gray-700 dark:text-white",
+                                            each.headerClass || "text-lg",
+                                        )}
+                                    >
                                         {each.header}
                                     </h2>
                                 )}
