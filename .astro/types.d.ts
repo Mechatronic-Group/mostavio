@@ -103,14 +103,14 @@ declare module 'astro:content' {
 	): import('astro/zod').ZodEffects<
 		import('astro/zod').ZodString,
 		C extends keyof ContentEntryMap
-		? {
-			collection: C;
-			slug: ValidContentEntrySlug<C>;
-		}
-		: {
-			collection: C;
-			id: keyof DataEntryMap[C];
-		}
+			? {
+					collection: C;
+					slug: ValidContentEntrySlug<C>;
+				}
+			: {
+					collection: C;
+					id: keyof DataEntryMap[C];
+				}
 	>;
 	// Allow generic `string` to avoid excessive type errors in the config
 	// if `dev` is not running to update as you edit.
@@ -126,19 +126,19 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-			"mostavio-achieves-key-certification-milestone.md": {
-				id: "mostavio-achieves-key-certification-milestone.md";
-				slug: "mostavio-achieves-key-certification-milestone";
-				body: string;
-				collection: "posts";
-				data: any
-			} & { render(): Render[".md"] };
-		};
+"mostavio-achieves-key-certification-milestone.md": {
+	id: "mostavio-achieves-key-certification-milestone.md";
+  slug: "mostavio-achieves-key-certification-milestone";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+};
 
 	};
 
 	type DataEntryMap = {
-
+		
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
