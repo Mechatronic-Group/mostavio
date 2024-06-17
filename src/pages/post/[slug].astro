@@ -1,0 +1,54 @@
+---
+import Container from "@components/Container.astro";
+import Layout from "../../layouts/Layout.astro";
+import FocusText from "@components/FocusText.astro";
+import NewsLetter from "@components/NewsLetter.astro";
+
+export async function getStaticPaths() {
+    const posts = await Astro.glob("../post/**/*.md");
+
+    return posts.map((post) => ({
+        params: {
+            slug: post.frontmatter.slug,
+            header: post.frontmatter.header,
+            date: post.frontmatter.date,
+            tags: post.frontmatter.tags,
+            featured: post.frontmatter.featured,
+            thumbnail: post.frontmatter.thumbnail,
+            intro: post.frontmatter.intro,
+            link: post.frontmatter.link,
+        },
+        props: {
+            post,
+        },
+    }));
+}
+
+const props = Astro.props;
+
+console.log(props);
+---
+
+<Layout title="Welcome to MOSTAVIO.">
+    <main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
+        <section class="scroll-mt-24">
+            <div class="h-32"></div>
+            <Container>
+                <div class="mb-12 space-y-2 text-center">
+                    <h2
+                        class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white"
+                    >
+                        Latest News and Highlights
+                    </h2>
+                    <p
+                        class="lg:mx-auto lg:w-6/12 text-gray-600 dark:text-gray-300"
+                    >
+                        Catch up on the most important news, current events and
+                        highlights.
+                    </p>
+                </div>
+            </Container>
+            <NewsLetter />
+        </section>
+    </main>
+</Layout>

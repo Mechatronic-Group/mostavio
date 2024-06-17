@@ -1,17 +1,11 @@
 ---
-import Stats from "../components/Stats.astro";
-import HeroSection from "../components/HeroSection.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
-// import Testimonials from "../components/Testimonials.astro";
-// import CallToAction from "../components/CallToAction.astro";
-// import BentoGrid from "@components/BentoGrid.astro";
-// import SpeedSection from "@components/SpeedSection.astro";
-// import AboutSection from "@components/AboutSection.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
 import VideoBlock from "@components/VideoBlock.astro";
 import LogoCloud from "@components/LogoCloud.astro";
+import NewsLetter from "@components/NewsLetter.astro";
 
 // Media
 import Video1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.webm";
@@ -19,6 +13,11 @@ import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4"
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/hero_media/lilium.mp4";
+
+import SpeedIcon from "../assets/icons/Speed.png";
+import NaturalIcon from "../assets/icons/Natural.png";
+import ChipIcon from "../assets/icons/Chip.png";
+import FeatureGrid from "@components/FeatureGrid.astro";
 
 let foucsText1 = {
 	header: null,
@@ -35,6 +34,30 @@ let focusText2 = {
 		exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, it’s built for both speed and safety.",
 	link: "/aircraft",
 };
+
+let focusText3 = {
+	header: "Cut Your Commute Time Dramatically",
+	description:
+		"Imagine turning a 45-minute drive into a swift 10-minute flight. MostAvio's advanced eVTOL technology offers \
+		unparalleled efficiency, allowing you to bypass traffic and reach your destination faster than ever. Experience \
+		the freedom of urban air mobility and reclaim your valuable time.",
+	link: "/aircraft",
+};
+
+let featureContent = [
+	{
+		icon: ChipIcon,
+		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+	},
+	{
+		icon: NaturalIcon,
+		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+	},
+	{
+		icon: SpeedIcon,
+		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+	},
+];
 
 let media: Array<string | ImageMetadata> = [Video1, Video2, Video3, Video4];
 ---
@@ -60,11 +83,13 @@ let media: Array<string | ImageMetadata> = [Video1, Video2, Video3, Video4];
 		/>
 		<LogoCloud />
 		<VideoBlock videoSrc={FlightVideo} />
-		<!-- <AboutSection />
-		<BentoGrid />
-		<SpeedSection />
-		<Stats />
-		<Testimonials />
-		<CallToAction /> -->
+		<FocusText
+			header={focusText3.header}
+			description={focusText3.description}
+			link={focusText3.link}
+		/>
+		<FeatureGrid content={featureContent} bordered />
+		<VideoBlock videoSrc={Video3} />
+		<NewsLetter />
 	</main>
 </Layout>
