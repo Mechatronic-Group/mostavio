@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { externalLinks } from "consts";
 import { isVideo } from "@lib/utils";
+import { cn } from "@lib/utils";
 
 export interface MediaProps {
     media: Array<string>;
@@ -56,19 +57,25 @@ const { media, content } = Astro.props as MediaProps;
         </div>
     </div>
 
-    {
-        media.length > 1 && (
-            <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 space-x-2 z-10">
-                {media.map((_, index) => (
-                    <button
-                        id={`dot-${index}`}
-                        class={`swiper-pagination-bullet inline-block h-2 w-2 rounded-full bg-white ${index === activeMedia ? "swiper-pagination-bullet-active" : ""}`}
-                        data-index={index}
-                    />
-                ))}
-            </div>
-        )
-    }
+    <div
+        class="absolute bottom-24 left-1/2 transform -translate-x-1/2 space-x-2 z-10"
+    >
+        {
+            media.map((_, index) => (
+                <button
+                    id={`dot-${index}`}
+                    class={cn(
+                        "swiper-pagination-bullet inline-block h-2 w-2 rounded-full bg-white",
+                        index === activeMedia
+                            ? "swiper-pagination-bullet-active"
+                            : "",
+                        media.length > 1 ? "" : "hidden",
+                    )}
+                    data-index={index}
+                />
+            ))
+        }
+    </div>
     <div
         class="absolute bottom-8 md:bottom-24 right-8 md:right-20 text-gray-950 dark:text-white flex gap-4 z-10"
     >

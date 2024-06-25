@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NewsLetter from "@components/NewsLetter.astro";
+import MarkdownRender from "@components/MarkdownRender.astro";
+import { getEntry } from "astro:content";
+
+const slug = await Astro.params.slug;
+const post = await getEntry("posts", slug || "");
+---
+
+<Layout title="MOSTAVIO - News and Updates">
+    <main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
+        <article
+            class="relative overflow-hidden scroll-mt-24 bg-gradient-default"
+            id="news"
+        >
+            {
+                post && (
+                    <div class="prose lg:prose-xl">
+                        <MarkdownRender entry={post} />
+                    </div>
+                )
+            }
+            <NewsLetter />
+        </article>
+    </main>
+</Layout>

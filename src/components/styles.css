@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose a {
+    @apply text-blue-500 hover:text-blue-700;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+    @apply text-4xl font-bold my-7 md:text-5xl text-left;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+    @apply text-2xl font-bold my-5 md:text-3xl text-left;
+}
+
+.prose p {
+    @apply text-lg my-4;
+}
+
+.prose ul {
+    @apply list-disc list-inside;
+}
+
+.prose ol {
+    @apply list-decimal list-inside;
+}
+
+.prose li {
+    @apply my-2;
+}
+
+.prose blockquote {
+    @apply border-l-4 border-gray-300 pl-4 my-4;
+}
+
+.prose pre {
+    @apply my-4;
+}
+
+.prose img {
+    @apply w-full h-auto my-10;
+}
+
+.prose {
+    @apply mt-52 mb-32 m-auto space-y-12 md:w-6/12 lg:w-6/12;
+}

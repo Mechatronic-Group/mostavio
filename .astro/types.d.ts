@@ -126,12 +126,56 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-"mostavio-achieves-key-certification-milestone.md": {
-	id: "mostavio-achieves-key-certification-milestone.md";
-  slug: "mostavio-achieves-key-certification-milestone";
+"forbes-air-mobility.md": {
+	id: "forbes-air-mobility.md";
+  slug: "forbes-air-mobility";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"mostavio-certification.md": {
+	id: "mostavio-certification.md";
+  slug: "mostavio-certification";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"mostavio-funding.md": {
+	id: "mostavio-funding.md";
+  slug: "mostavio-funding";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"new-facility-north-york.md": {
+	id: "new-facility-north-york.md";
+  slug: "new-facility-north-york";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"strategic-partnership.md": {
+	id: "strategic-partnership.md";
+  slug: "strategic-partnership";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+};
+"reports": {
+"2023-annual-report.md": {
+	id: "2023-annual-report.md";
+  slug: "2023-annual-report";
+  body: string;
+  collection: "reports";
+  data: InferEntrySchema<"reports">
+} & { render(): Render[".md"] };
+"2024-annual-report.md": {
+	id: "2024-annual-report.md";
+  slug: "2024-annual-report";
+  body: string;
+  collection: "reports";
+  data: InferEntrySchema<"reports">
 } & { render(): Render[".md"] };
 };
 
@@ -143,5 +187,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../src/content/config.js");
 }

@@ -6,6 +6,7 @@ import { button } from "@tailus/themer-button";
 
 interface FocusTextProps {
     header?: string;
+    subheader?: string;
     description?: string;
     link?: string;
     ctaLabel?: string;
@@ -13,6 +14,7 @@ interface FocusTextProps {
 
 const {
     header,
+    subheader,
     description,
     link,
     ctaLabel = "Learn More",
@@ -28,6 +30,13 @@ const {
                         <h2 class="text-center text-5xl font-bold text-gray-800 dark:text-white md:text-6xl">
                             {header}
                         </h2>
+                    )
+                }
+                {
+                    subheader && (
+                        <h6 class="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">
+                            {subheader}
+                        </h6>
                     )
                 }
                 {
