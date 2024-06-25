@@ -4,8 +4,12 @@ import { externalLinks } from "consts";
 import { isVideo } from "@lib/utils";
 import { cn } from "@lib/utils";
 
+export interface VideoSource {
+    src: string;
+    poster?: ImageMetadata;
+}
 export interface MediaProps {
-    media: Array<string>;
+    media: Array<string | VideoSource | ImageMetadata>;
     content?: {
         header?: string;
         description?: string;
@@ -21,8 +25,15 @@ const { media, content } = Astro.props as MediaProps;
 >
     <div id="media" data-media={JSON.stringify(media)}>
         {
-            media.map((src, index) =>
-                isVideo(src) ? (
+            media.map((each, index) => {
+                const isItemVideo =
+                    typeof each === "object" &&
+                    "src" in each &&
+                    isVideo(each.src);
+                const src = typeof each === "object" ? each.src : each;
+                const poster =
+                    isItemVideo && "poster" in each ? each.poster : undefined;
+                return isVideo(src) ? (
                     <video
                         id={`media-${index}`}
                         class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
@@ -30,6 +41,7 @@ const { media, content } = Astro.props as MediaProps;
                         muted
                         playsinline
                         src={src}
+                        poster={poster.src}
                         transition:persist
                     />
                 ) : (
@@ -39,8 +51,8 @@ const { media, content } = Astro.props as MediaProps;
                         src={src}
                         alt="MOSTAVIO HERO"
                     />
-                ),
-            )
+                );
+            })
         }
     </div>
     <div class="absolute inset-0 top-1/4 text-center mx-auto">

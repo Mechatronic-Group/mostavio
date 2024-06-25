@@ -1,5 +1,6 @@
 ---
 import HeroCarousal from "@components/HeroCarousal.astro";
+import type { VideoSource } from "@components/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
@@ -13,6 +14,11 @@ import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4"
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/hero_media/lilium.mp4";
+import Banner1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.png";
+import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png";
+import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
+import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
+import BannerFlight from "../assets/hero_media/lilium.png";
 
 import SpeedIcon from "../assets/icons/Speed.png";
 import NaturalIcon from "../assets/icons/Natural.png";
@@ -59,7 +65,12 @@ let featureContent = [
 	},
 ];
 
-let media: Array<string | ImageMetadata> = [Video1, Video2, Video3, Video4];
+let media: Array<string | VideoSource | ImageMetadata> = [
+	{ src: Video1, poster: Banner2 },
+	{ src: Video2, poster: Banner3 },
+	{ src: Video3, poster: Banner4 },
+	{ src: Video4, poster: Banner1 },
+];
 ---
 
 <Layout title="Welcome to MOSTAVIO.">
