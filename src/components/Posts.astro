@@ -46,17 +46,13 @@ const latestPosts = posts.filter((post) => !post.data.featured);
                       {post?.data?.intro}
                     </p>
                   )}
-                  {post?.data?.link && (
-                    <a
-                      class="inline-block"
-                      target="_blank"
-                      href={post?.data?.link}
-                    >
-                      <span class="text-info dark:text-blue-300">
-                        Read more
-                      </span>
-                    </a>
-                  )}
+                  <a
+                    class="inline-block"
+                    target="_blank"
+                    href={`/news/${post.slug}`}
+                  >
+                    <span class="text-info dark:text-blue-300">Read more</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -93,11 +89,9 @@ const latestPosts = posts.filter((post) => !post.data.featured);
                     {post?.data?.intro}
                   </p>
                 )}
-                {post?.data?.link && (
-                  <a class="inline-block" href={post?.data?.link}>
-                    <span class="text-info dark:text-blue-300">Read more</span>
-                  </a>
-                )}
+                <a class="inline-block" href={`/news/${post.slug}`}>
+                  <span class="text-info dark:text-blue-300">Read more</span>
+                </a>
               </div>
             </div>
           ))}
