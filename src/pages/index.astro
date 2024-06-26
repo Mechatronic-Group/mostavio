@@ -66,10 +66,10 @@ let featureContent = [
 ];
 
 let media: Array<string | VideoSource | ImageMetadata> = [
-	{ src: Video1, poster: Banner2 },
-	{ src: Video2, poster: Banner3 },
-	{ src: Video3, poster: Banner4 },
-	{ src: Video4, poster: Banner1 },
+	{ source: Video1, poster: Banner2 }, // `src` collides with ImageMetadata
+	{ source: Video2, poster: Banner3 },
+	{ source: Video3, poster: Banner4 },
+	{ source: Video4, poster: Banner1 },
 ];
 ---
 

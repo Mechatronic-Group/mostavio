@@ -5,7 +5,7 @@ import { isVideo } from "@lib/utils";
 import { cn } from "@lib/utils";
 
 export interface VideoSource {
-    src: string;
+    source: string;
     poster?: ImageMetadata;
 }
 export interface MediaProps {
@@ -26,29 +26,30 @@ const { media, content } = Astro.props as MediaProps;
     <div id="media" data-media={JSON.stringify(media)}>
         {
             media.map((each, index) => {
-                const isItemVideo =
-                    typeof each === "object" &&
-                    "src" in each &&
-                    isVideo(each.src);
-                const src = typeof each === "object" ? each.src : each;
-                const poster =
-                    isItemVideo && "poster" in each ? each.poster : undefined;
-                return isVideo(src) ? (
+                let mediaSrc: any =
+                    typeof each === "object" && "source" in each
+                        ? each.source
+                        : each;
+                let mediaPoster =
+                    typeof each === "object" && "poster" in each
+                        ? each.poster
+                        : undefined;
+                return isVideo(mediaSrc) ? (
                     <video
                         id={`media-${index}`}
                         class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
                         autoplay={index === activeMedia}
                         muted
                         playsinline
-                        src={src}
-                        poster={poster.src}
+                        src={mediaSrc}
+                        poster={mediaPoster}
                         transition:persist
                     />
                 ) : (
                     <Image
                         id={`media-${index}`}
                         class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
-                        src={src}
+                        src={mediaSrc}
                         alt="MOSTAVIO HERO"
                     />
                 );
