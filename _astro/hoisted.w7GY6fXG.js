@@ -1,0 +1,1 @@
+const s=document.getElementById("hamburger"),t=document.getElementById("navLayer"),e=document.getElementById("navlinks");s.addEventListener("click",()=>{t.classList.toggle("scale-y-0"),e.classList.toggle("hidden"),e.classList.toggle("z-10")});t.addEventListener("click",()=>{t.classList.toggle("scale-y-0"),e.classList.toggle("hidden"),e.classList.toggle("z-10")});
