@@ -2,11 +2,18 @@
 import Container from "@components/Container.astro";
 import Layout from "../../layouts/Layout.astro";
 import NewsLetter from "@components/NewsLetter.astro";
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import MarkdownRender from "@components/MarkdownRender.astro";
 
-const slug = await Astro.params.slug;
-const report = await getEntry("reports", slug || "");
+export const getStaticPaths = async () => {
+    const reports = await getCollection("reports");
+    return reports.map((report) => ({
+        params: { slug: report.slug },
+        props: { report },
+    }));
+};
+
+const { report } = Astro.props;
 ---
 
 <Layout title="MOSTAVIO - News and Updates">

@@ -1,11 +1,21 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 import MarkdownRender from "@components/MarkdownRender.astro";
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 
-const slug = await Astro.params.slug;
-const post = await getEntry("posts", slug || "");
+export const getStaticPaths = async () => {
+    const posts = await getCollection("posts");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+};
+
+// const slug = await Astro.params.slug;
+// const post = await getEntry("posts", slug || "");
+const { post } = Astro.props;
 ---
 
 <Layout title="MOSTAVIO - News and Updates">

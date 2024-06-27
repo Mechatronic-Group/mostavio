@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+// import vercel from '@astrojs/vercel/serverless';
 
 
 import tailwind from "@astrojs/tailwind";
@@ -8,6 +8,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://mostavio.com',
-  output: 'server',
-  adapter: vercel(),
+  output: 'static'
 });
