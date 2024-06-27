@@ -2,6 +2,10 @@
 
 Website for MOSTAVIO. Based on Theme [Atom-Astro](https://github.com/Tailus-UI/atom-astro)
 
+### Notes:
+- A push to `release` branch will generate static-site in `deploy-static-pages` branch
+- For now, the automatic push to `deploy-static-pages` will deploy it to digitalocean app `https://king-prawn-app-qzlti.ondigitalocean.app/`
+
 
 ## 🚀 Project Structure
 
