@@ -42,7 +42,6 @@ const { media, content } = Astro.props as MediaProps;
                         muted
                         playsinline
                         src={mediaSrc}
-                        poster={mediaPoster}
                         transition:persist
                     />
                 ) : (
@@ -105,7 +104,9 @@ const { media, content } = Astro.props as MediaProps;
         import { isVideo } from "@lib/utils";
         const wrapperElement = document.getElementById("media");
         const dots = document.querySelectorAll(".swiper-pagination-bullet");
-        const media = JSON.parse(wrapperElement.getAttribute("data-media"));
+        const media = JSON.parse(
+            wrapperElement.getAttribute("data-media") || "[]",
+        );
         let intervalId;
 
         // Start the interval for the first media
@@ -116,11 +117,16 @@ const { media, content } = Astro.props as MediaProps;
             media.forEach((src, index) => {
                 const mediaElement = document.getElementById(`media-${index}`);
                 const dot = document.getElementById(`dot-${index}`);
-                mediaElement.classList.toggle("hidden", activeMedia !== index);
-                dot.classList.toggle(
-                    "swiper-pagination-bullet-active",
-                    activeMedia === index,
-                );
+                mediaElement &&
+                    mediaElement.classList.toggle(
+                        "hidden",
+                        activeMedia !== index,
+                    );
+                dot &&
+                    dot.classList.toggle(
+                        "swiper-pagination-bullet-active",
+                        activeMedia === index,
+                    );
 
                 if (isVideo(src)) {
                     const videoElement = mediaElement as HTMLVideoElement;
