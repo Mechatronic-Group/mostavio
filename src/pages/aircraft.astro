@@ -20,12 +20,16 @@ import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4"
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/hero_media/lilium.mp4";
-import slide01 from "../assets/hero_media/image_32.png";
+import slide01 from "../assets/evtol_img/HeroBgImage2.png";
 import Banner1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.png";
 import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png";
 import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
 import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
 import BannerFlight from "../assets/hero_media/lilium.png";
+
+import VideoPlaceholder from "../assets/evtol_img/Gear.png";
+import VideoPlaceholder2 from "../assets/evtol_img/parts.png";
+import VideoPlaceholder3 from "../assets/evtol_img/circut_board.png";
 
 import BatteryIcon from "../assets/icons/Battery.png";
 import SpeedIcon from "../assets/icons/Speed.png";
@@ -128,7 +132,12 @@ let focusText5 = {
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<FeatureGrid content={featureContent} />
-		<VideoBlock videoSrc={Video3} />
+		<CallToAction
+			description="Ships Early 2025"
+			link="/aircraft"
+			ctaLabel="Pre-Order"
+		/>
+		<VideoBlock videoSrc={Video3} placeholderImage={VideoPlaceholder} />
 		<FocusText
 			header={focusText1.header}
 			description={focusText1.description}
@@ -138,7 +147,10 @@ let focusText5 = {
 			header={focusText2.header}
 			description={focusText2.description}
 		/>
-		<VideoBlock videoSrc={FlightVideo} />
+		<VideoBlock
+			videoSrc={FlightVideo}
+			placeholderImage={VideoPlaceholder2}
+		/>
 		<FocusText
 			header={focusText3.header}
 			description={focusText3.description}
@@ -146,7 +158,7 @@ let focusText5 = {
 		/>
 		<BentoGrid />
 		<FeatureGrid content={featureContent2} bordered />
-		<VideoBlock videoSrc={Video2} />
+		<VideoBlock videoSrc={Video2} placeholderImage={VideoPlaceholder3} />
 		<FocusText
 			header={focusText4.header}
 			description={focusText4.description}

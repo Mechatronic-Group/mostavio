@@ -15,7 +15,8 @@ module.exports = {
             radius: "smoothest",
             background: "light",
             border: "light",
-            padding: "large"
+            padding: "large",
+
         })
     ],
 };

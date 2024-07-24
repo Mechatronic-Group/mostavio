@@ -8,9 +8,20 @@ export const internalLinks = [
     { title: "Home", url: "/#home" },
     { title: "Company", url: "/company" },
     { title: "Aircraft", url: "/aircraft" },
+    { title: "Certification", url: "/certification" },
+];
+
+export const companyLinks = [
+    { title: "About Us", url: "/company#about" },
     { title: "News", url: "/news" },
-    { title: "Contact", url: "#" },
+    { title: "Careers", url: "/company#careers" }
+];
+
+export const policyLinks = [
+    { title: "Privacy Policy", url: "#" },
     { title: "Terms of Use", url: "#" },
+    { title: "Media Inquiries", url: "#" },
+    { title: "Cookies Policy", url: "#" }
 ];
 
 import FacebookIcon from "@components/Icons/FacebookIcon.astro";

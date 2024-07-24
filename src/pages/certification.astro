@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroCarousal from "@components/HeroCarousal.astro";
+import { getCollection } from "astro:content";
+import MarkdownRender from "@components/MarkdownRender.astro";
+
+// Media
+import slide01 from "../assets/evtol_img/HeroBg4.png";
+import VideoPlaceholder from "../assets/evtol_img/parts.png";
+import Video1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.webm";
+
+import Newsletter from "@components/NewsLetter.astro";
+import FocusText from "@components/FocusText.astro";
+import Carousel from "@components/Carousel.astro";
+import FeatureGrid from "@components/FeatureGrid.astro";
+import ImageText from "@components/ImageText.astro";
+import VideoBlock from "@components/VideoBlock.astro";
+
+let media: Array<string | ImageMetadata> = [slide01];
+let bannerContent = {
+    header: "Investing in MostAvio",
+    description: "",
+};
+
+let focusText = {
+    header: null,
+    subheader: null,
+    description:
+        "Our eVTOL aircraft is undergoing a comprehensive certification process to ensure it meets all \
+        safety and regulatory requirements for commercial operation.",
+};
+let focusText2 = {
+    header: "Safety and Redundancy Features",
+    description:
+        "Our eVTOL design incorporates advanced safety features to meet stringent certification requirements",
+};
+
+let focusText3 = {
+    header: "All-Electric, Zero Emissions",
+    description:
+        "Our eVTOL operates on 100% electric power, ensuring zero local emissions and contributing to \
+        cleaner urban air mobility.",
+};
+
+let featureContent = [
+    {
+        header: "$200M",
+        headerClass: "text-4xl mb-5",
+        description: "Valuation",
+    },
+    {
+        header: "$20M",
+        headerClass: "text-4xl mb-5",
+        description: "Seriese A Funding",
+    },
+    {
+        header: "$500M",
+        headerClass: "text-4xl mb-5",
+        description: "Revenue Projections for 2025",
+    },
+];
+
+const allReports = await getCollection("reports");
+---
+
+<Layout title="Welcome to MOSTAVIO.">
+    <main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
+        <HeroCarousal media={media} content={bannerContent} />
+        <FocusText {...focusText} />
+        <Carousel />
+        <FocusText {...focusText2} />
+        <Carousel />
+        <FeatureGrid content={featureContent} bordered />
+        <FocusText {...focusText3} />
+        <div class="prose lg:prose-xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {
+                    allReports.map((entry) => (
+                        <div id={entry.slug}>
+                            <h2 class=" text-gray-800 dark:text-white">
+                                {entry.data.title}
+                            </h2>
+                            <img src={entry.data.thumbnail} />
+                            {entry.data.date && <p>{entry.data.date}</p>}
+                            <MarkdownRender entry={entry} />
+                            <a
+                                class="text-gray-800 dark:text-white hover:text-primary-500"
+                                href={entry.data.link}
+                            >
+                                Read more
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+        <VideoBlock placeholderImage={VideoPlaceholder} />
+        <Newsletter />
+    </main>
+</Layout>
