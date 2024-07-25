@@ -1,0 +1,65 @@
+---
+const steps = [
+    {
+        title: "By 2024",
+        description:
+            "Achieve SFOC Certification from Transport Canada \
+            for prototype testing and flight characteristic experiments.",
+        completed: true,
+    },
+    {
+        title: "By 2025",
+        description:
+            "Begin airworthiness design and development for the fully \
+            functional commercial model.",
+        completed: false,
+    },
+];
+---
+
+<div class="flex flex-col items-center">
+    {
+        steps.map((step, index) => (
+            <div class="flex items-start mb-8">
+                <div class="flex flex-col items-center mr-8 mt-2">
+                    <div class="w-8 h-8 flex items-center justify-center bg-gray-600 dark:bg-gray-300 text-white rounded-full">
+                        {step.completed ? (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                x="0px"
+                                y="0px"
+                                width="100"
+                                height="100"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M 12 1 C 5.9375 1 1 5.9375 1 12 C 1 18.0625 5.9375 23 12 23 C 18.0625 23 23 18.0625 23 12 C 23 5.9375 18.0625 1 12 1 Z M 12 3 C 16.980469 3 21 7.019531 21 12 C 21 16.980469 16.980469 21 12 21 C 7.019531 21 3 16.980469 3 12 C 3 7.019531 7.019531 3 12 3 Z M 17.40625 8.1875 L 11 14.5625 L 7.71875 11.28125 L 6.28125 12.71875 L 10.28125 16.71875 L 11 17.40625 L 11.71875 16.71875 L 18.8125 9.59375 Z" />
+                            </svg>
+                        ) : (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                x="0px"
+                                y="0px"
+                                width="100"
+                                height="100"
+                                viewBox="0 0 50 50"
+                            >
+                                <path d="M 25 2 C 12.309288 2 2 12.309297 2 25 C 2 37.690703 12.309288 48 25 48 C 37.690712 48 48 37.690703 48 25 C 48 12.309297 37.690712 2 25 2 z M 25 4 C 36.609833 4 46 13.390175 46 25 C 46 36.609825 36.609833 46 25 46 C 13.390167 46 4 36.609825 4 25 C 4 13.390175 13.390167 4 25 4 z" />
+                            </svg>
+                        )}
+                    </div>
+                    {index < steps.length - 1 && (
+                        <div class="w-px h-20 bg-gray-300" />
+                    )}
+                </div>
+                <div class="w-96">
+                    <h3 class="text-2xl font-semibold dark:text-white">
+                        {step.title}
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mt-4">
+                        {step.description}
+                    </p>
+                </div>
+            </div>
+        ))
+    }
+</div>
