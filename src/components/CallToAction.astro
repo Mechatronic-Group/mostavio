@@ -43,12 +43,12 @@ const {
           )
         }
         {
-          link && (
+          ctaLabel && (
             <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
               <Frame>
                 <a
-                  href="https://beta.tailus.io/demo"
-                  class={cn(button.primary.lg, "relative z-[1]")}
+                  href={link || "#"}
+                  class={cn(button.primary.lg, "pb-[1px]", "relative z-[1]")}
                 >
                   {ctaLabel}
                 </a>

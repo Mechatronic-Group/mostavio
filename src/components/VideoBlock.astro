@@ -1,20 +1,31 @@
 ---
+import { Image } from "astro:assets";
 interface VideoBlockProps {
     videoSrc?: string;
+    placeholderImage?: ImageMetadata;
 }
-const { videoSrc } = Astro.props as VideoBlockProps;
+const { videoSrc, placeholderImage } = Astro.props as VideoBlockProps;
 ---
 
 <section class="relative overflow-hidden scroll-mt-24 bg-gradient-default">
-    <video
-        id="carouselVideo"
-        class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
-        autoplay
-        muted
-        loop
-        playsinline
-        src={videoSrc}
-        transition:persist
-    >
-    </video>
+    {
+        placeholderImage ? (
+            <Image
+                class="w-full h-screen object-cover"
+                src={placeholderImage}
+                alt="MOSTAVIO HERO"
+            />
+        ) : (
+            <video
+                id="carouselVideo"
+                class="w-full h-screen object-cover transition-opacity duration-500 opacity-100"
+                autoplay
+                muted
+                loop
+                playsinline
+                src={videoSrc}
+                transition:persist
+            />
+        )
+    }
 </section>

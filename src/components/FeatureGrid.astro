@@ -20,18 +20,20 @@ const { content, bordered = false } = Astro.props as FeatureGridProps;
 ---
 
 <section class="relative overflow-hidden scroll-mt-24" id="feature">
-    <Container>
-        <div class="relative ml-auto">
-            <div class=`text-center mt-6 m-auto`>
-                <div
-                    class={`py-8 mt-16 gap-1 lg:gap-4 flex-wrap flex justify-between ${bordered && "border-y border-gray-800 dark:border-white"}`}
-                >
+    <div
+        class=`relative ml-auto ${bordered && "border-y border-gray-800 dark:border-white"}`
+    >
+        <Container>
+            <div class=`text-center my-12 m-auto`>
+                <div class="gap-1 lg:gap-4 flex-wrap flex justify-between">
                     {
                         content.map((each, _) => (
-                            <div class={`max-w-80 ${bordered && "my-14"}`}>
+                            <div
+                                class={`max-w-80 m-auto ${bordered && "my-14"}`}
+                            >
                                 {each?.icon && (
                                     <Image
-                                        class="w-12 h-12 m-auto mb-5"
+                                        class="w-12 h-12 m-auto mb-12"
                                         src={each.icon}
                                         alt="Feature Icon"
                                     />
@@ -61,6 +63,6 @@ const { content, bordered = false } = Astro.props as FeatureGridProps;
                     }
                 </div>
             </div>
-        </div>
-    </Container>
+        </Container>
+    </div>
 </section>

@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 
 // Media
-import slide01 from "../assets/hero_media/image_32.png";
+import slide01 from "../assets/evtol_img/HeroBg4.png";
 import Newsletter from "@components/NewsLetter.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
@@ -79,6 +79,7 @@ let jobList = [
 		<Carousel />
 		<FeatureGrid content={featureContent} bordered />
 		<FocusText {...focusText2} />
+		<Carousel />
 		<JobListing content={jobList} />
 		<Newsletter />
 	</main>

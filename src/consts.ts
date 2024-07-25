@@ -8,16 +8,27 @@ export const internalLinks = [
     { title: "Home", url: "/#home" },
     { title: "Company", url: "/company" },
     { title: "Aircraft", url: "/aircraft" },
-    { title: "News", url: "/news" },
-    { title: "Contact", url: "#" },
-    { title: "Terms of Use", url: "#" },
+    { title: "Certification", url: "/certification" },
 ];
 
-import FacebookIcon from "@components/Icons/FacebookIcon.astro";
-import InstagramIcon from "@components/Icons/InstagramIcon.astro";
-import LinkedInIcon from "@components/Icons/LinkedinIcon.astro";
-import TwitterIcon from "@components/Icons/TwitterIcon.astro";
-import YouTubeIcon from "@components/Icons/YoutubeIcon.astro";
+export const companyLinks = [
+    { title: "About Us", url: "/company#about" },
+    { title: "News", url: "/news" },
+    { title: "Careers", url: "/company#careers" }
+];
+
+export const policyLinks = [
+    { title: "Privacy Policy", url: "#" },
+    { title: "Terms of Use", url: "#" },
+    { title: "Media Inquiries", url: "#" },
+    { title: "Cookies Policy", url: "#" }
+];
+
+import FacebookIcon from "./assets/social_icons/FacebookIcon.svg?raw";
+import InstagramIcon from "./assets/social_icons/InstagramIcon.svg?raw";
+import LinkedInIcon from "./assets/social_icons/LinkedinIcon.svg?raw";
+import TwitterIcon from "./assets/social_icons/TwitterIcon.svg?raw";
+import YouTubeIcon from "./assets/social_icons/YoutubeIcon.svg?raw";
 
 
 export const externalLinks = [

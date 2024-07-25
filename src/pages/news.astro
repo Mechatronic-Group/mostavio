@@ -5,10 +5,11 @@ import Posts from "@components/Posts.astro";
 import { getCollection } from "astro:content";
 
 // Media
-import slide01 from "../assets/hero_media/image_32.png";
 import Newsletter from "@components/NewsLetter.astro";
 
-let media: Array<string | ImageMetadata> = [slide01];
+import HeroBg from "../assets/evtol_img/HeroBg3.png";
+
+let media: Array<string | ImageMetadata> = [HeroBg];
 let bannerContent = {
 	header: "Latest News and Updates",
 	description: "",

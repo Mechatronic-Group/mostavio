@@ -19,6 +19,10 @@ import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png
 import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
 import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
 import BannerFlight from "../assets/hero_media/lilium.png";
+import HeroPlaceholder from "../assets/evtol_img/HeroBgImage.png";
+import VideoPlaceholder1 from "../assets/evtol_img/image2.png";
+import VideoPlaceholder2 from "../assets/evtol_img/interiorCover.png";
+import VideoPlaceholder3 from "../assets/evtol_img/image4.png";
 
 import SpeedIcon from "../assets/icons/Speed.png";
 import NaturalIcon from "../assets/icons/Natural.png";
@@ -28,7 +32,7 @@ import FeatureGrid from "@components/FeatureGrid.astro";
 let foucsText1 = {
 	header: null,
 	description:
-		"At MOSTAVIO, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, \
+		"At MostAvio, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, \
 		and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. \
 		Join us as we redefine the skies.",
 };
@@ -40,8 +44,25 @@ let focusText2 = {
 		exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, it’s built for both speed and safety.",
 	link: "/aircraft",
 };
-
 let focusText3 = {
+	header: "Mastering the Art of Flight",
+	description:
+		"Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. This single-seat eVTOL features \
+		a carbon fiber exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, \
+		it’s built for both speed and safety.",
+	link: "/aircraft",
+};
+
+let focusText4 = {
+	header: "Slashing emissions while soaring above traffic",
+	description:
+		"Imagine turning a 45-minute drive into a swift 10-minute flight. MostAvio's advanced eVTOL technology offers \
+		unparalleled efficiency, allowing you to bypass traffic and reach your destination faster than ever. Experience \
+		the freedom of urban air mobility and reclaim your valuable time.",
+	link: "/aircraft",
+};
+
+let focusText5 = {
 	header: "Cut Your Commute Time Dramatically",
 	description:
 		"Imagine turning a 45-minute drive into a swift 10-minute flight. MostAvio's advanced eVTOL technology offers \
@@ -53,15 +74,15 @@ let focusText3 = {
 let featureContent = [
 	{
 		icon: ChipIcon,
-		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+		header: "Our eVTOL aircraft feature smart chips for seamless and safe flights.",
 	},
 	{
 		icon: NaturalIcon,
-		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+		header: "Built with sustainable materials and zero-emission technology, our eVTOL is kind to the planet.",
 	},
 	{
 		icon: SpeedIcon,
-		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+		header: "Experience rapid, efficient travel with our high-speed eVTOL aircraft.",
 	},
 ];
 
@@ -87,12 +108,13 @@ let media: Array<string | VideoSource | ImageMetadata> = [
 
 <Layout title="Welcome to MOSTAVIO.">
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
-		<HeroCarousal media={media} />
+		<HeroCarousal media={media} placeholderImage={HeroPlaceholder} />
 		<FocusText
 			header={foucsText1.header}
 			description={foucsText1.description}
 		/>
-		<VideoBlock videoSrc={Video2} />
+		<LogoCloud />
+		<VideoBlock videoSrc={Video2} placeholderImage={VideoPlaceholder1} />
 		<FocusText
 			header={focusText2.header}
 			description={focusText2.description}
@@ -100,19 +122,27 @@ let media: Array<string | VideoSource | ImageMetadata> = [
 		/>
 		<Carousel />
 		<FocusText
-			header={focusText2.header}
+			header={focusText3.header}
 			description={focusText2.description}
 			link={focusText2.link}
 		/>
-		<LogoCloud />
-		<VideoBlock videoSrc={FlightVideo} />
+		<VideoBlock
+			videoSrc={FlightVideo}
+			placeholderImage={VideoPlaceholder2}
+		/>
 		<FocusText
-			header={focusText3.header}
+			header={focusText4.header}
 			description={focusText3.description}
 			link={focusText3.link}
 		/>
-		<FeatureGrid content={featureContent} bordered />
-		<VideoBlock videoSrc={Video3} />
+		<FeatureGrid content={featureContent} />
+		<VideoBlock videoSrc={FlightVideo} />
+		<FocusText
+			header={focusText5.header}
+			description={focusText5.description}
+			link={focusText3.link}
+		/>
+		<VideoBlock videoSrc={Video3} placeholderImage={VideoPlaceholder3} />
 		<NewsLetter />
 	</main>
 </Layout>

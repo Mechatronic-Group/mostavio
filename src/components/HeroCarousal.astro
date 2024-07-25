@@ -14,49 +14,60 @@ export interface MediaProps {
         header?: string;
         description?: string;
     };
+    placeholderImage?: ImageMetadata;
 }
 let activeMedia: number = 0;
-const { media, content } = Astro.props as MediaProps;
+const { media, content, placeholderImage } = Astro.props as MediaProps;
 ---
 
 <section
     class="relative overflow-hidden scroll-mt-24 bg-gradient-default"
     id="home"
 >
-    <div id="media" data-media={JSON.stringify(media)}>
-        {
-            media.map((each, index) => {
-                let mediaSrc: any =
-                    typeof each === "object" && "source" in each
-                        ? each.source
-                        : each;
-                let mediaPoster =
-                    typeof each === "object" && "poster" in each
-                        ? each.poster
-                        : undefined;
-                return isVideo(mediaSrc) ? (
-                    <video
-                        id={`media-${index}`}
-                        class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
-                        autoplay={index === activeMedia}
-                        muted
-                        playsinline
-                        src={mediaSrc}
-                        transition:persist
-                    />
-                ) : (
-                    <Image
-                        id={`media-${index}`}
-                        class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
-                        src={mediaSrc}
-                        alt="MOSTAVIO HERO"
-                    />
-                );
-            })
-        }
-    </div>
+    {
+        placeholderImage ? (
+            <Image
+                class="w-full h-screen object-cover opacity-50"
+                src={placeholderImage}
+                alt="MOSTAVIO HERO"
+            />
+        ) : (
+            <div id="media" data-media={JSON.stringify(media)}>
+                {media.map((each, index) => {
+                    let mediaSrc: any =
+                        typeof each === "object" && "source" in each
+                            ? each.source
+                            : each;
+                    let mediaPoster =
+                        typeof each === "object" && "poster" in each
+                            ? each.poster
+                            : undefined;
+                    return isVideo(mediaSrc) ? (
+                        <video
+                            id={`media-${index}`}
+                            class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
+                            autoplay={index === activeMedia}
+                            muted
+                            loop
+                            playsinline
+                            src={mediaSrc}
+                            transition:persist
+                        />
+                    ) : (
+                        <Image
+                            id={`media-${index}`}
+                            class={`w-full h-screen object-cover ${index === activeMedia ? "" : "hidden"}`}
+                            src={mediaSrc}
+                            alt="MOSTAVIO HERO"
+                        />
+                    );
+                })}
+            </div>
+        )
+    }
     <div class="absolute inset-0 top-1/4 text-center mx-auto">
         <h2
+            style="text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);"
             class="m-4 md:m-8 text-gray-900 dark:text-white font-bold text-4xl sm:text-5xl md:text-6xl"
         >
             {content?.header || "Experience the Future of Flight"}
@@ -93,8 +104,11 @@ const { media, content } = Astro.props as MediaProps;
     >
         {
             externalLinks.map((item, index) => (
-                <button class="relative align-middle select-none" type="button">
-                    <item.icon />
+                <button
+                    class="relative align-middle select-none hover:text-stone-400"
+                    type="button"
+                >
+                    <Fragment set:html={item?.icon} />
                 </button>
             ))
         }
@@ -105,7 +119,7 @@ const { media, content } = Astro.props as MediaProps;
         const wrapperElement = document.getElementById("media");
         const dots = document.querySelectorAll(".swiper-pagination-bullet");
         const media = JSON.parse(
-            wrapperElement.getAttribute("data-media") || "[]",
+            wrapperElement?.getAttribute("data-media") || "[]",
         );
         let intervalId;
 
@@ -149,7 +163,6 @@ const { media, content } = Astro.props as MediaProps;
 
         function nextMedia() {
             activeMedia = (activeMedia + 1) % media.length;
-            // Clear the interval after it has been called once
             if (intervalId) {
                 clearInterval(intervalId);
                 intervalId = null;
@@ -196,7 +209,11 @@ const { media, content } = Astro.props as MediaProps;
         color: rgb(215, 119, 22);
     }
     .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
-        background: #fff;
-        opacity: 0.5;
+        background: #ffffff;
+    }
+
+    :root {
+        --swiper-theme-color: rgb(215, 119, 22) !important;
+        --swiper-pagination-bullet-inactive-opacity: 0.85;
     }
 </style>
