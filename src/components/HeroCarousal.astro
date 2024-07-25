@@ -108,7 +108,7 @@ const { media, content, placeholderImage } = Astro.props as MediaProps;
                     class="relative align-middle select-none hover:text-stone-400"
                     type="button"
                 >
-                    <item.icon />
+                    <Fragment set:html={item?.icon} />
                 </button>
             ))
         }
@@ -119,7 +119,7 @@ const { media, content, placeholderImage } = Astro.props as MediaProps;
         const wrapperElement = document.getElementById("media");
         const dots = document.querySelectorAll(".swiper-pagination-bullet");
         const media = JSON.parse(
-            wrapperElement.getAttribute("data-media") || "[]",
+            wrapperElement?.getAttribute("data-media") || "[]",
         );
         let intervalId;
 

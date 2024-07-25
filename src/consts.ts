@@ -24,11 +24,11 @@ export const policyLinks = [
     { title: "Cookies Policy", url: "#" }
 ];
 
-import FacebookIcon from "@components/Icons/FacebookIcon.astro";
-import InstagramIcon from "@components/Icons/InstagramIcon.astro";
-import LinkedInIcon from "@components/Icons/LinkedinIcon.astro";
-import TwitterIcon from "@components/Icons/TwitterIcon.astro";
-import YouTubeIcon from "@components/Icons/YoutubeIcon.astro";
+import FacebookIcon from "./assets/social_icons/FacebookIcon.svg?raw";
+import InstagramIcon from "./assets/social_icons/InstagramIcon.svg?raw";
+import LinkedInIcon from "./assets/social_icons/LinkedinIcon.svg?raw";
+import TwitterIcon from "./assets/social_icons/TwitterIcon.svg?raw";
+import YouTubeIcon from "./assets/social_icons/YoutubeIcon.svg?raw";
 
 
 export const externalLinks = [

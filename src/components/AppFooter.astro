@@ -99,7 +99,7 @@ type Link = {
             class="relative align-middle select-none hover:text-stone-400"
             type="button"
           >
-            <item.icon />
+            <Fragment set:html={item?.icon} />
           </button>
         ))
       }
