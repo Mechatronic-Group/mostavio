@@ -1,11 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import slide01 from "../assets/slides/image3.png";
-import slide02 from "../assets/slides/propeller.png";
-import slide03 from "../assets/slides/interiorSm.png";
 
-import mostavioSide1 from "../assets/slides/mostavio-side-1.jpeg";
-import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
+import slidea from "../assets/aircraft_slides/slidea.png";
+import slideb from "../assets/aircraft_slides/slideb.png";
+import slide3 from "../assets/slides/propeller.png";
 ---
 
 <section>
@@ -13,24 +11,24 @@ import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <Image
-                    class="h-96 w-auto object-cover"
-                    src={mostavioSide2}
+                    class="h-[30rem] w-auto object-cover"
+                    src={slidea}
                     alt="Carousal Image"
                     loading="lazy"
                 />
             </div>
             <div class="swiper-slide">
                 <Image
-                    class="h-96 w-auto object-cover"
-                    src={slide01}
+                    class="h-[30rem] w-auto object-cover"
+                    src={slideb}
                     alt="Carousal Image"
                     loading="lazy"
                 />
             </div>
             <div class="swiper-slide h-96 w-auto">
                 <Image
-                    class="h-96 w-auto object-cover"
-                    src={mostavioSide1}
+                    class="h-[30rem] w-auto object-cover"
+                    src={slide3}
                     alt=""
                     loading="lazy"
                 />
@@ -57,7 +55,7 @@ import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
     export const swiperConfig = {
         modules: [Navigation, Pagination],
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 2,
         mousewheel: {
             forceToAxis: true,
         },

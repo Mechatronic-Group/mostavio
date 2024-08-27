@@ -1,11 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import slide01 from "../assets/slides/image3.png";
-import slide02 from "../assets/slides/propeller.png";
-import slide03 from "../assets/slides/interiorSm.png";
 
-import mostavioSide1 from "../assets/slides/mostavio-side-1.jpeg";
-import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
+import slide1 from "../assets/aircraft_slides/slide1.png";
+import slide2 from "../assets/aircraft_slides/slide2.png";
+import slide3 from "../assets/aircraft_slides/slide3.png";
 ---
 
 <section>
@@ -14,7 +12,7 @@ import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
             <div class="swiper-slide">
                 <Image
                     class="h-96 w-auto object-cover"
-                    src={mostavioSide2}
+                    src={slide1}
                     alt="Carousal Image"
                     loading="lazy"
                 />
@@ -22,7 +20,7 @@ import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
             <div class="swiper-slide">
                 <Image
                     class="h-96 w-auto object-cover"
-                    src={slide01}
+                    src={slide2}
                     alt="Carousal Image"
                     loading="lazy"
                 />
@@ -30,7 +28,7 @@ import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
             <div class="swiper-slide h-96 w-auto">
                 <Image
                     class="h-96 w-auto object-cover"
-                    src={mostavioSide1}
+                    src={slide3}
                     alt=""
                     loading="lazy"
                 />

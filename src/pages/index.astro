@@ -14,12 +14,15 @@ import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4"
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/hero_media/lilium.mp4";
-import Banner1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.png";
-import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png";
-import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
-import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
-import BannerFlight from "../assets/hero_media/lilium.png";
+// import Banner1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.png";
+// import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png";
+// import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
+// import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
+// import BannerFlight from "../assets/hero_media/lilium.png";
 import HeroPlaceholder from "../assets/evtol_img/HeroBgImage.png";
+import evTolReadyToFly from "../assets/evtol_img/mostavio-ready-to-fly.jpeg";
+import mostavioSmokeLanding from "../assets/evtol_img/mostavio-smoke-landing.png";
+import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
 import VideoPlaceholder1 from "../assets/evtol_img/image2.png";
 import VideoPlaceholder2 from "../assets/evtol_img/interiorCover.png";
 import VideoPlaceholder3 from "../assets/evtol_img/image4.png";
@@ -108,13 +111,13 @@ let media: Array<string | VideoSource | ImageMetadata> = [
 
 <Layout title="Welcome to MOSTAVIO.">
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
-		<HeroCarousal media={media} placeholderImage={HeroPlaceholder} />
+		<HeroCarousal media={media} placeholderImage={evTolReadyToFly} />
 		<FocusText
 			header={foucsText1.header}
 			description={foucsText1.description}
 		/>
 		<LogoCloud />
-		<VideoBlock videoSrc={Video2} placeholderImage={VideoPlaceholder1} />
+		<VideoBlock videoSrc={Video2} placeholderImage={mostavioSmokeLanding} />
 		<FocusText
 			header={focusText2.header}
 			description={focusText2.description}
@@ -142,7 +145,7 @@ let media: Array<string | VideoSource | ImageMetadata> = [
 			description={focusText5.description}
 			link={focusText3.link}
 		/>
-		<VideoBlock videoSrc={Video3} placeholderImage={VideoPlaceholder3} />
+		<VideoBlock videoSrc={Video3} placeholderImage={mostavioViewRight} />
 		<NewsLetter />
 	</main>
 </Layout>
