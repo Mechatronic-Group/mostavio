@@ -1,39 +1,44 @@
 ---
 import { Image } from "astro:assets";
-import slide01 from "../assets/slides/image3.png";
-import slide02 from "../assets/slides/propeller.png";
-import slide03 from "../assets/slides/interiorSm.png";
+import ImageBorderDots from "./ImageBorderDots.astro";
 
 import mostavioSide1 from "../assets/slides/mostavio-side-1.jpeg";
 import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
+import evTolReadyToFly from "../assets/evtol_img/mostavio-ready-to-fly.jpeg";
+
+const swiperSlideClasses =
+    "swiper-slide relative rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5";
 ---
 
 <section>
     <div class="swiper container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 w-auto object-cover"
+                    class="h-96 w-auto object-cover rounded-md"
                     src={mostavioSide2}
                     alt="Carousal Image"
                     loading="lazy"
                 />
+                <ImageBorderDots />
             </div>
-            <div class="swiper-slide">
+            <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 w-auto object-cover"
-                    src={slide01}
+                    class="h-96 w-auto object-cover rounded-md"
+                    src={evTolReadyToFly}
                     alt="Carousal Image"
                     loading="lazy"
                 />
+                <ImageBorderDots />
             </div>
-            <div class="swiper-slide h-96 w-auto">
+            <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 w-auto object-cover"
+                    class="h-96 w-auto object-cover rounded-md"
                     src={mostavioSide1}
                     alt=""
                     loading="lazy"
                 />
+                <ImageBorderDots />
             </div>
         </div>
         <div class="swiper-pagination"></div>

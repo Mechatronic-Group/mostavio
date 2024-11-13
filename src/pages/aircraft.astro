@@ -1,11 +1,7 @@
 ---
-import Stats from "../components/Stats.astro";
 import Layout from "../layouts/Layout.astro";
-import Testimonials from "../components/Testimonials.astro";
 import CallToAction from "../components/CallToAction.astro";
 import BentoGrid from "@components/BentoGrid.astro";
-import SpeedSection from "@components/SpeedSection.astro";
-import AboutSection from "@components/AboutSection.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 import type { VideoSource } from "@components/HeroCarousal.astro";
 import FeatureGrid from "@components/FeatureGrid.astro";
@@ -16,17 +12,10 @@ import FocusText from "@components/FocusText.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 
 // Media
-import Video1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.webm";
-import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4";
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/hero_media/lilium.mp4";
+import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
 import slide01 from "../assets/evtol_img/HeroBgImage2.png";
-import Banner1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.png";
-import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png";
-import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
-import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
-import BannerFlight from "../assets/hero_media/lilium.png";
 
 import VideoPlaceholder from "../assets/evtol_img/Gear.png";
 import VideoPlaceholder2 from "../assets/evtol_img/parts.png";
@@ -39,13 +28,7 @@ import ChargingStationIcon from "../assets/icons/ChargingStation.png";
 import NaturalIcon from "../assets/icons/Natural.png";
 import ChipIcon from "../assets/icons/Chip.png";
 
-let media: Array<string | VideoSource | ImageMetadata> = [
-	slide01,
-	Video1,
-	Video2,
-	Video3,
-	Video4,
-];
+let media: Array<string | VideoSource | ImageMetadata> = [slide01];
 
 let bannerContent = {
 	header: "Introducing the Prototype",
@@ -123,13 +106,13 @@ let focusText4 = {
 let focusText5 = {
 	header: "Shipping Begins 2025",
 	description:
-		"Join the future of urban air mobility by preordering your MostAvio eVTOL. Secure your place in line and be among the first to \
+		"Join the future of urban air mobility by preordering your MOSTAVIO eVTOL. Secure your place in line and be among the first to \
 		experience the ultimate in personal transportation. Our eVTOL aircraft is priced at $250,000. Early adopters can enjoy special \
 		financing options and priority delivery.",
 };
 ---
 
-<Layout title="Welcome to MostAvio.">
+<Layout title="Welcome to MOSTAVIO.">
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<FeatureGrid content={featureContent} />
@@ -138,7 +121,7 @@ let focusText5 = {
 			link="/aircraft"
 			ctaLabel="Pre-Order"
 		/>
-		<VideoBlock videoSrc={Video3} placeholderImage={VideoPlaceholder} />
+		<VideoBlock placeholderImage={VideoPlaceholder} />
 		<FocusText
 			header={focusText1.header}
 			description={focusText1.description}
@@ -148,10 +131,7 @@ let focusText5 = {
 			header={focusText2.header}
 			description={focusText2.description}
 		/>
-		<VideoBlock
-			videoSrc={FlightVideo}
-			placeholderImage={VideoPlaceholder2}
-		/>
+		<VideoBlock placeholderImage={VideoPlaceholder2} />
 		<FocusText
 			header={focusText3.header}
 			description={focusText3.description}
@@ -159,7 +139,7 @@ let focusText5 = {
 		/>
 		<BentoGrid />
 		<FeatureGrid content={featureContent2} bordered />
-		<VideoBlock videoSrc={Video2} placeholderImage={VideoPlaceholder3} />
+		<VideoBlock placeholderImage={VideoPlaceholder3} />
 		<FocusText
 			header={focusText4.header}
 			description={focusText4.description}

@@ -9,23 +9,14 @@ import LogoCloud from "@components/LogoCloud.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 
 // Media
-import Video1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.webm";
-import Video2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.mp4";
+import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
+import mostavioSmokeLandingVid from "../assets/hero_media/evtol-smoke.mp4";
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-import Video4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.mp4";
 import FlightVideo from "../assets/hero_media/lilium.mp4";
-// import Banner1 from "../assets/hero_media/Cybertruck-Built-For-Any-Planet-Desktop.png";
-// import Banner2 from "../assets/hero_media/Cybertruck-Beyond-Prepared-Desktop.png";
-// import Banner3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.png";
-// import Banner4 from "../assets/hero_media/Cybertruck-Keep-the-Adventure-Going-Desktop.png";
-// import BannerFlight from "../assets/hero_media/lilium.png";
-import HeroPlaceholder from "../assets/evtol_img/HeroBgImage.png";
-import evTolReadyToFly from "../assets/evtol_img/mostavio-ready-to-fly.jpeg";
-import mostavioSmokeLanding from "../assets/evtol_img/mostavio-smoke-landing.png";
+import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
+
 import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
-import VideoPlaceholder1 from "../assets/evtol_img/image2.png";
 import VideoPlaceholder2 from "../assets/evtol_img/interiorCover.png";
-import VideoPlaceholder3 from "../assets/evtol_img/image4.png";
 
 import SpeedIcon from "../assets/icons/Speed.png";
 import NaturalIcon from "../assets/icons/Natural.png";
@@ -35,7 +26,7 @@ import FeatureGrid from "@components/FeatureGrid.astro";
 let foucsText1 = {
 	header: null,
 	description:
-		"At MostAvio, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, \
+		"At MOSTAVIO, we are at the forefront of urban transportation innovation. Our mission is to provide a seamless, eco-friendly, \
 		and efficient air travel experience through groundbreaking electric Vertical Take-Off and Landing (eVTOL) technology. \
 		Join us as we redefine the skies.",
 };
@@ -59,7 +50,7 @@ let focusText3 = {
 let focusText4 = {
 	header: "Slashing emissions while soaring above traffic",
 	description:
-		"Imagine turning a 45-minute drive into a swift 10-minute flight. MostAvio's advanced eVTOL technology offers \
+		"Imagine turning a 45-minute drive into a swift 10-minute flight. MOSTAVIO's advanced eVTOL technology offers \
 		unparalleled efficiency, allowing you to bypass traffic and reach your destination faster than ever. Experience \
 		the freedom of urban air mobility and reclaim your valuable time.",
 	link: "/aircraft",
@@ -68,7 +59,7 @@ let focusText4 = {
 let focusText5 = {
 	header: "Cut Your Commute Time Dramatically",
 	description:
-		"Imagine turning a 45-minute drive into a swift 10-minute flight. MostAvio's advanced eVTOL technology offers \
+		"Imagine turning a 45-minute drive into a swift 10-minute flight. MOSTAVIO's advanced eVTOL technology offers \
 		unparalleled efficiency, allowing you to bypass traffic and reach your destination faster than ever. Experience \
 		the freedom of urban air mobility and reclaim your valuable time.",
 	link: "/aircraft",
@@ -95,29 +86,18 @@ let featureContent = [
 // 	{ source: Video3, poster: Banner4 },
 // 	{ source: Video4, poster: Banner1 },
 // ];
-let media: Array<string | VideoSource | ImageMetadata> = [
-	Video1,
-	Video2,
-	Video3,
-	Video4,
-];
-// 	[
-// 	{ source: Video1, poster: Banner2 }, // `src` collides with ImageMetadata
-// 	{ source: Video2, poster: Banner3 },
-// 	{ source: Video3, poster: Banner4 },
-// 	{ source: Video4, poster: Banner1 },
-// ];
+let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
 <Layout title="Welcome to MOSTAVIO.">
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
-		<HeroCarousal media={media} placeholderImage={evTolReadyToFly} />
+		<HeroCarousal media={media} />
 		<FocusText
 			header={foucsText1.header}
 			description={foucsText1.description}
 		/>
 		<LogoCloud />
-		<VideoBlock videoSrc={Video2} placeholderImage={mostavioSmokeLanding} />
+		<VideoBlock videoSrc={mostavioSmokeLandingVid} />
 		<FocusText
 			header={focusText2.header}
 			description={focusText2.description}
@@ -129,17 +109,14 @@ let media: Array<string | VideoSource | ImageMetadata> = [
 			description={focusText2.description}
 			link={focusText2.link}
 		/>
-		<VideoBlock
-			videoSrc={FlightVideo}
-			placeholderImage={VideoPlaceholder2}
-		/>
+		<VideoBlock placeholderImage={VideoPlaceholder2} />
 		<FocusText
 			header={focusText4.header}
 			description={focusText3.description}
 			link={focusText3.link}
 		/>
 		<FeatureGrid content={featureContent} />
-		<VideoBlock videoSrc={FlightVideo} />
+		<!-- <VideoBlock videoSrc={FlightVideo} /> -->
 		<FocusText
 			header={focusText5.header}
 			description={focusText5.description}

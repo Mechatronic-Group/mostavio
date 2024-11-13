@@ -1,37 +1,44 @@
 ---
 import { Image } from "astro:assets";
+import ImageBorderDots from "./ImageBorderDots.astro";
 
 import slidea from "../assets/aircraft_slides/slidea.png";
 import slideb from "../assets/aircraft_slides/slideb.png";
 import slide3 from "../assets/slides/propeller.png";
+
+const swiperSlideClasses =
+    "swiper-slide relative w-auto rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5";
 ---
 
 <section>
     <div class="swiper container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class={swiperSlideClasses}>
                 <Image
-                    class="h-[30rem] w-auto object-cover"
+                    class="h-[30rem] object-cover object-center rounded-md"
                     src={slidea}
                     alt="Carousal Image"
                     loading="lazy"
                 />
+                <ImageBorderDots />
             </div>
-            <div class="swiper-slide">
+            <div class={swiperSlideClasses}>
                 <Image
-                    class="h-[30rem] w-auto object-cover"
+                    class="h-[30rem] object-cover object-center rounded-md"
                     src={slideb}
                     alt="Carousal Image"
                     loading="lazy"
                 />
+                <ImageBorderDots />
             </div>
-            <div class="swiper-slide h-96 w-auto">
+            <div class={swiperSlideClasses}>
                 <Image
-                    class="h-[30rem] w-auto object-cover"
+                    class="h-[30rem] object-cover object-center rounded-md"
                     src={slide3}
                     alt=""
                     loading="lazy"
                 />
+                <ImageBorderDots />
             </div>
         </div>
         <div class="swiper-pagination"></div>
