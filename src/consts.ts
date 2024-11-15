@@ -6,8 +6,8 @@ export const SITE_IMAGE = '/og.png';
 
 export const internalLinks = [
     { title: "Home", url: "/#home" },
-    { title: "Company", url: "/company" },
     { title: "Aircraft", url: "/aircraft" },
+    { title: "Company", url: "/company" },
     { title: "Certification", url: "/certification" },
 ];
 

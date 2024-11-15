@@ -2,9 +2,9 @@
 import { Image } from "astro:assets";
 import ImageBorderDots from "./ImageBorderDots.astro";
 
-import mostavioSide1 from "../assets/slides/mostavio-side-1.jpeg";
-import mostavioSide2 from "../assets/slides/mostavio-side-2.jpeg";
-import evTolReadyToFly from "../assets/evtol_img/mostavio-ready-to-fly.jpeg";
+import carouselMiddle from "../assets/slides/carousel-middle.jpg";
+import carouselRight from "../assets/slides/mostavio-side-1.jpeg";
+import carouselLeft from "../assets/slides/carousel-left.jpg";
 
 const swiperSlideClasses =
     "swiper-slide relative rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5";
@@ -15,8 +15,8 @@ const swiperSlideClasses =
         <div class="swiper-wrapper">
             <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 w-auto object-cover rounded-md"
-                    src={mostavioSide2}
+                    class="h-96 w-auto object-center rounded-md"
+                    src={carouselLeft}
                     alt="Carousal Image"
                     loading="lazy"
                 />
@@ -24,8 +24,8 @@ const swiperSlideClasses =
             </div>
             <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 w-auto object-cover rounded-md"
-                    src={evTolReadyToFly}
+                    class="h-96 w-auto object-center rounded-md"
+                    src={carouselMiddle}
                     alt="Carousal Image"
                     loading="lazy"
                 />
@@ -33,8 +33,8 @@ const swiperSlideClasses =
             </div>
             <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 w-auto object-cover rounded-md"
-                    src={mostavioSide1}
+                    class="h-96 w-auto object-center rounded-md"
+                    src={carouselRight}
                     alt=""
                     loading="lazy"
                 />
