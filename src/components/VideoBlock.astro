@@ -28,4 +28,14 @@ const { videoSrc, placeholderImage } = Astro.props as VideoBlockProps;
             />
         )
     }
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const video = document.getElementById(
+                "carouselVideo",
+            ) as HTMLVideoElement;
+            if (video) {
+                video.playbackRate = 0.7;
+            }
+        });
+    </script>
 </section>
