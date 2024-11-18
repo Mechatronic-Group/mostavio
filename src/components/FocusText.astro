@@ -7,7 +7,7 @@ import { button } from "@tailus/themer-button";
 interface FocusTextProps {
     header?: string;
     subheader?: string;
-    description?: string;
+    description?: string | [string];
     link?: string;
     ctaLabel?: string;
 }
@@ -41,9 +41,9 @@ const {
                 }
                 {
                     description && (
-                        <p class="text-center text-lg text-gray-600 dark:text-gray-300">
-                            {description}
-                        </p>
+                        <div class="text-center text-lg text-gray-600 dark:text-gray-300 space-y-4">
+                            <Fragment set:html={description}></Fragment>
+                        </div>
                     )
                 }
                 {

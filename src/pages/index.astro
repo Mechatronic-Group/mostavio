@@ -34,27 +34,32 @@ let foucsText1 = {
 };
 
 let focusText2 = {
-	header: "The Pinnacle of Air Travel",
-	description:
-		"Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. This single-seat eVTOL features a carbon fiber \
-		exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, it’s built for both speed and safety.",
+	header: "A New Era in Urban Mobility",
+	description: [
+		"MOSTAVIO envisions a future where air travel isn't just for airports or long distances. With our innovative 2-3 passenger eVTOL (electric Vertical Take-Off and Landing) aircraft, we’re making short-range air mobility accessible, sustainable, and practical. <br></br> \
+		Our mission is simple: to create smarter, greener ways to navigate cities and suburbs, while setting a new standard for safe and efficient air transportation.",
+	],
 	link: "/aircraft",
 };
 let focusText3 = {
-	header: "Mastering the Art of Flight",
+	header: "Mastering the Art of Autonomous Flight",
 	description:
-		"Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. This single-seat eVTOL features \
-		a carbon fiber exterior and a Kevlar®-reinforced battery cover. With top speeds of 150 mph and a range of 200 miles, \
-		it’s built for both speed and safety.",
+		"Our eVTOL showcases the evolution of self-piloted aircraft, blending advanced technology with precision design. Focused on systems like AI-powered navigation, real-time collision avoidance, and extensive safety redundancies, it highlights how these innovations are shaping the future of aviation.<br></br> \
+		With applications in transportation, logistics, and urban mobility, this resource explores the balance between efficiency, reliability, and regulatory progress in autonomous flight.",
 	link: "/aircraft",
 };
 
 let focusText4 = {
-	header: "Slashing emissions while soaring above traffic",
-	description:
-		"Imagine turning a 45-minute drive into a swift 10-minute flight. MOSTAVIO's advanced eVTOL technology offers \
-		unparalleled efficiency, allowing you to bypass traffic and reach your destination faster than ever. Experience \
-		the freedom of urban air mobility and reclaim your valuable time.",
+	header: "Safety. Simplicity. Sustainability.",
+	description: [
+		"<p>Innovation means nothing without trust. That’s why safety drives everything we do at MOSTAVIO. Our aircraft is equipped with cutting-edge systems that prioritize both passengers and the environment:</p> \
+		<ul class='list-disc text-left ml-8 md:ml-16'> \
+			<li><span class='font-bold'>Simplicity Through First-Principle Design:</span> Every system is built around what works, eliminating unnecessary complexity to create a seamless, intuitive, and reliable flight experience.</li> \
+			<li><span class='font-bold'>Extensive Redundancy Systems:</span> From backup power systems to fail-safe controls, our aircraft ensures continuous operation even in the rare case of component failure.</li> \
+			<li><span class='font-bold'>Sustainability with Zero Emissions:</span> Powered entirely by electric energy, MOSTAVIO’s eVTOL operates without producing emissions, making it a cleaner choice for the environment and urban airspaces.</li> \
+		</ul> \
+		<p>We’re not just developing eVTOLs; we’re creating a new benchmark for safe and responsible urban aviation.</p>",
+	],
 	link: "/aircraft",
 };
 
@@ -98,7 +103,7 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			header={foucsText1.header}
 			description={foucsText1.description}
 		/>
-		<LogoCloud />
+		<!-- <LogoCloud /> -->
 		<VideoBlock videoSrc={mostavioSecondVid} playbackRate={0.7} />
 		<FocusText
 			header={focusText2.header}
@@ -108,14 +113,14 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 		<Carousel />
 		<FocusText
 			header={focusText3.header}
-			description={focusText2.description}
-			link={focusText2.link}
+			description={focusText3.description}
+			link={focusText3.link}
 		/>
 		<VideoBlock placeholderImage={VideoPlaceholder2} />
 		<FocusText
 			header={focusText4.header}
-			description={focusText3.description}
-			link={focusText3.link}
+			description={focusText4.description}
+			link={focusText4.link}
 		/>
 		<FeatureGrid content={featureContent} />
 		<!-- <VideoBlock videoSrc={FlightVideo} /> -->
