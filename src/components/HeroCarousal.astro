@@ -10,6 +10,7 @@ export interface VideoSource {
 }
 export interface MediaProps {
     media: Array<string | VideoSource | ImageMetadata>;
+    playbackRate?: number; // playback rate for videos, default 1
     content?: {
         header?: string;
         description?: string;
@@ -17,7 +18,8 @@ export interface MediaProps {
     placeholderImage?: ImageMetadata;
 }
 let activeMedia: number = 0;
-const { media, content, placeholderImage } = Astro.props as MediaProps;
+const { media, content, placeholderImage, playbackRate } =
+    Astro.props as MediaProps;
 ---
 
 <section
@@ -32,7 +34,11 @@ const { media, content, placeholderImage } = Astro.props as MediaProps;
                 alt="MOSTAVIO HERO"
             />
         ) : (
-            <div id="media" data-media={JSON.stringify(media)}>
+            <div
+                id="media"
+                data-media={JSON.stringify(media)}
+                data-playback-rate={playbackRate}
+            >
                 {media.map((each, index) => {
                     let mediaSrc: any =
                         typeof each === "object" && "source" in each
@@ -144,6 +150,10 @@ const { media, content, placeholderImage } = Astro.props as MediaProps;
 
                 if (isVideo(src)) {
                     const videoElement = mediaElement as HTMLVideoElement;
+                    const playbackRate = Number(
+                        wrapperElement?.getAttribute("data-playback-rate"),
+                    );
+                    videoElement.playbackRate = playbackRate || 1;
                     videoElement.addEventListener("ended", nextMedia);
                     if (activeMedia === index) {
                         videoElement.classList.add("blur");
