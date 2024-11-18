@@ -62,7 +62,6 @@ const swiperSlideClasses =
     export const swiperConfig = {
         modules: [Navigation, Pagination],
         loop: true,
-        slidesPerView: 2,
         mousewheel: {
             forceToAxis: true,
         },
@@ -77,6 +76,15 @@ const swiperSlideClasses =
         },
         scrollbar: {
             el: ".swiper-scrollbar",
+        },
+        breakpoints: {
+            // when window width is >= 640px
+            640: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
         },
     };
 

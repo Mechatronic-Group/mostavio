@@ -13,14 +13,14 @@ const { videoSrc, placeholderImage, playbackRate } =
     {
         placeholderImage ? (
             <Image
-                class="w-full h-[95vh] object-cover"
+                class="w-full h-96 md:h-[95vh] object-cover"
                 src={placeholderImage}
                 alt="MOSTAVIO HERO"
             />
         ) : (
             <video
                 id="carouselVideo"
-                class="w-full h-[95vh] object-cover transition-opacity duration-500 opacity-100"
+                class="w-full h-96 md:h-[95vh] object-cover transition-opacity duration-500 opacity-100"
                 autoplay
                 muted
                 loop
