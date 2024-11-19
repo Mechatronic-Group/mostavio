@@ -13,25 +13,28 @@ import { button } from "@tailus/themer-button";
                 >
                     Stay Informed
                 </h2>
-                <!-- <p class="text-center text-lg text-gray-600 dark:text-gray-300">
-                    Stay informed with the most recent news and media coverage
-                    about MOSTAVIO. Discover our latest technological
-                    advancements, partnerships, and more.
-                </p> -->
-                <form action="" class="space-y-8">
+                <form method="POST" id="newsletter-form" class="space-y-8">
+                    <input
+                        type="hidden"
+                        name="access_key"
+                        value="7deabec1-12ea-42ee-82e8-5798e68e19ad"
+                    />
                     <div class="space-y-4 text-center">
                         <label
-                            for="username"
+                            for="email"
                             class="text-gray-600 dark:text-gray-300"
-                            >Subscribe to our newsletter ?</label
                         >
+                            Subscribe to our newsletter?
+                        </label>
                         <div class="relative flex items-center">
                             <input
                                 type="email"
                                 name="email"
+                                id="email"
                                 autocomplete="email"
                                 placeholder="Email"
                                 class="focus:outline-none block w-full rounded-full placeholder-gray-500 bg-gray-100 dark:bg-gray-800 dark:border-gray-600 pl-12 pr-4 h-12 text-gray-600 transition duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 focus:ring-primary"
+                                required
                             />
                             <div class="absolute right-1">
                                 <button
@@ -44,6 +47,7 @@ import { button } from "@tailus/themer-button";
                         </div>
                     </div>
                 </form>
+                <div id="newsletter-message" class="text-center mt-4"></div>
             </div>
         </div>
         <p class="mt-9 text-sm text-gray-500 dark:text-gray-400 text-center">
@@ -54,3 +58,53 @@ import { button } from "@tailus/themer-button";
         </p>
     </Container>
 </section>
+
+<script is:inline>
+    const form = document.getElementById("newsletter-form");
+    const result = document.getElementById("newsletter-message");
+
+    form.addEventListener("submit", function (e) {
+        const formData = new FormData(form);
+        e.preventDefault();
+
+        const object = Object.fromEntries(formData);
+
+        const json = JSON.stringify({
+            ...object,
+            subject: "Newsletter Subscription - MOSTAVIO",
+        });
+
+        result.innerHTML = "Please wait...";
+
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: json,
+        })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = json.message;
+                    result.classList.add("text-green-500");
+                } else {
+                    console.log(response);
+                    result.innerHTML = json.message;
+                    result.classList.add("text-red-500");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                result.innerHTML = "Something went wrong!";
+                result.classList.add("text-red-500");
+            })
+            .then(function () {
+                form.reset();
+                setTimeout(() => {
+                    result.style.display = "none";
+                }, 3000);
+            });
+    });
+</script>
