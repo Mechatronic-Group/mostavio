@@ -2,16 +2,16 @@
 import { Image } from "astro:assets";
 import ImageBorderDots from "./ImageBorderDots.astro";
 
-import carouselMiddle from "../assets/slides/carousel-middle.jpg";
-import carouselRight from "../assets/slides/mostavio-side-1.jpeg";
-import carouselLeft from "../assets/slides/carousel-left.jpg";
+// import carouselMiddle from "../assets/slides/carousel-middle.jpg";
+// import carouselRight from "../assets/slides/mostavio-side-1.jpeg";
+// import carouselLeft from "../assets/slides/carousel-left.jpg";
 
-import smokeSplit1 from "../assets/evtol-smoke-split/1.png";
-import smokeSplit2 from "../assets/evtol-smoke-split/2.png";
-import smokeSplit3 from "../assets/evtol-smoke-split/3.png";
+import smokeSplit1 from "../assets/evtol-split-carousel/1.jpg";
+import smokeSplit2 from "../assets/evtol-split-carousel/2.jpg";
+import smokeSplit3 from "../assets/evtol-split-carousel/3.jpg";
 
 const swiperSlideClasses =
-    "swiper-slide relative mr-0 rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5";
+    "swiper-slide relative mr-0 max-h-[38rem] rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5 flex items-center justify-center";
 ---
 
 <section>
@@ -19,7 +19,7 @@ const swiperSlideClasses =
         <div class="swiper-wrapper">
             <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 lg:h-[28rem] object-cover w-full rounded-md"
+                    class="object-cover object-center rounded-md max-h-[38rem]"
                     src={smokeSplit1}
                     alt="Evotol landing with Smoke Split 1"
                     loading="lazy"
@@ -28,7 +28,7 @@ const swiperSlideClasses =
             </div>
             <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 lg:h-[28rem] object-cover w-full rounded-md"
+                    class="object-cover object-center rounded-md max-h-[38rem]"
                     src={smokeSplit2}
                     alt="Evotol landing with Smoke Split 2"
                     loading="lazy"
@@ -37,7 +37,7 @@ const swiperSlideClasses =
             </div>
             <div class={swiperSlideClasses}>
                 <Image
-                    class="h-96 lg:h-[28rem] object-cover w-full rounded-md"
+                    class="object-cover object-center rounded-md max-h-[38rem]"
                     src={smokeSplit3}
                     alt="Evotol landing with Smoke Split 3"
                     loading="lazy"
