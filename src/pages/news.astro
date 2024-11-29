@@ -18,7 +18,7 @@ let bannerContent = {
 const posts = await getCollection("posts");
 ---
 
-<Layout title="Welcome to MOSTAVIO.">
+<Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<Posts posts={posts} />

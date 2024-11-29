@@ -5,25 +5,21 @@ import Layout from "../layouts/Layout.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
 import VideoBlock from "@components/VideoBlock.astro";
-import LogoCloud from "@components/LogoCloud.astro";
+// import LogoCloud from "@components/LogoCloud.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 
 // Media
 import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
-// import mostavioSmokeLandingVid from "../assets/hero_media/evtol-smoke.mp4";
-import mostavioSmokeLandingVid from "../assets/hero_media/evtol-zoom-in.mp4";
 import mostavioSecondVid from "../assets/hero_media/mostavio-secondary-banner.mp4";
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-import FlightVideo from "../assets/hero_media/lilium.mp4";
-import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
+// import FlightVideo from "../assets/hero_media/lilium.mp4";
+// import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
 
 import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
 import VideoPlaceholder2 from "../assets/evtol_img/interiorCover.png";
 
-import SpeedIcon from "../assets/icons/Speed.png";
 import NaturalIcon from "../assets/icons/Natural.png";
 import ChipIcon from "../assets/icons/Chip.png";
-import BolbWing from "../assets/icons/BolbWing.png";
 import PaperPlain from "../assets/icons/paper-plane.svg";
 import FeatureGrid from "@components/FeatureGrid.astro";
 
@@ -53,17 +49,38 @@ let focusText3 = {
 
 let focusText4 = {
 	header: "Safety. Simplicity. Sustainability.",
-	description: [
-		"<p>Innovation means nothing without trust. That’s why safety drives everything we do at MOSTAVIO. Our aircraft is equipped with cutting-edge systems that prioritize both passengers and the environment:</p> \
-		<ul class='list-disc text-left ml-8 md:ml-16'> \
-			<li><span class='font-bold'>Simplicity Through First-Principle Design:</span> Every system is built around what works, eliminating unnecessary complexity to create a seamless, intuitive, and reliable flight experience.</li> \
-			<li><span class='font-bold'>Extensive Redundancy Systems:</span> From backup power systems to fail-safe controls, our aircraft ensures continuous operation even in the rare case of component failure.</li> \
-			<li><span class='font-bold'>Sustainability with Zero Emissions:</span> Powered entirely by electric energy, MOSTAVIO’s eVTOL operates without producing emissions, making it a cleaner choice for the environment and urban airspaces.</li> \
-		</ul> \
-		<p>We’re not just developing eVTOLs; we’re creating a new benchmark for safe and responsible urban aviation.</p>",
-	],
+	// description: [
+	// 	"<p>Innovation means nothing without trust. That’s why safety drives everything we do at MOSTAVIO. Our aircraft is equipped with cutting-edge systems that prioritize both passengers and the environment:</p> \
+	// 	<ul class='list-disc text-left ml-8 md:ml-16'> \
+	// 		<li><span class='font-bold'>Simplicity Through First-Principle Design:</span> Every system is built around what works, eliminating unnecessary complexity to create a seamless, intuitive, and reliable flight experience.</li> \
+	// 		<li><span class='font-bold'>Extensive Redundancy Systems:</span> From backup power systems to fail-safe controls, our aircraft ensures continuous operation even in the rare case of component failure.</li> \
+	// 		<li><span class='font-bold'>Sustainability with Zero Emissions:</span> Powered entirely by electric energy, MOSTAVIO’s eVTOL operates without producing emissions, making it a cleaner choice for the environment and urban airspaces.</li> \
+	// 	</ul> \
+	// 	<p>We’re not just developing eVTOLs; we’re creating a new benchmark for safe and responsible urban aviation.</p>",
+	// ],
 	link: "/aircraft",
 };
+
+let featureContent = [
+	{
+		icon: ChipIcon,
+		header: "Simplicity Through First-Principle Design",
+		description:
+			"Every system is built around what works, eliminating unnecessary complexity to create a seamless, intuitive, and reliable flight experience.",
+	},
+	{
+		icon: NaturalIcon,
+		header: "Extensive Redundancy Systems",
+		description:
+			"From backup power systems to fail-safe controls, our aircraft ensures continuous operation even in the rare case of component failure.",
+	},
+	{
+		icon: PaperPlain,
+		header: "Sustainability with Zero Emissions",
+		description:
+			"Powered entirely by electric energy, MOSTAVIO’s eVTOL operates without producing emissions, making it a cleaner choice for the environment and urban airspaces.",
+	},
+];
 
 let focusText5 = {
 	header: "Cut Your Commute Time Dramatically",
@@ -74,20 +91,20 @@ let focusText5 = {
 	link: "/aircraft",
 };
 
-let featureContent = [
-	{
-		icon: ChipIcon,
-		header: "Our eVTOL aircraft feature smart chips for seamless and safe flights.",
-	},
-	{
-		icon: NaturalIcon,
-		header: "Built with sustainable materials and zero-emission technology, our eVTOL is kind to the planet.",
-	},
-	{
-		icon: PaperPlain,
-		header: "Experience rapid, efficient travel with our high-speed eVTOL aircraft.",
-	},
-];
+// let featureContent = [
+// 	{
+// 		icon: ChipIcon,
+// 		header: "Our eVTOL aircraft feature smart chips for seamless and safe flights.",
+// 	},
+// 	{
+// 		icon: NaturalIcon,
+// 		header: "Built with sustainable materials and zero-emission technology, our eVTOL is kind to the planet.",
+// 	},
+// 	{
+// 		icon: PaperPlain,
+// 		header: "Experience rapid, efficient travel with our high-speed eVTOL aircraft.",
+// 	},
+// ];
 
 // let media: Array<string | VideoSource | ImageMetadata> = [
 // 	{ source: Video1, poster: Banner2 }, // `src` collides with ImageMetadata
@@ -98,7 +115,7 @@ let featureContent = [
 let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
-<Layout title="Welcome to MOSTAVIO.">
+<Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} playbackRate={0.7} />
 		<FocusText
@@ -119,12 +136,10 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			link={focusText3.link}
 		/>
 		<VideoBlock placeholderImage={VideoPlaceholder2} />
-		<FocusText
-			header={focusText4.header}
-			description={focusText4.description}
-			link={focusText4.link}
-		/>
-		<FeatureGrid content={featureContent} />
+		<FocusText header={focusText4.header} link={focusText4.link}>
+			<FeatureGrid content={featureContent} />
+		</FocusText>
+
 		<!-- <VideoBlock videoSrc={FlightVideo} /> -->
 		<FocusText
 			header={focusText5.header}

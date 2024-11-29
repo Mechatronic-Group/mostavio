@@ -42,10 +42,11 @@ const {
                 {
                     description && (
                         <div class="text-center text-lg text-gray-600 dark:text-gray-300 space-y-4">
-                            <Fragment set:html={description}></Fragment>
+                            <Fragment set:html={description} />
                         </div>
                     )
                 }
+                <slot />
                 {
                     link && (
                         <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">

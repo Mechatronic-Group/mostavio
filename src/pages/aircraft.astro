@@ -13,13 +13,16 @@ import NewsLetter from "@components/NewsLetter.astro";
 
 // Media
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-import FlightVideo from "../assets/hero_media/lilium.mp4";
-import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
+// import FlightVideo from "../assets/hero_media/lilium.mp4";
+// import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
 import slide01 from "../assets/evtol_img/HeroBgImage2.png";
 
 import VideoPlaceholder from "../assets/evtol_img/Gear.png";
-import VideoPlaceholder2 from "../assets/evtol_img/parts.png";
+// import VideoPlaceholder2 from "../assets/evtol_img/parts.png";
 import VideoPlaceholder3 from "../assets/evtol_img/circut_board.png";
+import motorPropeller from "../assets/evtol_img/motor-propeller.jpg";
+import frameArm from "../assets/evtol_img/frame-arm.jpg";
+import mostavioPcb from "../assets/evtol_img/mostavio-pcb.jpg";
 
 import BatteryIcon from "../assets/icons/Battery.png";
 import SpeedIcon from "../assets/icons/Speed.png";
@@ -112,7 +115,7 @@ let focusText5 = {
 };
 ---
 
-<Layout title="Welcome to MOSTAVIO.">
+<Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<FeatureGrid content={featureContent} />
@@ -121,7 +124,7 @@ let focusText5 = {
 			link="/aircraft"
 			ctaLabel="Pre-Order"
 		/>
-		<VideoBlock placeholderImage={VideoPlaceholder} />
+		<VideoBlock placeholderImage={frameArm} />
 		<FocusText
 			header={focusText1.header}
 			description={focusText1.description}
@@ -131,7 +134,7 @@ let focusText5 = {
 			header={focusText2.header}
 			description={focusText2.description}
 		/>
-		<VideoBlock placeholderImage={VideoPlaceholder2} />
+		<VideoBlock placeholderImage={motorPropeller} />
 		<FocusText
 			header={focusText3.header}
 			description={focusText3.description}
@@ -139,7 +142,7 @@ let focusText5 = {
 		/>
 		<BentoGrid />
 		<FeatureGrid content={featureContent2} bordered />
-		<VideoBlock placeholderImage={VideoPlaceholder3} />
+		<VideoBlock placeholderImage={mostavioPcb} />
 		<FocusText
 			header={focusText4.header}
 			description={focusText4.description}

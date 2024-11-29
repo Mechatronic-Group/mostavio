@@ -3,14 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 
 // Media
-import slide01 from "../assets/evtol_img/HeroBg4.png";
+// import slide01 from "../assets/evtol_img/HeroBg4.png";
+import companyBanner from "../assets/evtol_img/company-banner.jpg";
 import Newsletter from "@components/NewsLetter.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
 import FeatureGrid from "@components/FeatureGrid.astro";
 import JobListing from "@components/JobListing.astro";
 
-let media: Array<string | ImageMetadata> = [slide01];
+let media: Array<string | ImageMetadata> = [companyBanner];
 let bannerContent = {
 	header: "Pioneering the Future of Urban Air Mobility",
 	description: "",
@@ -71,7 +72,7 @@ let jobList = [
 ];
 ---
 
-<Layout title="Welcome to MOSTAVIO.">
+<Layout>
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<div class="pt-3" id="about"></div>
