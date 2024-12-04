@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CallToAction from "../components/CallToAction.astro";
-import BentoGrid from "@components/BentoGrid.astro";
+// import CallToAction from "../components/CallToAction.astro";
+// import BentoGrid from "@components/BentoGrid.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 import type { VideoSource } from "@components/HeroCarousal.astro";
 import FeatureGrid from "@components/FeatureGrid.astro";
 import CarouselTwo from "@components/CarouselTwo.astro";
-import CarouselThree from "@components/CarouselThree.astro";
+// import CarouselThree from "@components/CarouselThree.astro";
 import VideoBlock from "@components/VideoBlock.astro";
 import FocusText from "@components/FocusText.astro";
 import NewsLetter from "@components/NewsLetter.astro";
@@ -15,11 +15,13 @@ import NewsLetter from "@components/NewsLetter.astro";
 import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
 // import FlightVideo from "../assets/hero_media/lilium.mp4";
 // import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
-import slide01 from "../assets/evtol_img/HeroBgImage2.png";
 
-import VideoPlaceholder from "../assets/evtol_img/Gear.png";
+// import slide01 from "../assets/evtol_img/HeroBgImage2.png";
+// import VideoPlaceholder from "../assets/evtol_img/Gear.png";
 // import VideoPlaceholder2 from "../assets/evtol_img/parts.png";
-import VideoPlaceholder3 from "../assets/evtol_img/circut_board.png";
+// import VideoPlaceholder3 from "../assets/evtol_img/circut_board.png";
+import aircraftBanner from "../assets/hero_media/aircraft-banner.jpg";
+
 import motorPropeller from "../assets/evtol_img/motor-propeller.jpg";
 import frameArm from "../assets/evtol_img/frame-arm.jpg";
 import mostavioPcb from "../assets/evtol_img/mostavio-pcb.jpg";
@@ -31,7 +33,7 @@ import ChargingStationIcon from "../assets/icons/ChargingStation.png";
 import NaturalIcon from "../assets/icons/Natural.png";
 import ChipIcon from "../assets/icons/Chip.png";
 
-let media: Array<string | VideoSource | ImageMetadata> = [slide01];
+let media: Array<string | VideoSource | ImageMetadata> = [aircraftBanner];
 
 let bannerContent = {
 	header: "Introducing the Prototype",
@@ -62,20 +64,20 @@ let featureContent = [
 	},
 ];
 
-let featureContent2 = [
-	{
-		icon: ChipIcon,
-		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
-	},
-	{
-		icon: NaturalIcon,
-		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
-	},
-	{
-		icon: SpeedIcon,
-		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
-	},
-];
+// let featureContent2 = [
+// 	{
+// 		icon: ChipIcon,
+// 		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+// 	},
+// 	{
+// 		icon: NaturalIcon,
+// 		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+// 	},
+// 	{
+// 		icon: SpeedIcon,
+// 		header: "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+// 	},
+// ];
 
 let focusText1 = {
 	header: "Revolutionary Design",
@@ -99,31 +101,26 @@ let focusText3 = {
 		experience. The aircraft also features redundant systems, including multiple batteries and motors, to ensure maximum safety and reliability.",
 };
 
-let focusText4 = {
-	header: "Sustainable Aviation",
-	description:
-		"Our eVTOL is designed with the environment in mind. Utilizing electric propulsion and sustainable materials, we aim to reduce \
-		carbon footprints and noise pollution, promoting a cleaner and quieter urban environment.",
-};
+// let focusText4 = {
+// 	header: "Sustainable Aviation",
+// 	description:
+// 		"Our eVTOL is designed with the environment in mind. Utilizing electric propulsion and sustainable materials, we aim to reduce \
+// 		carbon footprints and noise pollution, promoting a cleaner and quieter urban environment.",
+// };
 
-let focusText5 = {
-	header: "Shipping Begins 2025",
-	description:
-		"Join the future of urban air mobility by preordering your MOSTAVIO eVTOL. Secure your place in line and be among the first to \
-		experience the ultimate in personal transportation. Our eVTOL aircraft is priced at $250,000. Early adopters can enjoy special \
-		financing options and priority delivery.",
-};
+// let focusText5 = {
+// 	header: "Shipping Begins 2025",
+// 	description:
+// 		"Join the future of urban air mobility by preordering your MOSTAVIO eVTOL. Secure your place in line and be among the first to \
+// 		experience the ultimate in personal transportation. Our eVTOL aircraft is priced at $250,000. Early adopters can enjoy special \
+// 		financing options and priority delivery.",
+// };
 ---
 
 <Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<FeatureGrid content={featureContent} />
-		<!-- <CallToAction
-			description="Ships Early 2025"
-			link="/aircraft"
-			ctaLabel="Pre-Order"
-		/> -->
 		<VideoBlock placeholderImage={frameArm} />
 		<FocusText
 			header={focusText1.header}
