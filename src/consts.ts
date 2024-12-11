@@ -8,7 +8,7 @@ export const internalLinks = [
     { title: "Home", url: "/#home" },
     { title: "Aircraft", url: "/aircraft" },
     { title: "Company", url: "/company" },
-    { title: "Certification", url: "/certification" },
+    // { title: "Certification", url: "/certification" },
 ];
 
 export const companyLinks = [
