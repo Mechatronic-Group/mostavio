@@ -2,48 +2,37 @@
 import { Image } from "astro:assets";
 import ImageBorderDots from "./ImageBorderDots.astro";
 
-// import carouselMiddle from "../assets/slides/carousel-middle.jpg";
-// import carouselRight from "../assets/slides/mostavio-side-1.jpeg";
-// import carouselLeft from "../assets/slides/carousel-left.jpg";
-
 import smokeSplit1 from "../assets/evtol-split-carousel/1.jpg";
 import smokeSplit2 from "../assets/evtol-split-carousel/2.jpg";
 import smokeSplit3 from "../assets/evtol-split-carousel/3.jpg";
 
 const swiperSlideClasses =
     "swiper-slide relative mr-0 rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5 flex items-center justify-center";
+
+export interface ImageListProps {
+    images?: Array<any>;
+}
+
+const { images = [smokeSplit1, smokeSplit2, smokeSplit3] } =
+    Astro.props as ImageListProps;
 ---
 
 <section>
     <div class="swiper container">
         <div class="swiper-wrapper">
-            <div class={swiperSlideClasses}>
-                <Image
-                    class="object-cover object-center rounded-md"
-                    src={smokeSplit1}
-                    alt="Evotol landing with Smoke Split 1"
-                    loading="lazy"
-                />
-                <ImageBorderDots />
-            </div>
-            <div class={swiperSlideClasses}>
-                <Image
-                    class="object-cover object-center rounded-md"
-                    src={smokeSplit2}
-                    alt="Evotol landing with Smoke Split 2"
-                    loading="lazy"
-                />
-                <ImageBorderDots />
-            </div>
-            <div class={swiperSlideClasses}>
-                <Image
-                    class="object-cover object-center rounded-md"
-                    src={smokeSplit3}
-                    alt="Evotol landing with Smoke Split 3"
-                    loading="lazy"
-                />
-                <ImageBorderDots />
-            </div>
+            {
+                images.map((image, index) => (
+                    <div class={swiperSlideClasses}>
+                        <Image
+                            class="object-cover object-center rounded-md"
+                            src={image}
+                            alt={`Evotol landing with Smoke Split ${index + 1}`}
+                            loading="lazy"
+                        />
+                        <ImageBorderDots />
+                    </div>
+                ))
+            }
         </div>
         <div class="swiper-pagination"></div>
 

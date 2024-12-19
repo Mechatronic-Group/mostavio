@@ -11,6 +11,10 @@ import Carousel from "@components/Carousel.astro";
 import FeatureGrid from "@components/FeatureGrid.astro";
 import JobListing from "@components/JobListing.astro";
 
+import splitImageA from "../assets/evtol-split-carousel/a.jpg";
+import splitImageB from "../assets/evtol-split-carousel/b.jpg";
+import splitImageC from "../assets/evtol-split-carousel/c.jpg";
+
 let media: Array<string | ImageMetadata> = [companyBanner];
 let bannerContent = {
 	header: "Pioneering the Future of Urban Air Mobility",
@@ -77,7 +81,7 @@ let jobList = [
 		<HeroCarousal media={media} content={bannerContent} />
 		<div class="pt-3" id="about"></div>
 		<FocusText {...focusText} />
-		<Carousel />
+		<Carousel images={[splitImageA, splitImageB, splitImageC]} />
 		<FeatureGrid content={featureContent} bordered />
 		<FocusText {...focusText2} />
 		<!-- <Carousel /> -->
