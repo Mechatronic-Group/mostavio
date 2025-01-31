@@ -13,7 +13,7 @@ export const internalLinks = [
 
 export const companyLinks = [
     { title: "About Us", url: "/company#about" },
-    { title: "News", url: "/news" },
+    // { title: "News", url: "/news" },
     { title: "Careers", url: "/company#careers" }
 ];
 
@@ -38,3 +38,5 @@ export const externalLinks = [
     { title: "YouTube", url: "#", icon: YouTubeIcon },
     { title: "LinkedIn", url: "#", icon: LinkedInIcon },
 ];
+
+export const phoneNumber = "+1 (905)677-5815";

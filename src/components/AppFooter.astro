@@ -6,6 +6,7 @@ import {
   companyLinks,
   policyLinks,
   externalLinks,
+  phoneNumber,
 } from "../consts.ts";
 import { Image } from "astro:assets";
 import Container from "./Container.astro";
@@ -92,17 +93,26 @@ type Link = {
         </ul>
       </div>
     </div>
-    <div class="mt-9 text-gray-950 dark:text-white flex gap-4">
-      {
-        externalLinks.map((item, index) => (
-          <button
-            class="relative align-middle select-none hover:text-stone-400"
-            type="button"
-          >
-            <Fragment set:html={item?.icon} />
-          </button>
-        ))
-      }
+    <div
+      class="mt-9 text-gray-950 dark:text-white flex justify-between items-center"
+    >
+      <div class="flex gap-4">
+        {
+          externalLinks.map((item, index) => (
+            <button
+              class="relative align-middle select-none hover:text-stone-400"
+              type="button"
+            >
+              <Fragment set:html={item?.icon} />
+            </button>
+          ))
+        }
+      </div>
+      <div class="text-right">
+        <a href=`tel:${phoneNumber}` class="text-gray-950 dark:text-white"
+          >{phoneNumber}</a
+        >
+      </div>
     </div>
   </Container>
 </footer>
