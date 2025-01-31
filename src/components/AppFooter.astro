@@ -7,6 +7,7 @@ import {
   policyLinks,
   externalLinks,
   phoneNumber,
+  phoneIconSvg,
 } from "../consts.ts";
 import { Image } from "astro:assets";
 import Container from "./Container.astro";
@@ -109,8 +110,11 @@ type Link = {
         }
       </div>
       <div class="text-right">
-        <a href=`tel:${phoneNumber}` class="text-gray-950 dark:text-white"
-          >{phoneNumber}</a
+        <a
+          href=`tel:${phoneNumber}`
+          class="flex items-center gap-1 text-gray-950 dark:text-white"
+          ><Fragment set:html={phoneIconSvg} />
+          <span>{phoneNumber}</span></a
         >
       </div>
     </div>
