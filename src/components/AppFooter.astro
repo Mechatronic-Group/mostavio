@@ -8,6 +8,8 @@ import {
   externalLinks,
   phoneNumber,
   phoneIconSvg,
+  emailAddress,
+  emailIconSvg,
 } from "../consts.ts";
 import { Image } from "astro:assets";
 import Container from "./Container.astro";
@@ -109,12 +111,16 @@ type Link = {
           ))
         }
       </div>
+      <div>
+        <a href={`mailto:${emailAddress}`} class="flex items-center gap-2">
+          <Fragment set:html={emailIconSvg} />
+          <span class="text-gray-600 dark:text-gray-400">{emailAddress}</span>
+        </a>
+      </div>
       <div class="text-right">
-        <a
-          href=`tel:${phoneNumber}`
-          class="flex items-center gap-1 text-gray-950 dark:text-white"
+        <a href=`tel:${phoneNumber}` class="flex items-center gap-1"
           ><Fragment set:html={phoneIconSvg} />
-          <span>{phoneNumber}</span></a
+          <span class="text-gray-600 dark:text-gray-400">{phoneNumber}</span></a
         >
       </div>
     </div>

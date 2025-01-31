@@ -30,6 +30,7 @@ import LinkedInIcon from "./assets/social_icons/LinkedinIcon.svg?raw";
 import TwitterIcon from "./assets/social_icons/TwitterIcon.svg?raw";
 import YouTubeIcon from "./assets/social_icons/YoutubeIcon.svg?raw";
 import PhoneIcon from "./assets/social_icons/PhoneIcon.svg?raw";
+import MailIcon from "./assets/social_icons/MailIcon.svg?raw";
 
 
 export const externalLinks = [
@@ -42,3 +43,6 @@ export const externalLinks = [
 
 export const phoneNumber = "+1 (905)677-5815";
 export const phoneIconSvg = PhoneIcon;
+
+export const emailAddress = "info@mostavio.com";
+export const emailIconSvg = MailIcon;
