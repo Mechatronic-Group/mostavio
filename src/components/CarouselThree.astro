@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 import ImageBorderDots from "./ImageBorderDots.astro";
 
 import slidea from "../assets/aircraft_slides/slidea.png";
-import slideb from "../assets/aircraft_slides/slideb.png";
+// import slideb from "../assets/aircraft_slides/slideb.png";
+import slideCloseup from "../assets/aircraft_slides/slide-closeup.jpg";
 import slide3 from "../assets/slides/propeller.png";
 
 const swiperSlideClasses =
@@ -25,7 +26,7 @@ const swiperSlideClasses =
             <div class={swiperSlideClasses}>
                 <Image
                     class="h-[30rem] object-cover object-center rounded-md"
-                    src={slideb}
+                    src={slideCloseup}
                     alt="Carousal Image"
                     loading="lazy"
                 />

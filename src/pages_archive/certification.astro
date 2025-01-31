@@ -1,0 +1,179 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroCarousal from "@components/HeroCarousal.astro";
+import { getCollection } from "astro:content";
+
+// Media
+import slide01 from "../assets/evtol_img/HeroBg4.png";
+import VideoPlaceholder from "../assets/evtol_img/Gear.png";
+import VideoPlaceholder2 from "../assets/evtol_img/parts.png";
+
+import Thumbnail1 from "../assets/evtol_img/battery.png";
+import Thumbnail2 from "../assets/evtol_img/propeller_wip.png";
+import Thumbnail3 from "../assets/evtol_img/circut_board.png";
+import Thumbnail4 from "../assets/evtol_img/batteries.png";
+
+// Icons
+import GearWideConnecIcon from "../assets/icons/gear-wide-connect.svg";
+import BoundingBoxIcon from "../assets/icons/bounding-box.svg";
+import BezierCurveIcon from "../assets/icons/bezier-curve.svg";
+import MenuAppIcon from "../assets/icons/menu-app-fill.svg";
+
+import Newsletter from "@components/NewsLetter.astro";
+import FocusText from "@components/FocusText.astro";
+import Carousel from "@components/Carousel.astro";
+import FeatureGrid from "@components/FeatureGrid.astro";
+import VideoBlock from "@components/VideoBlock.astro";
+import Milestones from "@components/Milestones.astro";
+import BoxedList from "@components/BoxedList.astro";
+import { Image } from "astro:assets";
+import Container from "@components/Container.astro";
+
+let media: Array<string | ImageMetadata> = [slide01];
+let bannerContent = {
+    header: "Investing in MOSTAVIO",
+    description: "",
+};
+
+let focusText = {
+    header: null,
+    subheader: null,
+    description:
+        "Our eVTOL aircraft is undergoing a comprehensive certification process to ensure it meets all \
+        safety and regulatory requirements for commercial operation.",
+};
+let focusText2 = {
+    header: "Safety and Redundancy Features",
+    description:
+        "Our eVTOL design incorporates advanced safety features to meet stringent certification requirements",
+};
+
+let focusText3 = {
+    header: "All-Electric, Zero Emissions",
+    description:
+        "Our eVTOL operates on 100% electric power, ensuring zero local emissions and contributing to \
+        cleaner urban air mobility.",
+};
+
+let focusText4 = {
+    header: "Partnership with \n Transport Canada",
+    description:
+        "We are actively collaborating with Transport Canada to ensure our eVTOL aircraft meets all \
+        necessary safety and regulatory standards.",
+};
+
+let imageTextContent = [
+    {
+        image: Thumbnail1,
+        description:
+            "Our eVTOL design incorporates advanced safety features to meet stringent certification requirements.",
+    },
+    {
+        image: Thumbnail2,
+        description:
+            "Our eVTOL operates on 100% electric power, ensuring zero local emissions and contributing to cleaner urban air mobility.",
+    },
+    {
+        image: Thumbnail3,
+        description:
+            "We are actively collaborating with Transport Canada to ensure our eVTOL aircraft meets all necessary safety and regulatory standards.",
+    },
+    {
+        image: Thumbnail4,
+        description:
+            "Our eVTOL design incorporates advanced safety features to meet stringent certification requirements.",
+    },
+];
+
+let featureContent2 = [
+    {
+        icon: GearWideConnecIcon,
+        description:
+            "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+    },
+    {
+        icon: MenuAppIcon,
+        description:
+            "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+    },
+    {
+        icon: BezierCurveIcon,
+        description:
+            "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+    },
+    {
+        icon: BoundingBoxIcon,
+        description:
+            "Our cutting-edge eVTOL aircraft merges sleek design with advanced engineering. ",
+    },
+];
+
+const allReports = await getCollection("reports");
+---
+
+<Layout>
+    <main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
+        <HeroCarousal media={media} content={bannerContent} />
+        <FocusText {...focusText} />
+        <Carousel />
+        <Milestones />
+        <Carousel />
+        <FocusText {...focusText2} />
+        <div class="mb-48">
+            <Container>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {
+                        imageTextContent.map((entry) => (
+                            <div class="mt-20">
+                                <Image
+                                    class="h-80 w-full object-cover rounded-md"
+                                    src={entry.image}
+                                    alt="Thumbnail"
+                                />
+                                <p class="mt-10 dark:text-white text-center">
+                                    {entry.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </Container>
+        </div>
+
+        <FocusText {...focusText3} />
+        <VideoBlock placeholderImage={VideoPlaceholder} />
+        <Container>
+            <div class="w-full my-28">
+                <svg
+                    width="98"
+                    height="47"
+                    class="bg-white m-auto"
+                    viewBox="0 0 98 47"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M23.5943 0H0.505859V46.6875H23.5943V0Z"
+                        fill="#E73137"></path>
+                    <path
+                        d="M97.9205 0H74.832V46.6875H97.9205V0Z"
+                        fill="#E73137"></path>
+                    <path
+                        d="M46.0046 9.70887L49.303 3.04883L52.5787 9.4622C52.9854 10.1349 53.3242 10.0901 53.9794 9.75371L56.8033 8.3634L54.9734 17.3332C54.5893 19.0823 55.606 19.6204 56.6903 18.4095L60.7116 14.1489L61.7734 16.5483C62.1349 17.2883 62.6771 17.1762 63.3774 17.0416L67.5342 16.1671L66.1336 21.3695V21.4817C65.9302 22.1544 65.614 22.7374 66.3821 23.0514L67.8505 23.7914L59.3109 30.9672C58.4299 31.8641 58.7462 32.1332 59.0624 33.1423L59.8532 35.5417L51.8784 34.1066C50.9069 33.8599 50.2066 33.8599 50.184 34.6448L50.5229 43.7266H48.1282L48.4671 34.6896C48.4671 33.7926 47.7893 33.8151 46.1627 34.1514L38.7979 35.5642L39.7468 33.1648C40.0631 32.2454 40.1534 31.6175 39.4079 30.9896L30.665 23.9259L32.269 22.9392C32.7434 22.5805 32.766 22.1992 32.5175 21.4144L30.8684 16.1222L35.0704 17.0192C36.2451 17.2883 36.5614 17.0192 36.8777 16.3689L38.0524 13.9919L42.2092 18.6562C42.9548 19.5307 43.994 18.9477 43.6551 17.7144L41.6671 7.98219L44.7395 9.73129C45.2365 10.0228 45.7561 10.1125 46.0498 9.5519"
+                        fill="#E73137"></path>
+                </svg>
+                <div class="text-center my-8">
+                    <span class="dark:text-white">Transport <br />Canada </span>
+                </div>
+            </div>
+        </Container>
+        <FocusText {...focusText4} />
+        <FeatureGrid
+            content={featureContent2}
+            gridClass="grid grid-cols-1 md:grid-cols-2"
+        />
+        <VideoBlock placeholderImage={VideoPlaceholder2} />
+        <BoxedList />
+        <Newsletter />
+    </main>
+</Layout>

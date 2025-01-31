@@ -3,14 +3,19 @@ import Layout from "../layouts/Layout.astro";
 import HeroCarousal from "@components/HeroCarousal.astro";
 
 // Media
-import slide01 from "../assets/evtol_img/HeroBg4.png";
+// import slide01 from "../assets/evtol_img/HeroBg4.png";
+import companyBanner from "../assets/hero_media/company-banner.jpg";
 import Newsletter from "@components/NewsLetter.astro";
 import FocusText from "@components/FocusText.astro";
 import Carousel from "@components/Carousel.astro";
 import FeatureGrid from "@components/FeatureGrid.astro";
 import JobListing from "@components/JobListing.astro";
 
-let media: Array<string | ImageMetadata> = [slide01];
+import splitImageA from "../assets/evtol-split-carousel/a.jpg";
+import splitImageB from "../assets/evtol-split-carousel/b.jpg";
+import splitImageC from "../assets/evtol-split-carousel/c.jpg";
+
+let media: Array<string | ImageMetadata> = [companyBanner];
 let bannerContent = {
 	header: "Pioneering the Future of Urban Air Mobility",
 	description: "",
@@ -30,19 +35,19 @@ let focusText2 = {
 
 let featureContent = [
 	{
-		header: "15+",
+		header: "+15",
 		headerClass: "text-5xl mb-8",
-		description: "Year of operation in the automotive industry",
+		description: "Years of operation in the automotive industry",
 	},
 	{
-		header: "40+",
+		header: "+80",
 		headerClass: "text-5xl mb-8",
-		description: "Total employees across industries and backgrounds",
+		description: "Total years of combined aerospace experience",
 	},
 	{
-		header: "1,000+",
+		header: "+1,000",
 		headerClass: "text-5xl mb-8",
-		description: "Automotive related projects completed",
+		description: "Subscale flight tests",
 	},
 ];
 
@@ -71,15 +76,15 @@ let jobList = [
 ];
 ---
 
-<Layout title="Welcome to MOSTAVIO.">
+<Layout>
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<div class="pt-3" id="about"></div>
 		<FocusText {...focusText} />
-		<Carousel />
+		<Carousel images={[splitImageA, splitImageB, splitImageC]} />
 		<FeatureGrid content={featureContent} bordered />
 		<FocusText {...focusText2} />
-		<Carousel />
+		<!-- <Carousel /> -->
 		<JobListing content={jobList} />
 		<Newsletter />
 	</main>
