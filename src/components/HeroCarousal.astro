@@ -114,12 +114,14 @@ const { media, content, placeholderImage, playbackRate } =
     >
         {
             externalLinks.map((item, index) => (
-                <button
+                <a
+                    href={item.url}
+                    target="_blank"
                     class="relative align-middle select-none hover:text-stone-400"
                     type="button"
                 >
                     <Fragment set:html={item?.icon} />
-                </button>
+                </a>
             ))
         }
     </div>

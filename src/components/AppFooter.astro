@@ -19,6 +19,8 @@ type Link = {
   title: string;
   url: string;
 };
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="pb-6 sm:pb-12 lg:pb-20">
@@ -36,7 +38,7 @@ type Link = {
         <div
           class="flex flex-wrap gap-1 overflow-hidden text-gray-700 dark:text-gray-300"
         >
-          © 2024, MOSTAVIO Inc.<br /> All rights reserved.
+          © {currentYear}, MOSTAVIO Inc.<br /> All rights reserved.
         </div>
       </div>
     </Container>
@@ -102,12 +104,14 @@ type Link = {
       <div class="flex gap-4 mb-3">
         {
           externalLinks.map((item, index) => (
-            <button
+            <a
+              href={item?.url}
+              target="_blank"
               class="relative align-middle select-none hover:text-stone-400"
               type="button"
             >
               <Fragment set:html={item?.icon} />
-            </button>
+            </a>
           ))
         }
       </div>

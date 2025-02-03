@@ -18,10 +18,10 @@ export const companyLinks = [
 ];
 
 export const policyLinks = [
-    { title: "Privacy Policy", url: "#" },
-    { title: "Terms of Use", url: "#" },
-    { title: "Media Inquiries", url: "#" },
-    { title: "Cookies Policy", url: "#" }
+    // { title: "Privacy Policy", url: "#" },
+    // { title: "Terms of Use", url: "#" },
+    { title: "Media Inquiries", url: "mailto:info@mostavio.com" },
+    // { title: "Cookies Policy", url: "#" }
 ];
 
 import FacebookIcon from "./assets/social_icons/FacebookIcon.svg?raw";
@@ -34,11 +34,11 @@ import MailIcon from "./assets/social_icons/MailIcon.svg?raw";
 
 
 export const externalLinks = [
-    { title: "Facebook", url: "#", icon: FacebookIcon },
-    { title: "Instagram", url: "#", icon: InstagramIcon },
-    { title: "Twitter", url: "#", icon: TwitterIcon },
-    { title: "YouTube", url: "#", icon: YouTubeIcon },
-    { title: "LinkedIn", url: "#", icon: LinkedInIcon },
+    // { title: "Facebook", url: "#", icon: FacebookIcon },
+    { title: "Instagram", url: "https://www.instagram.com/mostavio_inc/", icon: InstagramIcon },
+    { title: "Twitter", url: "https://x.com/mostavio", icon: TwitterIcon },
+    // { title: "YouTube", url: "#", icon: YouTubeIcon },
+    // { title: "LinkedIn", url: "#", icon: LinkedInIcon },
 ];
 
 export const phoneNumber = "+1 (905)677-5815";
