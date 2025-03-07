@@ -22,7 +22,6 @@ const sortedPosts = posts.sort((a, b) => {
 	const dateB = new Date(b.data.date);
 	return dateB.getTime() - dateA.getTime(); // newest first
 });
-console.log(posts);
 ---
 
 <Layout>

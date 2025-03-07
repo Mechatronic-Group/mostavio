@@ -15,12 +15,3 @@ MOSTAVIO is thrilled to announce that our eVTOL prototype has successfully passe
 With this milestone, we are poised to introduce groundbreaking, eco-friendly solutions that redefine how people navigate urban landscapes. Our continued focus on rigorous testing and safety ensures that each advancement in our technology sets a new standard in the industry, paving the way for safer, faster, and more efficient urban travel.
 
 Stay tuned as MOSTAVIO continues to lead the charge in shaping the future of urban air mobility.
-
-
-
-
-
-
-
-
-[This is link](/news/mostavio-certification)
