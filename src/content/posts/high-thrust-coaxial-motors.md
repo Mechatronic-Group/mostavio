@@ -1,6 +1,6 @@
 ---
 header: Mostavio Develops High-Thrust Co-Axial Motor-Propeller Testing Jig for Advanced eVTOL Research 
-date: January 01, 2021
+date: Jan 01, 2021
 tags: ["Innovation"]
 featured: false
 thumbnail: null
