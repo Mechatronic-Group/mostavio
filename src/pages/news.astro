@@ -17,12 +17,18 @@ let bannerContent = {
 };
 
 const posts = await getCollection("posts");
+const sortedPosts = posts.sort((a, b) => {
+	const dateA = new Date(a.data.date);
+	const dateB = new Date(b.data.date);
+	return dateB.getTime() - dateA.getTime(); // Sort in descending order (newest first)
+});
+console.log(posts);
 ---
 
 <Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
-		<Posts posts={posts} />
+		<Posts posts={sortedPosts} />
 		<Newsletter />
 	</main>
 </Layout>
