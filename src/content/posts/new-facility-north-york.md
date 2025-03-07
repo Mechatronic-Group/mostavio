@@ -3,12 +3,12 @@ header: MOSTAVIO Expands R&D Capabilities with New Facility in North York, Ontar
 date: May 05, 2022
 tags: ["Announcement"]
 featured: false
-thumbnail: 
+thumbnail: null
 intro: MOSTAVIO has officially launched its new research and development facility in North York, Ontario. Equipped with advanced manufacturing and prototyping tools, the facility will serve as a hub for building aircraft prototype, its sub-modules, conducting drone flight tests, and accelerating eVTOL development.
 link: /news
 ---
 
-##### MOSTAVIO has officially launched its new research and development facility in North York, Ontario. Equipped with advanced manufacturing and prototyping tools, the facility will serve as a hub for building aircraft prototype, its sub-modules, conducting drone flight tests, and accelerating eVTOL development.
+> MOSTAVIO has officially launched its new research and development facility in North York, Ontario. Equipped with advanced manufacturing and prototyping tools, the facility will serve as a hub for building aircraft prototype, its sub-modules, conducting drone flight tests, and accelerating eVTOL development.
 
 MOSTAVIO has inaugurated a state-of-the-art research and development facility in North York, Ontario, reinforcing its commitment to innovation in the eVTOL sector. The new facility is designed to accelerate aircraft development, enabling the engineering team to build sub-modules, conduct drone flight tests, and advance propulsion and structural research. 
 

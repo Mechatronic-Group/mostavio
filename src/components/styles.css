@@ -43,7 +43,13 @@
 }
 
 .prose img {
-    @apply w-full h-auto my-10;
+    /* @apply w-full h-auto my-10; */
+    @apply my-10 mx-auto;
+}
+
+.prose video {
+    /* @apply w-full h-auto my-10; */
+    @apply my-10 mx-auto;
 }
 
 .prose {
