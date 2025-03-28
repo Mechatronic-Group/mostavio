@@ -12,6 +12,8 @@
         "astro": "astro"
     },
     "dependencies": {
+        "@astrojs/partytown": "^2.1.4",
+        "@astrojs/sitemap": "^3.3.0",
         "@astrojs/vercel": "^7.8.2",
         "@tailus/themer": "^0.0.5",
         "@tailus/themer-button": "^0.0.7",
