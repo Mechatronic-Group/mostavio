@@ -2,27 +2,14 @@
 import BaseHead from "@components/BaseHead.astro";
 import AppFooter from "../components/AppFooter.astro";
 import AppHeader from "../components/AppHeader.astro";
+import Analytics from "@components/Analytics.astro";
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth dark">
     <head>
-        <!-- Google tag (gtag.js) -->
-        <script
-            type="text/partytown"
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-C4X2PH7L4T"
-        ></script>
-        <script type="text/partytown">
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-
-            gtag("config", "G-C4X2PH7L4T");
-        </script>
         <BaseHead />
+        <Analytics />
     </head>
     <body class="overflow-x-hidden bg-white dark:bg-gray-950 dark:text-white">
         <AppHeader />

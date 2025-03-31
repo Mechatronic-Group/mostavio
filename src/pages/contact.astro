@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FocusText from "../components/FocusText.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import EnvelopIcon from "../assets/icons/envelope.svg?raw";
+import MapPinIcon from "../assets/icons/mapPin.svg?raw";
+import PhoneIcon from "../assets/icons/phone.svg?raw";
+
+let featureContent = [
+    {
+        icon: EnvelopIcon,
+        isSvgIcon: true,
+        preHeader: "info@mostavio.com",
+        link: "mailto:info@mostavio.com",
+    },
+    {
+        icon: PhoneIcon,
+        isSvgIcon: true,
+        preHeader: "+1 (905)677-5815",
+        link: "tel:+19056775815",
+    },
+    {
+        icon: MapPinIcon,
+        isSvgIcon: true,
+        preHeader: "455 Signet Dr., Toronto",
+    },
+];
+---
+
+<Layout>
+    <main class="relative bg-gray-50 dark:bg-gray-900 scroll-mt-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            <div class="flex flex-col justify-center">
+                <FocusText
+                    header="Get in Touch"
+                    description="We're here to assist you with any inquiries or support you may need.\
+                     Please fill out the form or contact us by phone or email, and our team will respond\
+                     as soon as possible."
+                />
+                <FeatureGrid
+                    content={featureContent}
+                    gridClass="grid justify-center md:grid-cols-1 lg:grid-cols-3"
+                />
+            </div>
+
+            <div
+                class="flex flex-col justify-center p-8 sm:p-16 lg:p-24 bg-white dark:bg-gray-800"
+            >
+                <ContactForm />
+            </div>
+        </div>
+
+        <div class="relative h-96 lg:h-[30rem]">
+            <iframe
+                src="https://www.google.com/maps/embed/v1/place?q=455+signet+drive&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                class="absolute inset-0 w-full h-full"></iframe>
+        </div>
+    </main>
+</Layout>

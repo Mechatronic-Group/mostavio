@@ -12,7 +12,6 @@ import {
   emailIconSvg,
 } from "../consts.ts";
 import { Image } from "astro:assets";
-import Container from "./Container.astro";
 import LogoWhite from "../assets/Logo_White.png";
 
 type Link = {
@@ -99,7 +98,7 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
     <div
-      class="mt-9 text-gray-950 flex flex-col md:flex-row dark:text-white flex justify-between items-center"
+      class="mt-9 text-gray-950 flex flex-col md:flex-row dark:text-white justify-between items-center"
     >
       <div class="flex gap-4 mb-3">
         {

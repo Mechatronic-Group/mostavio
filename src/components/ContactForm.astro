@@ -1,0 +1,80 @@
+---
+import Frame from "./Frame.astro";
+import { button } from "@tailus/themer-button";
+import { cn } from "@lib/utils";
+---
+
+<form
+    action="https://formspree.io/f/mkgjvayl"
+    method="POST"
+    class="mt-8 space-y-6"
+>
+    <div>
+        <label
+            for="name"
+            class="block text-sm text-gray-700 dark:text-gray-300"
+        >
+            Full Name
+        </label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:text-left"
+            required
+        />
+    </div>
+    <div>
+        <label
+            for="email"
+            class="block text-sm text-gray-700 dark:text-gray-300"
+        >
+            Email Address
+        </label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:text-left"
+            required
+        />
+    </div>
+    <div>
+        <label
+            for="company"
+            class="block text-sm text-gray-700 dark:text-gray-300"
+        >
+            Company
+        </label>
+        <input
+            type="text"
+            id="company"
+            name="company"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:text-left"
+        />
+    </div>
+    <div>
+        <label
+            for="message"
+            class="block text-sm text-gray-700 dark:text-gray-300"
+        >
+            Message
+        </label>
+        <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:text-left"
+            required></textarea>
+    </div>
+    <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
+        <Frame>
+            <button
+                type="submit"
+                class={cn(button.primary.lg, "pb-[1px]", "relative z-[1]")}
+            >
+                Send Message
+            </button>
+        </Frame>
+    </div>
+</form>

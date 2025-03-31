@@ -14,7 +14,8 @@ export const internalLinks = [
 export const companyLinks = [
     { title: "About Us", url: "/company#about" },
     // { title: "News", url: "/news" },
-    { title: "Careers", url: "/company#careers" }
+    { title: "Careers", url: "/company#careers" },
+    { title: "Contact", url: "/contact" }
 ];
 
 export const policyLinks = [

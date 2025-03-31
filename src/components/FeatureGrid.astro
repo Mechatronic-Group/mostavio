@@ -5,10 +5,12 @@ import Container from "./Container.astro";
 
 interface FeatureItemProps {
     icon: string;
+    isSvgIcon?: boolean;
     header?: string;
     preHeader?: string;
     description?: string;
     headerClass?: string;
+    link?: string;
 }
 export interface FeatureGridProps {
     bordered?: boolean;
@@ -31,35 +33,64 @@ const {
         <Container>
             <div class={`text-center my-12 m-auto`}>
                 <div
-                    class=`${gridClass} gap-1 lg:gap-4 flex-wrap lg:flex-nowrap flex justify-between`
+                    class=`${gridClass} gap-1 lg:gap-4 flex-wrap lg:flex-nowrap flex`
                 >
                     {
                         content.map((each, _) => (
                             <div
                                 class={`max-w-80 m-auto ${bordered && "my-14"} my-8`}
                             >
-                                {each?.icon && (
-                                    <Image
-                                        class="w-12 h-12 m-auto mb-12"
-                                        src={each.icon}
-                                        alt="Feature Icon"
-                                    />
-                                )}
-                                {each.preHeader && (
-                                    <span class="text-gray-600 dark:text-gray-400 text-base">
-                                        {each.preHeader}
-                                    </span>
-                                )}
-                                {each.header && (
-                                    <h2
-                                        class={cn(
-                                            "my-2 font-semibold text-gray-700 dark:text-white",
-                                            each.headerClass || "text-lg",
-                                        )}
-                                    >
-                                        {each.header}
-                                    </h2>
-                                )}
+                                {each?.icon &&
+                                    ((each.isSvgIcon ?? false) ? (
+                                        <div
+                                            class="w-12 h-12 m-auto mb-6"
+                                            set:html={each.icon}
+                                        />
+                                    ) : (
+                                        <Image
+                                            class="w-12 h-12 m-auto mb-12"
+                                            src={each.icon}
+                                            alt="Feature Icon"
+                                        />
+                                    ))}
+                                {each.preHeader &&
+                                    (each.link ? (
+                                        <a
+                                            href={each.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="text-gray-600 dark:text-gray-400 text-base hover:underline"
+                                        >
+                                            {each.preHeader}
+                                        </a>
+                                    ) : (
+                                        <span class="text-gray-600 dark:text-gray-400 text-base">
+                                            {each.preHeader}
+                                        </span>
+                                    ))}
+                                {each.header &&
+                                    (each.link ? (
+                                        <a
+                                            href={each.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class={cn(
+                                                "my-2 font-semibold text-gray-700 dark:text-white hover:underline",
+                                                each.headerClass || "text-lg",
+                                            )}
+                                        >
+                                            {each.header}
+                                        </a>
+                                    ) : (
+                                        <h2
+                                            class={cn(
+                                                "my-2 font-semibold text-gray-700 dark:text-white",
+                                                each.headerClass || "text-lg",
+                                            )}
+                                        >
+                                            {each.header}
+                                        </h2>
+                                    ))}
                                 {each.description && (
                                     <p class="text-gray-600 dark:text-gray-400 text-sm">
                                         {each.description}
