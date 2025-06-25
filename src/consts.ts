@@ -5,10 +5,10 @@ export const SITE_IMAGE = '/og.png';
 
 
 export const internalLinks = [
-    { title: "Home", url: "/#home" },
-    { title: "Aircraft", url: "/aircraft" },
+    { title: "Home", url: "/" },
+    { title: "Aircraft", url: "/models" },
     { title: "Company", url: "/company" },
-    { title: "SkyTech", url: "https://skyt.ca/" },
+    { title: "SkyTech", url: "https://skyt.ca/", target: "_blank" },
     // { title: "Certification", url: "/certification" },
 ];
 

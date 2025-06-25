@@ -17,6 +17,7 @@ import LogoWhite from "../assets/Logo_White.png";
 type Link = {
   title: string;
   url: string;
+  target?: string;
 };
 
 const currentYear = new Date().getFullYear();
@@ -53,6 +54,7 @@ const currentYear = new Date().getFullYear();
               <li>
                 <a
                   href={link.url}
+                  target={link?.target}
                   class="text-gray-600 dark:text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   {link.title}

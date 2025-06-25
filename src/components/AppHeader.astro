@@ -11,8 +11,23 @@ const links = [
         label: "Home",
     },
     {
-        to: "/aircraft",
-        label: "Aircraft",
+        to: "/models",
+        label: "Models",
+        children: [
+            {
+                to: "/models#mx1",
+                label: "MX1",
+                parent: "/models",
+            },
+            {
+                to: "/models#aeroguardian",
+                label: "AeroGuardian",
+            },
+            {
+                to: "/models#untralight",
+                label: "Ultralight",
+            },
+        ],
     },
     {
         to: "/news",
@@ -21,10 +36,25 @@ const links = [
     {
         to: "/company",
         label: "Company",
+        children: [
+            {
+                to: "/about",
+                label: "About",
+            },
+            {
+                to: "/careers",
+                label: "Careers",
+            },
+            {
+                to: "/contact",
+                label: "Contact",
+            },
+        ],
     },
     {
         to: "https://skyt.ca/",
         label: "SkyTech",
+        target: "_blank",
         class: "bg-sky-600 text-white hover:bg-sky-500 dark:bg-sky-600 dark:text-white dark:hover:bg-sky-500",
     },
 ];
@@ -84,19 +114,64 @@ const links = [
                                     class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm"
                                 >
                                     {
-                                        links.map((link) => (
-                                            <li>
-                                                <a
-                                                    href={link.to}
-                                                    class={cn(
-                                                        "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5",
-                                                        link.class,
-                                                    )}
-                                                >
-                                                    <span>{link.label}</span>
-                                                </a>
-                                            </li>
-                                        ))
+                                        links.map((link) =>
+                                            link.children ? (
+                                                <li class="relative group">
+                                                    <a
+                                                        class={cn(
+                                                            "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5 flex items-center gap-1",
+                                                            link.class,
+                                                        )}
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        tabindex="0"
+                                                        href={link.to}
+                                                        type="button"
+                                                    >
+                                                        <span>
+                                                            {link.label}
+                                                        </span>
+                                                    </a>
+                                                    <ul
+                                                        class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800
+                                                            group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto
+                                                            lg:mt-0 mt-1"
+                                                    >
+                                                        {link.children.map(
+                                                            (child) => (
+                                                                <li>
+                                                                    <a
+                                                                        href={
+                                                                            child.to
+                                                                        }
+                                                                        class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                                                                    >
+                                                                        {
+                                                                            child.label
+                                                                        }
+                                                                    </a>
+                                                                </li>
+                                                            ),
+                                                        )}
+                                                    </ul>
+                                                </li>
+                                            ) : (
+                                                <li>
+                                                    <a
+                                                        href={link.to}
+                                                        target={link?.target}
+                                                        class={cn(
+                                                            "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5",
+                                                            link.class,
+                                                        )}
+                                                    >
+                                                        <span>
+                                                            {link.label}
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            ),
+                                        )
                                     }
                                     <li>
                                         <a
@@ -105,12 +180,11 @@ const links = [
                                         >
                                             <span
                                                 class="flex items-center gap-2"
-                                                ><Fragment
-                                                    set:html={phoneIconSvg}
-                                                /> Call Us Now {
-                                                    phoneNumber
-                                                }</span
                                             >
+                                                <Fragment
+                                                    set:html={phoneIconSvg}
+                                                /> Call Us Now {phoneNumber}
+                                            </span>
                                         </a>
                                     </li>
                                 </ul>

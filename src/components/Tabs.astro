@@ -1,0 +1,242 @@
+---
+const tabs = [
+    {
+        label: "First Tab",
+        panel: {
+            title: "Make work flow across teams while connecting back to company goals",
+            content:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis voluptatem accusantium nemo perspiciatis delectus atque autem! repellat expedita consequatur! Officiis id consequatur atque doloremque!",
+            features: [
+                {
+                    icon: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+                    title: "Together as one",
+                    desc: "Accusantium nemo perspiciatis delectus atque autem!",
+                },
+                {
+                    icon: "https://cdn-icons-png.flaticon.com/512/584/584796.png",
+                    title: "New ideas",
+                    desc: "Accusalectus atque autem accusantium nemo perspiciatis delectus atque autem!",
+                },
+            ],
+        },
+        preview: "./images/screenshots/tailus-home.webp",
+    },
+    {
+        label: "Second Tab",
+        panel: {
+            title: "Make work flow across teams while connecting back to company goals",
+            content:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis voluptatem accusantium nemo perspiciatis delectus atque autem! repellat expedita consequatur! Officiis id consequatur atque doloremque!",
+            features: [
+                {
+                    icon: "https://cdn-icons-png.flaticon.com/512/6106/6106288.png",
+                    title: "Together as one",
+                    desc: "Accusantium nemo perspiciatis delectus atque autem!",
+                },
+                {
+                    icon: "https://cdn-icons-png.flaticon.com/512/2313/2313906.png",
+                    title: "New ideas",
+                    desc: "Accusalectus atque autem accusantium nemo perspiciatis delectus atque autem!",
+                },
+            ],
+        },
+        preview: "./images/screenshots/tailus-home-dark.webp",
+    },
+    {
+        label: "Third Tab",
+        panel: {
+            title: "Make work flow across teams while connecting back to company goals",
+            content:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis voluptatem accusantium nemo perspiciatis delectus atque autem! repellat expedita consequatur! Officiis id consequatur atque doloremque!",
+            features: [
+                {
+                    icon: "https://cdn-icons-png.flaticon.com/512/3340/3340200.png",
+                    title: "Together as one",
+                    desc: "Accusantium nemo perspiciatis delectus atque autem!",
+                },
+                {
+                    icon: "https://cdn-icons-png.flaticon.com/512/5405/5405929.png",
+                    title: "Growth",
+                    desc: "Accusalectus atque autem accusantium nemo perspiciatis delectus atque autem!",
+                },
+            ],
+        },
+        preview: "./images/screenshots/tailus-contact.webp",
+    },
+];
+---
+
+<section class="mt-32">
+    <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+        <div class="text-center">
+            <h2
+                class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl"
+            >
+                For growing teams and organizations
+            </h2>
+            <p
+                class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5"
+            >
+                A growing team doesn't need to mean growing pains. Privacy, and
+                the right tool for every step of your journey - Jira Software
+                friction - company size.
+            </p>
+            <div
+                role="tablist"
+                aria-label="tabs"
+                class="relative mx-auto mt-12 grid h-12 w-auto grid-cols-3 items-center gap-x-1 overflow-hidden rounded-full border border-gray-200 bg-gray-100 px-[3px] text-gray-600 dark:border-gray-700 dark:border-opacity-60 dark:bg-darker dark:text-gray-300 dark:shadow-none sm:w-max"
+                id="tablist"
+            >
+                <div
+                    id="tab-indicator"
+                    class="tab-indicator absolute h-10 rounded-full bg-white shadow-md transition-all duration-300 dark:bg-gray-800"
+                >
+                </div>
+                {
+                    tabs.map((tab, i) => (
+                        <button
+                            role="tab"
+                            aria-selected={i === 0 ? "true" : "false"}
+                            aria-controls={`panel-${i}`}
+                            tabindex={i === 0 ? "0" : "-1"}
+                            title="tab item"
+                            class="tab relative block rounded-full py-2.5 px-4 hover:text-primary dark:hover:text-primaryLight"
+                            id={`tab-${i}`}
+                            data-index={i}
+                        >
+                            <span class="m-auto block w-max text-sm font-medium tracking-wider">
+                                {tab.label}
+                            </span>
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="mt-20">
+            <div class="gap-6 space-y-12 md:flex md:space-y-0">
+                <div class="relative md:w-1/2">
+                    {
+                        tabs.map((tab, i) => (
+                            <div
+                                class={`panel ${i === 0 ? "visible opacity-100 scale-100" : "invisible opacity-0 scale-90"} absolute inset-0 flex flex-col justify-center transition duration-500`}
+                                id={`panel-${i}`}
+                                aria-labelledby={`tab-${i}`}
+                                role="tabpanel"
+                                tabindex="0"
+                            >
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">
+                                        {tab.panel.title}
+                                    </h3>
+                                    <p class="mt-8 text-gray-600 dark:text-gray-300">
+                                        {tab.panel.content}
+                                    </p>
+                                    <div class="mt-12 space-y-6">
+                                        {tab.panel.features.map((feature) => (
+                                            <div class="flex items-center gap-6">
+                                                <div class="flex h-20 w-20 rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-600/60 dark:bg-gray-900/40">
+                                                    <img
+                                                        class="m-auto h-8 w-auto"
+                                                        src={feature.icon}
+                                                        alt="icon illustration"
+                                                        loading="lazy"
+                                                        width="512"
+                                                        height="512"
+                                                    />
+                                                </div>
+                                                <div class="w-[calc(100%-7.5rem)]">
+                                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">
+                                                        {feature.title}
+                                                    </h4>
+                                                    <p class="mt-1 text-gray-600 dark:text-gray-400">
+                                                        {feature.desc}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div
+                    class="-m-4 overflow-hidden p-4 sm:-mx-12 sm:px-12 md:mx-0 md:w-1/2 md:overflow-visible md:px-0"
+                >
+                    <div
+                        class="relative bg-gray-100 before:absolute before:inset-0 before:scale-x-110 before:border-y before:border-gray-200 after:absolute after:inset-0 after:scale-y-110 after:border-x after:border-gray-200 dark:bg-gray-800 dark:before:border-gray-700 dark:after:border-gray-700"
+                    >
+                        <div
+                            class="relative h-96 overflow-clip py-10 sm:h-[32rem] lg:p-20"
+                        >
+                            {
+                                tabs.map((tab, i) => (
+                                    <div
+                                        data-target={`panel-${i}`}
+                                        class={`panel-preview absolute inset-0 z-${i === 0 ? "10" : "0"} flex ${i === 0 ? "translate-y-0 scale-100 opacity-100" : "translate-y-[100%] scale-75 opacity-50"} items-end overflow-hidden px-6 transition duration-500 sm:px-10`}
+                                    >
+                                        <img
+                                            src={tab.preview}
+                                            class="mx-auto h-80 w-96 rounded-t-3xl border object-cover object-top shadow-2xl dark:border-transparent sm:h-[28rem]"
+                                            alt="tab preview"
+                                            width="850"
+                                            height="1780"
+                                        />
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="module">
+    const tablist = document.getElementById("tablist");
+    const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll(".panel"));
+    const previews = Array.from(document.querySelectorAll(".panel-preview"));
+    const indicator = document.getElementById("tab-indicator");
+
+    function activateTab(idx) {
+        tabs.forEach((tab, i) => {
+            tab.setAttribute("aria-selected", i === idx ? "true" : "false");
+            tab.setAttribute("tabindex", i === idx ? "0" : "-1");
+        });
+        panels.forEach((panel, i) => {
+            panel.classList.toggle("visible", i === idx);
+            panel.classList.toggle("opacity-100", i === idx);
+            panel.classList.toggle("scale-100", i === idx);
+            panel.classList.toggle("invisible", i !== idx);
+            panel.classList.toggle("opacity-0", i !== idx);
+            panel.classList.toggle("scale-90", i !== idx);
+        });
+        previews.forEach((preview, i) => {
+            preview.classList.toggle("z-10", i === idx);
+            preview.classList.toggle("translate-y-0", i === idx);
+            preview.classList.toggle("scale-100", i === idx);
+            preview.classList.toggle("opacity-100", i === idx);
+            preview.classList.toggle("translate-y-[100%]", i !== idx);
+            preview.classList.toggle("scale-75", i !== idx);
+            preview.classList.toggle("opacity-50", i !== idx);
+        });
+        // Move indicator
+        const activeTab = tabs[idx];
+        indicator.style.left = activeTab.offsetLeft + "px";
+        indicator.style.width = activeTab.offsetWidth + "px";
+    }
+
+    tabs.forEach((tab, idx) => {
+        tab.addEventListener("click", () => activateTab(idx));
+        tab.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") activateTab((idx + 1) % tabs.length);
+            if (e.key === "ArrowLeft")
+                activateTab((idx - 1 + tabs.length) % tabs.length);
+        });
+    });
+
+    // Initialize
+    window.addEventListener("DOMContentLoaded", () => activateTab(0));
+</script>
