@@ -2,37 +2,44 @@
 import { Image } from "astro:assets";
 import ImageBorderDots from "./ImageBorderDots.astro";
 
-import smokeSplit1 from "../assets/evtol-split-carousel/1.jpg";
-import smokeSplit2 from "../assets/evtol-split-carousel/2.jpg";
-import smokeSplit3 from "../assets/evtol-split-carousel/3.jpg";
+import slide1 from "../../assets/slides/carousel-2-left.jpg";
+import slide2 from "../../assets/slides/carousel-2-middle.jpg";
+import slide3 from "../../assets/slides/carousel-2-third.jpg";
 
 const swiperSlideClasses =
-    "swiper-slide relative mr-0 rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5 flex items-center justify-center";
-
-export interface ImageListProps {
-    images?: Array<any>;
-}
-
-const { images = [smokeSplit1, smokeSplit2, smokeSplit3] } =
-    Astro.props as ImageListProps;
+    "swiper-slide relative w-auto rounded-md bg-gray-950/5 backdrop-blur-2xl ring-1 ring-gray-950/10 dark:ring-gray-950/25 border border-white/50 dark:bg-white/5 dark:border-white/5";
 ---
 
 <section>
     <div class="swiper container">
         <div class="swiper-wrapper">
-            {
-                images.map((image, index) => (
-                    <div class={swiperSlideClasses}>
-                        <Image
-                            class="object-cover object-center rounded-md"
-                            src={image}
-                            alt={`Evotol landing with Smoke Split ${index + 1}`}
-                            loading="lazy"
-                        />
-                        <ImageBorderDots />
-                    </div>
-                ))
-            }
+            <div class={swiperSlideClasses}>
+                <Image
+                    class="h-96 object-center rounded-md"
+                    src={slide1}
+                    alt="Carousal Image"
+                    loading="lazy"
+                />
+                <ImageBorderDots />
+            </div>
+            <div class={swiperSlideClasses}>
+                <Image
+                    class="h-96 object-center rounded-md"
+                    src={slide2}
+                    alt="Carousal Image"
+                    loading="lazy"
+                />
+                <ImageBorderDots />
+            </div>
+            <div class={swiperSlideClasses}>
+                <Image
+                    class="h-96 object-center rounded-md"
+                    src={slide3}
+                    alt=""
+                    loading="lazy"
+                />
+                <ImageBorderDots />
+            </div>
         </div>
         <div class="swiper-pagination"></div>
 
@@ -78,9 +85,6 @@ const { images = [smokeSplit1, smokeSplit2, smokeSplit3] } =
             },
             768: {
                 slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
             },
         },
     };

@@ -1,10 +1,10 @@
 ---
-import HeroCarousal from "@components/HeroCarousal.astro";
-import type { VideoSource } from "@components/HeroCarousal.astro";
+import HeroCarousal from "@components/molecules/HeroCarousal.astro";
+import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
-import FocusText from "@components/FocusText.astro";
-import Carousel from "@components/Carousel.astro";
-import VideoBlock from "@components/VideoBlock.astro";
+import FocusText from "@components/molecules/FocusText.astro";
+import Carousel from "@components/molecules/Carousel.astro";
+import VideoBlock from "@components/molecules/VideoBlock.astro";
 // import LogoCloud from "@components/LogoCloud.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 
@@ -21,8 +21,9 @@ import SeatRender1 from "../assets/evtol_img/Seat1.png";
 import SeatRender2 from "../assets/evtol_img/Seat2.jpg";
 import SeatRender3 from "../assets/evtol_img/Seat3.png";
 
-import FeatureGrid from "@components/FeatureGrid.astro";
-import Tabs from "@components/Tabs.astro";
+import FeatureGrid from "@components/molecules/FeatureGrid.astro";
+import Models from "@components/Models.astro";
+import AboutSection from "@components/AboutSection.astro";
 
 import {
 	focusText1,
@@ -50,8 +51,8 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			description={focusText1.description}
 		/>
 		<!-- <LogoCloud /> -->
-		<Tabs />
-		<VideoBlock videoSrc={mostavioSecondVid} />
+		<Models />
+		<!-- <VideoBlock videoSrc={mostavioSecondVid} />
 		<FocusText
 			header={focusText2.header}
 			description={focusText2.description}
@@ -63,7 +64,7 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			description={focusText3.description}
 			link={focusText3.link}
 		/>
-		<VideoBlock placeholderImage={SeatRender2} />
+		<VideoBlock placeholderImage={SeatRender2} /> -->
 
 		<FeatureGrid content={featureContent}
 			><FocusText header={focusText4.header} /></FeatureGrid
@@ -76,6 +77,7 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			link={focusText3.link}
 		/>
 		<VideoBlock videoSrc={Video3} placeholderImage={mostavioViewRight} />
+		<AboutSection />
 		<NewsLetter />
 	</main>
 </Layout>
