@@ -24,6 +24,7 @@ import SeatRender3 from "../assets/evtol_img/Seat3.png";
 import FeatureGrid from "@components/molecules/FeatureGrid.astro";
 import Models from "@components/Models.astro";
 import AboutSection from "@components/AboutSection.astro";
+import LatestNews from "@components/LatestNews.astro";
 
 import {
 	focusText1,
@@ -78,6 +79,7 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 		/>
 		<VideoBlock videoSrc={Video3} placeholderImage={mostavioViewRight} />
 		<AboutSection />
+		<LatestNews />
 		<NewsLetter />
 	</main>
 </Layout>

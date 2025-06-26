@@ -1,0 +1,76 @@
+---
+import Container from "./molecules/Container.astro";
+import { getCollection } from "astro:content";
+import { cn } from "@lib/utils";
+import { button } from "@tailus/themer-button";
+import Frame from "./molecules/Frame.astro";
+
+const posts = await getCollection("posts");
+const sortedPosts = posts.sort((a, b) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+    return dateB.getTime() - dateA.getTime(); // newest first
+});
+
+const latestThree = sortedPosts.slice(0, 3);
+---
+
+<section>
+    <Container>
+        <div class="mb-32 text-center">
+            <h2
+                class="text-4xl font-bold text-gray-800 dark:text-white md:text-6xl"
+            >
+                Awards and News
+            </h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {
+                latestThree.map((post) => (
+                    <div
+                        id={post.slug}
+                        data-featured={post.data.featured}
+                        data-post={post.data.intro}
+                        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700  dark:bg-stone-950 bg-opacity-50 shadow-2xl shadow-gray-600/10"
+                    >
+                        {post?.data?.thumbnail && (
+                            <div class="relative overflow-hidden rounded-xl">
+                                <img
+                                    src={post?.data?.thumbnail}
+                                    alt={`Thumbnail for ${post.header}`}
+                                    loading="lazy"
+                                    class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                                />
+                            </div>
+                        )}
+                        <div class="mt-6 relative">
+                            <a href={`/news/${post.slug}`}>
+                                <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
+                                    {post?.data.header}
+                                </h3>
+                            </a>
+                            <a
+                                class="inline-block mt-3"
+                                href={`/news/${post.slug}`}
+                            >
+                                <span class="text-info dark:text-blue-300">
+                                    Read more
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <div class="mt-24 flex flex-wrap justify-center gap-y-4 gap-x-6">
+            <Frame>
+                <a
+                    href="/news"
+                    class={cn(button.primary.lg, "pb-[1px]", "relative z-[1]")}
+                >
+                    View All News
+                </a>
+            </Frame>
+        </div>
+    </Container>
+</section>
