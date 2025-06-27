@@ -4,10 +4,31 @@ import SpeedIcon from "../assets/icons/Speed.png";
 import TicketIcon from "../assets/icons/Ticket.png";
 import ChargingStationIcon from "../assets/icons/ChargingStation.png";
 
-let bannerContent = {
-    header: "Introducing the Prototype",
+let mx1Banner = {
+    header: "MX1 ",
+    tagline:
+        "Introducing the Prototype",
     description:
-        "Our revolutionary eVTOL prototype combines sleek design with cutting-edge technology to redefine personal air travel. Engineered for efficiency and safety, this aircraft is set to transform the way you commute.",
+        "Our next generation eVTOL prototype is designed to redefine urban commuting.<br> With seating for <strong>2–3 passengers</strong>,\
+         MX1 combines sleek design with <strong>AI-powered navigation</strong>, <strong>real-time collision avoidance</strong>, and advanced safety systems. ",
+};
+
+
+let aeroBanner = {
+    header: "Aeroguardian",
+    tagline:
+        "Built for Critical Missions",
+    description: "Designed for emergency response and rapid intervention. As a GOAERO Stage 1 Winner, Aeroguardian is built to meet the demands of high-stakes scenarios.\
+     With the ability to carry up to 160 kg, it ensures fast and safe transport of patients, organs, and life-saving supplies from remote or high-risk zones. "
+};
+
+
+let ultralightBanner = {
+    header: "Ultralight",
+    tagline:
+        "Personal Flight for Rural Exploration",
+    description: "MOSTAVIO’s Ultralight is a single passenger eVTOL designed for personal recreational use in rural environments. With a lightweight\
+     frame compliant with FAA Part 103 and Transport Canada ultralight standards, it offers a safe and simple solution for off-grid flight. Perfect for scenic flights and off-grid adventures—coming soon to elevate your outdoor experience. "
 };
 
 let featureContent = [
@@ -86,7 +107,9 @@ let focusText3 = {
 // };
 
 export {
-    bannerContent,
+    mx1Banner,
+    aeroBanner,
+    ultralightBanner,
     featureContent,
     focusText1,
     focusText2,

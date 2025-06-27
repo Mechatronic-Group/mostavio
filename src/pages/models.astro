@@ -33,7 +33,9 @@ import {
 	// focusText4,
 	featureContent,
 	// featureContent2,
-	bannerContent,
+	mx1Banner,
+	aeroBanner,
+	ultralightBanner,
 } from "../content/models";
 
 let media: Array<string | VideoSource | ImageMetadata> = [aircraftBanner];
@@ -41,7 +43,52 @@ let media: Array<string | VideoSource | ImageMetadata> = [aircraftBanner];
 
 <Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
-		<HeroCarousal media={media} content={bannerContent} />
+		<div class="pt-24"></div>
+		<FocusText
+			header="Our eVTOL Models"
+			description="At Mostavio, we believe in the future of air mobility, from everyday urban commuting to life-saving emergency response. All our eVTOL models are engineered to deliver safety, efficiency, and innovation in every flight. "
+		/>
+		<!-- MX1 -->
+		<HeroCarousal
+			media={media}
+			content={{
+				header: mx1Banner.header,
+				description: mx1Banner.tagline,
+			}}
+			hideSocials
+		/>
+		<FeatureGrid content={featureContent}
+			><FocusText description={mx1Banner.description} /></FeatureGrid
+		>
+
+		<!-- Aero -->
+		<HeroCarousal
+			media={media}
+			content={{
+				header: aeroBanner.header,
+				description: aeroBanner.tagline,
+			}}
+			hideSocials
+		/>
+		<FeatureGrid content={featureContent}
+			><FocusText description={aeroBanner.description} /></FeatureGrid
+		>
+
+		<!-- Ultralight -->
+		<HeroCarousal
+			media={media}
+			content={{
+				header: ultralightBanner.header,
+				description: ultralightBanner.tagline,
+			}}
+			hideSocials
+		/>
+		<FeatureGrid content={featureContent}
+			><FocusText
+				description={ultralightBanner.description}
+			/></FeatureGrid
+		>
+
 		<FeatureGrid content={featureContent} />
 		<VideoBlock placeholderImage={frameArm} />
 		<FocusText
