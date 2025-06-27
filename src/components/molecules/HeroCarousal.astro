@@ -27,6 +27,8 @@ const { media, content, placeholderImage, playbackRate, hideSocials } =
     class="relative w-full h-screen overflow-hidden scroll-mt-24 bg-gradient-default"
     id="home"
 >
+    <slot />
+
     {
         placeholderImage ? (
             <Image
