@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import partytown from '@astrojs/partytown';
-
+import svgr from "vite-plugin-svgr";
 import sitemap from '@astrojs/sitemap';
 
 
@@ -11,6 +11,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap(),
+    svgr(),
     partytown({
       config: {
         forward: [

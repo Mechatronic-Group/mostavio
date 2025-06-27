@@ -1,0 +1,241 @@
+---
+import { timeline } from "../content/company";
+---
+
+<section>
+    <div class="mx-auto px-4 sm:px-12 xl:max-w-5xl xl:px-0">
+        <div class="text-center">
+            <h2
+                class="text-3xl font-bold text-gray-900 dark:text-white md:text-4xl xl:text-5xl"
+            >
+                Our Story
+            </h2>
+            <!-- <p
+                class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5"
+            >
+                Founded in Toronto in 2021, we specialize in next generation
+                eVTOL solutions designed to transform urban mobility. With a
+                focus on safety, sustainability, and intelligent design, our
+                mission is to make personal air transportation more accessible,
+                efficient, and environmentally responsible.
+            </p> -->
+        </div>
+
+        <div
+            class="relative mt-32 hidden h-40 w-40 items-center justify-center lg:mx-auto lg:flex"
+        >
+            <div class="it absolute inset-0 flex flex-wrap blur-3xl">
+                <div
+                    aria-hidden="true"
+                    class="h-1/2 w-1/2 rounded-tl-full bg-primary"
+                >
+                </div>
+                <div
+                    aria-hidden="true"
+                    class="h-1/2 w-1/2 rounded-tr-full bg-purple-700"
+                >
+                </div>
+                <div
+                    aria-hidden="true"
+                    class="h-1/2 w-1/2 rounded-bl-full bg-secondary"
+                >
+                </div>
+                <div
+                    aria-hidden="true"
+                    class="h-1/2 w-1/2 rounded-br-full bg-secondaryLight"
+                >
+                </div>
+            </div>
+            <div
+                class="flex h-40 w-40 rounded-full border border-gray-900/20 bg-gray-900/10 dark:border-white/20 dark:bg-white/10"
+            >
+                <img
+                    class="h-full w-full rounded-full object-cover object-top"
+                    src="/favicon-32x32.png"
+                    alt="Logo"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+
+        <div class="pl-2">
+            <div
+                class="relative py-32 before:absolute before:inset-0 before:mx-auto before:h-full before:w-px after:absolute after:inset-0 after:h-32 after:w-px after:bg-gradient-to-t after:from-gray-900/20 after:via-gray-200 after:before:to-gray-900 dark:after:from-white/20 dark:after:via-gray-800 lg:before:bg-gray-200 lg:after:mx-auto lg:after:bg-gradient-to-b lg:dark:before:bg-gray-900"
+            >
+                {
+                    timeline.map((step, i) => (
+                        <div key={i}>
+                            <div
+                                class={`relative flex flex-col items-center gap-10 ${i === 0 ? "pb-12" : "py-12"} pl-6 sm:pl-12 md:flex-row ${i === 0 ? "md:pb-20" : "md:py-20"} lg:pl-0
+                                ${
+                                    i === 0
+                                        ? "before:absolute before:inset-0 before:h-1/2 before:w-px before:bg-gradient-to-b before:from-gray-400/70 before:to-gray-400/70 after:absolute after:inset-x-0 after:bottom-0 after:h-1/2 after:w-px after:border-r after:border-dashed after:border-gray-400/70 dark:before:from-gray-700 dark:before:to-gray-700 dark:after:border-gray-700 lg:before:left-[9.1rem] lg:after:left-[9.1rem]"
+                                        : i === timeline.length - 1
+                                          ? "before:absolute before:inset-x-0 before:bottom-0 before:h-1/2 before:w-px before:bg-gradient-to-t before:from-transparent before:to-gray-400/70 after:absolute after:inset-0 after:top-0 after:h-1/2 after:w-px after:border-r after:border-dashed after:border-gray-400/70 dark:before:to-gray-700 dark:after:border-gray-700 lg:before:left-[9.1rem] lg:after:left-[9.1rem]"
+                                          : "after:absolute after:inset-0 after:h-full after:w-px after:border-r after:border-dashed after:border-gray-400/70 dark:after:border-gray-700 lg:after:left-[9.1rem]"
+                                }`}
+                            >
+                                <div
+                                    class={`flex w-full flex-col gap-10 ${step.image ? "md:w-1/2" : ""} lg:flex-row lg:items-center`}
+                                >
+                                    <div class="hidden w-max md:block">
+                                        <div class="h-24 w-24 rounded-full border border-gray-200 bg-white p-4 shadow-xl shadow-gray-600/10 dark:border-gray-800 dark:bg-gray-900 dark:shadow-none flex items-center justify-center">
+                                            {step.avatar && (
+                                                <Fragment
+                                                    set:html={step.avatar}
+                                                    class="size-6 text-white"
+                                                />
+                                            )}
+                                            {step.avatarImg && (
+                                                <img
+                                                    class="h-full w-full rounded-full object-cover object-top fill-white"
+                                                    src={step.avatarImg}
+                                                    alt="user avatar"
+                                                    loading="lazy"
+                                                    width="400"
+                                                    height="400"
+                                                />
+                                            )}
+                                            {!step.avatar &&
+                                                !step.avatarImg && (
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke-width="1.5"
+                                                        stroke="currentColor"
+                                                        class="size-6"
+                                                    >
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+                                                        />
+                                                    </svg>
+                                                )}
+                                        </div>
+                                    </div>
+                                    <div
+                                        aria-hidden="true"
+                                        class="absolute top-[1.80rem] -left-2.5 z-[1] my-auto h-max w-max md:inset-y-0 lg:relative lg:ml-2.5 lg:-mr-2.5"
+                                    >
+                                        <div class="h-5 w-5 rounded-full border-8 border-white bg-primary ring-1 ring-gray-400/70 dark:border-darker dark:bg-white dark:ring-gray-700" />
+                                    </div>
+                                    <div class="">
+                                        <span class="text-gray-500">
+                                            {step.year}
+                                        </span>
+                                        <h3 class="mt-0.5 text-xl font-semibold text-gray-700 dark:text-white">
+                                            {step.title}
+                                        </h3>
+                                        <p class="mt-2 text-gray-600 dark:text-gray-400">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                                {step.image && (
+                                    <div class="w-full md:w-1/2">
+                                        <img
+                                            class="h-56 w-full rounded-2xl object-cover md:h-80"
+                                            src={step.image}
+                                            alt={step.title}
+                                            loading="lazy"
+                                            width="1165"
+                                            height="864"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                            {Array.isArray(step.highlights) &&
+                                step.highlights.map((highlight, hidx) => (
+                                    <div class="flex items-center gap-6">
+                                        <div
+                                            aria-hidden="true"
+                                            class="-ml-8 h-16 w-16 rotate-45 rounded-bl-full rounded-tr-3xl border border-dashed border-gray-400/70 dark:border-gray-700 lg:ml-[7.15rem]"
+                                        />
+                                        {highlight.type === "customers" && (
+                                            <div class="my-12">
+                                                <span class="text-gray-700 dark:text-white mt-5">
+                                                    {highlight.text}{" "}
+                                                    <a
+                                                        href={
+                                                            highlight.link.href
+                                                        }
+                                                        target={
+                                                            highlight?.target
+                                                        }
+                                                        class="text-primary underline dark:text-primaryLight"
+                                                    >
+                                                        {highlight.link.text}
+                                                    </a>{" "}
+                                                    !
+                                                </span>
+                                            </div>
+                                        )}
+                                        {highlight.type === "team" && (
+                                            <div class="my-5">
+                                                <span class="text-gray-700 dark:text-white">
+                                                    {highlight.text}{" "}
+                                                    <a
+                                                        href={
+                                                            highlight.link.href
+                                                        }
+                                                        class="text-primary underline dark:text-primaryLight"
+                                                    >
+                                                        {highlight.link.text}
+                                                    </a>{" "}
+                                                    !
+                                                </span>
+                                                <div class="mt-5 flex -space-x-1 children:h-10 children:w-10 children:rounded-full children:object-cover children:ring-4 children:ring-gray-100 dark:children:ring-darker">
+                                                    {highlight.images.map(
+                                                        (src, _) => (
+                                                            <img
+                                                                src={src}
+                                                                alt="user avatar"
+                                                                loading="lazy"
+                                                                class="rounded-full"
+                                                                width="50"
+                                                                height="50"
+                                                            />
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+                                        {highlight.type === "companies" && (
+                                            <div class="my-5 w-10/12">
+                                                <span class="text-gray-700 dark:text-white">
+                                                    {highlight.text}{" "}
+                                                    <a
+                                                        href={
+                                                            highlight.link.href
+                                                        }
+                                                        class="text-primary underline dark:text-primaryLight"
+                                                    >
+                                                        {highlight.link.text}
+                                                    </a>{" "}
+                                                    !
+                                                </span>
+                                                <div class="mt-5 flex w-full gap-6 lg:gap-x-24">
+                                                    {highlight.images.map(
+                                                        (src, idx) => (
+                                                            <img
+                                                                class={`h-10 w-auto md:h-12 lg:w-auto${idx > 2 ? " hidden sm:block" : ""}`}
+                                                                src={src}
+                                                                loading="lazy"
+                                                                alt=""
+                                                            />
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
