@@ -12,6 +12,8 @@ import RocketIcon from "../assets/icons/rocket.svg?raw";
 import LightBulbIcon from "../assets/icons/lightbulb.svg?raw";
 import BeakerIcon from "../assets/icons/beaker.svg?raw";
 import WrenchIcon from "../assets/icons/wrench-screwdriver.svg?raw";
+import CubeIcon from "../assets/icons/cube.svg?raw";
+import UserPlusIcon from "../assets/icons/user-plus.svg?raw";
 
 
 let bannerContent = {
@@ -136,7 +138,7 @@ let jobList = [
 const timeline = [
     {
         year: "2021",
-        title: "Company Founded",
+        title: "Mostavio Founded",
         description:
             "Founded with the ambition to revolutionize personal air mobility. Infrastructure development and strategic planning began.",
         // image: step1Image.src,
@@ -157,8 +159,9 @@ const timeline = [
         year: "2023",
         title: "Grown the team",
         description:
-            "Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia",
+            "We expanded our team with new aerospace, mechanical, and software engineers.",
         // image: step2Image.src,
+        avatar: UserPlusIcon,
         highlights: [{
             type: "team",
             text: "New Engineers joined",
