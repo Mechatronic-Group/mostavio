@@ -3,6 +3,7 @@ import Container from "./Container.astro";
 import { cn } from "@lib/utils";
 import Frame from "./Frame.astro";
 import { button } from "@tailus/themer-button";
+import Button from "@components/atoms/Button.astro";
 
 interface FocusTextProps {
     header?: string;
@@ -47,7 +48,7 @@ const {
                     )
                 }
                 <slot />
-                {
+                <!-- {
                     link && (
                         <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
                             <Frame>
@@ -55,7 +56,7 @@ const {
                                     href={link}
                                     target="_blank"
                                     class={cn(
-                                        button.primary.lg,
+                                        button.neutral?.lg,
                                         "pb-[1px]",
                                         "relative z-[1]",
                                     )}
@@ -65,7 +66,8 @@ const {
                             </Frame>
                         </div>
                     )
-                }
+                } -->
+                {link && <Button link={link} ctaLabel={ctaLabel} />}
             </div>
         </div>
     </Container>
