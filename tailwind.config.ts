@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import themer from "@tailus/themer";
+// import themer from "@tailus/themer";
 
 module.exports = {
     content: [
@@ -7,7 +7,7 @@ module.exports = {
         "./node_modules/@tailus/themer-**/dist/**/*.{js,ts}"
     ],
     darkMode: 'selector',
-    plugins: [
-        themer
-    ],
+    // plugins: [
+    //     themer
+    // ],
 };

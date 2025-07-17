@@ -1,7 +1,6 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
 import Container from "./Container.astro";
-import Frame from "./Frame.astro";
 import { cn } from "@lib/utils";
 import { phoneNumber, phoneIconSvg } from "../../consts.ts";
 
@@ -106,90 +105,85 @@ const links = [
                     class="hidden transition ease-in-out duration-500 flex-wrap lg:flex gap-6 items-center w-full lg:w-fit"
                 >
                     <div class="fixed inset-x-0 lg:size-fit lg:m-auto">
-                        <Frame>
-                            <div
-                                class="relative w-full text-gray-600 dark:text-gray-300"
+                        <div
+                            class="relative w-full text-gray-600 dark:text-gray-300"
+                        >
+                            <ul
+                                class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm"
                             >
-                                <ul
-                                    class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm"
-                                >
-                                    {
-                                        links.map((link) =>
-                                            link.children ? (
-                                                <li class="relative group">
-                                                    <a
-                                                        class={cn(
-                                                            "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5 flex items-center gap-1",
-                                                            link.class,
-                                                        )}
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                        tabindex="0"
-                                                        href={link.to}
-                                                        type="button"
-                                                    >
-                                                        <span>
-                                                            {link.label}
-                                                        </span>
-                                                    </a>
-                                                    <ul
-                                                        class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800
+                                {
+                                    links.map((link) =>
+                                        link.children ? (
+                                            <li class="relative group">
+                                                <a
+                                                    class={cn(
+                                                        "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] transition dark:hover:text-white md:px-4 dark:hover:bg-white/5 flex items-center gap-1",
+                                                        link.class,
+                                                    )}
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"
+                                                    tabindex="0"
+                                                    href={link.to}
+                                                    type="button"
+                                                >
+                                                    <span class="uppercase">
+                                                        {link.label}
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800
                                                             group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto
                                                             lg:mt-0 mt-1"
-                                                    >
-                                                        {link.children.map(
-                                                            (child) => (
-                                                                <li>
-                                                                    <a
-                                                                        href={
-                                                                            child.to
-                                                                        }
-                                                                        class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                                                                    >
-                                                                        {
-                                                                            child.label
-                                                                        }
-                                                                    </a>
-                                                                </li>
-                                                            ),
-                                                        )}
-                                                    </ul>
-                                                </li>
-                                            ) : (
-                                                <li>
-                                                    <a
-                                                        href={link.to}
-                                                        target={link?.target}
-                                                        class={cn(
-                                                            "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5",
-                                                            link.class,
-                                                        )}
-                                                    >
-                                                        <span>
-                                                            {link.label}
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            ),
-                                        )
-                                    }
-                                    <li>
-                                        <a
-                                            href={`tel:${phoneNumber}`}
-                                            class="px-2 sm:hidden py-1 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5"
-                                        >
-                                            <span
-                                                class="flex items-center gap-2"
-                                            >
-                                                <Fragment
-                                                    set:html={phoneIconSvg}
-                                                /> Call Us Now {phoneNumber}
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </Frame>
+                                                >
+                                                    {link.children.map(
+                                                        (child) => (
+                                                            <li>
+                                                                <a
+                                                                    href={
+                                                                        child.to
+                                                                    }
+                                                                    class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                                                                >
+                                                                    {
+                                                                        child.label
+                                                                    }
+                                                                </a>
+                                                            </li>
+                                                        ),
+                                                    )}
+                                                </ul>
+                                            </li>
+                                        ) : (
+                                            <li>
+                                                <a
+                                                    href={link.to}
+                                                    target={link?.target}
+                                                    class={cn(
+                                                        "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5",
+                                                        link.class,
+                                                    )}
+                                                >
+                                                    <span class="uppercase">
+                                                        {link.label}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        ),
+                                    )
+                                }
+                                <li>
+                                    <a
+                                        href={`tel:${phoneNumber}`}
+                                        class="px-2 sm:hidden py-1 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5"
+                                    >
+                                        <span class="flex items-center gap-2">
+                                            <Fragment set:html={phoneIconSvg} />
+                                            Call Us Now {phoneNumber}
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
