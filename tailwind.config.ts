@@ -8,15 +8,6 @@ module.exports = {
     ],
     darkMode: 'selector',
     plugins: [
-        themer({
-            palette: {
-                extend: "energy",
-            },
-            radius: "smoothest",
-            background: "light",
-            border: "light",
-            padding: "large",
-
-        })
+        themer
     ],
 };
