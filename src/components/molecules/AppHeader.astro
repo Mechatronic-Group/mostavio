@@ -13,19 +13,9 @@ const links = [
         to: "/models",
         label: "Models",
         children: [
-            {
-                to: "/models/#mx1",
-                label: "MX1",
-                parent: "/models",
-            },
-            {
-                to: "/models/#aeroguardian",
-                label: "AeroGuardian",
-            },
-            {
-                to: "/models/#ultralight",
-                label: "Ultralight",
-            },
+            { to: "/models/#mx1", label: "MX1" },
+            { to: "/models/#aeroguardian", label: "AeroGuardian" },
+            { to: "/models/#ultralight", label: "Ultralight" },
         ],
     },
     {
@@ -36,33 +26,37 @@ const links = [
         to: "/company",
         label: "Company",
         children: [
-            {
-                to: "/company/#about",
-                label: "About",
-            },
-            {
-                to: "/company/#careers",
-                label: "Careers",
-            },
-            {
-                to: "/contact",
-                label: "Contact",
-            },
+            { to: "/company/#about", label: "About" },
+            { to: "/company/#careers", label: "Careers" },
+            { to: "/contact", label: "Contact" },
         ],
     },
     {
         to: "https://skyt.ca/",
         label: "SkyTech",
         target: "_blank",
-        class: "bg-[#25476d] text-white hover:bg-sky-800 dark:bg-[#25476d] dark:text-white dark:hover:bg-sky-800",
+        class: "bg-[#0077FF] text-white hover:bg-[#0077FF] dark:hover:bg-[#0077FF]",
     },
 ];
+
+// Get current URL path for active link detection
+const currentPath = Astro.url.pathname;
+
+// Function to check if a link is active
+function isActiveLink(linkPath: string): boolean {
+    if (linkPath === "/" && currentPath === "/") return true;
+    if (linkPath !== "/" && currentPath.startsWith(linkPath)) return true;
+    return false;
+}
+
+// Function to check if a parent link has active children
+function hasActiveChild(children: any[]): boolean {
+    return children.some((child) => isActiveLink(child.to.split("#")[0]));
+}
 ---
 
 <header>
-    <nav
-        class="absolute z-50 w-full lg:bg-transparent dark:lg:bg-transparent my-2"
-    >
+    <nav class="absolute z-50 w-full my-2">
         <Container>
             <div
                 class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 lg:py-8"
@@ -71,125 +65,133 @@ const links = [
                     class="relative z-20 flex w-full items-center justify-between md:px-0 lg:w-max"
                 >
                     <BrandLogo />
-
                     <div class="relative flex max-h-10 items-center lg:hidden">
                         <button
-                            aria-label="humburger"
+                            aria-label="hamburger"
                             id="hamburger"
-                            class="fixed -top-1 right-5 z-20 -mr-6 p-6"
+                            class="fixed right-5 top-2 z-20 p-4"
                         >
                             <div
-                                aria-hidden="true"
-                                id="line"
-                                class="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"
+                                class="h-0.5 w-6 bg-sky-900 dark:bg-gray-300 mb-1 transition"
                             >
                             </div>
                             <div
-                                aria-hidden="true"
-                                id="line2"
-                                class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"
+                                class="h-0.5 w-6 bg-sky-900 dark:bg-gray-300 transition"
                             >
                             </div>
                         </button>
                     </div>
                 </div>
+
                 <div
                     id="navLayer"
-                    aria-hidden="true"
                     class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-300 dark:bg-gray-900/70 lg:hidden"
                 >
                 </div>
-                <div class="lg:hidden"></div>
+
                 <div
                     id="navlinks"
-                    class="hidden transition ease-in-out duration-500 flex-wrap lg:flex gap-6 items-center w-full lg:w-fit"
+                    class="hidden flex-wrap transition ease-in-out duration-500 gap-6 items-center w-full lg:flex lg:w-fit"
                 >
-                    <div class="fixed inset-x-0 lg:size-fit lg:m-auto">
-                        <div
-                            class="relative w-full text-gray-600 dark:text-gray-300"
+                    <div
+                        class="fixed inset-x-0 lg:relative lg:inset-auto lg:w-fit lg:m-auto"
+                    >
+                        <ul
+                            class="flex mx-4 md:mx-1 mt-8 flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm"
                         >
-                            <ul
-                                class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm"
-                            >
-                                {
-                                    links.map((link) =>
-                                        link.children ? (
-                                            <li class="relative group">
-                                                <a
-                                                    class={cn(
-                                                        "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] transition dark:hover:text-white md:px-4 dark:hover:bg-white/5 flex items-center gap-1",
-                                                        link.class,
-                                                    )}
-                                                    aria-haspopup="true"
-                                                    aria-expanded="false"
-                                                    tabindex="0"
-                                                    href={link.to}
-                                                    type="button"
-                                                >
-                                                    <span class="uppercase">
-                                                        {link.label}
-                                                    </span>
-                                                </a>
-                                                <ul
-                                                    class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800
-                                                            group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto
-                                                            lg:mt-0 mt-1"
-                                                >
-                                                    {link.children.map(
-                                                        (child) => (
-                                                            <li>
-                                                                <a
-                                                                    href={
-                                                                        child.to
-                                                                    }
-                                                                    class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                                                                >
-                                                                    {
-                                                                        child.label
-                                                                    }
-                                                                </a>
-                                                            </li>
-                                                        ),
-                                                    )}
-                                                </ul>
-                                            </li>
-                                        ) : (
-                                            <li>
-                                                <a
-                                                    href={link.to}
-                                                    target={link?.target}
-                                                    class={cn(
-                                                        "px-3 py-2 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5",
-                                                        link.class,
-                                                    )}
-                                                >
-                                                    <span class="uppercase">
-                                                        {link.label}
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        ),
-                                    )
-                                }
-                                <li>
-                                    <a
-                                        href={`tel:${phoneNumber}`}
-                                        class="px-2 sm:hidden py-1 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5"
-                                    >
-                                        <span class="flex items-center gap-2">
-                                            <Fragment set:html={phoneIconSvg} />
-                                            Call Us Now {phoneNumber}
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                            {
+                                links.map((link) => {
+                                    const isActive = isActiveLink(link.to);
+                                    const hasActiveChildren =
+                                        link.children &&
+                                        hasActiveChild(link.children);
+                                    const shouldHighlight =
+                                        isActive || hasActiveChildren;
+
+                                    return link.children ? (
+                                        <li class="relative group">
+                                            <a
+                                                class={cn(
+                                                    "p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
+                                                    shouldHighlight
+                                                        ? "text-[#FF8914] hover:text-[#FF8914]"
+                                                        : "hover:text-black dark:hover:text-white",
+                                                    link.class,
+                                                )}
+                                                href={link.to}
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                            >
+                                                <span class="uppercase">
+                                                    {link.label}
+                                                </span>
+                                            </a>
+                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto lg:mt-0 mt-1">
+                                                {link.children.map((child) => {
+                                                    const childIsActive =
+                                                        isActiveLink(
+                                                            child.to.split(
+                                                                "#",
+                                                            )[0],
+                                                        );
+                                                    return (
+                                                        <li>
+                                                            <a
+                                                                href={child.to}
+                                                                class={cn(
+                                                                    "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition",
+                                                                    childIsActive
+                                                                        ? "text-[#FF8914] hover:text-[#FF8914]"
+                                                                        : "text-gray-700 dark:text-gray-200",
+                                                                )}
+                                                            >
+                                                                {child.label}
+                                                            </a>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </li>
+                                    ) : (
+                                        <li>
+                                            <a
+                                                href={link.to}
+                                                target={link?.target}
+                                                class={cn(
+                                                    "p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded transition md:px-3 md:mx-2 block",
+                                                    shouldHighlight
+                                                        ? "text-[#FF8914] hover:text-[#FF8914]"
+                                                        : "hover:text-black dark:hover:text-white",
+                                                    link.class,
+                                                )}
+                                            >
+                                                <span class="uppercase">
+                                                    {link.label}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    );
+                                })
+                            }
+                            <li class="sm:hidden">
+                                <a
+                                    href={`tel:${phoneNumber}`}
+                                    class="px-3 py-2 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-black dark:hover:text-white rounded transition md:px-4 block"
+                                >
+                                    <span class="flex items-center gap-2">
+                                        <Fragment set:html={phoneIconSvg} />
+                                        Call Us Now {phoneNumber}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </Container>
     </nav>
 </header>
+
 <script>
     const hamburgerButton = document.getElementById("hamburger");
     const navLayer = document.getElementById("navLayer");
@@ -200,9 +202,10 @@ const links = [
         navLinks.classList.toggle("hidden");
         navLinks.classList.toggle("z-10");
     });
+
     navLayer.addEventListener("click", () => {
-        navLayer.classList.toggle("scale-y-0");
-        navLinks.classList.toggle("hidden");
-        navLinks.classList.toggle("z-10");
+        navLayer.classList.add("scale-y-0");
+        navLinks.classList.add("hidden");
+        navLinks.classList.remove("z-10");
     });
 </script>

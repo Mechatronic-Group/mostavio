@@ -7,14 +7,16 @@
     --color-text: #FFFFFF;
 }
 
-/* @layer base {
+@layer base {
     :root {
         --color-bg: #000000;
         --color-text: #FFFFFF;
+        --color-skytech: #0077FF;
+        --color-orange: #FF8914;
     }
 
     .dark {
         --color-bg: #000000;
         --color-text: #FFFFFF;
     }
-} */
+}
