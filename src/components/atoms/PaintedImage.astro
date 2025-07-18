@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+
+interface PaintedImageProps {
+    image: any;
+    alt: string;
+    imageClass?: string;
+    containerClass?: string;
+}
+const {
+    image,
+    alt = "Mostavio Painted Image",
+    imageClass = "",
+    containerClass = "",
+} = Astro.props as PaintedImageProps;
+---
+
+<section
+    class={`relative overflow-hidden scroll-mt-24 bg-gradient-default ${containerClass}`}
+>
+    {
+        (
+            <Image
+                class={`w-full h-96 md:h-[95vh] object-cover ${imageClass}`}
+                src={image}
+                alt={alt}
+            />
+        )
+    }
+</section>

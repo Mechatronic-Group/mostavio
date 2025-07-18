@@ -1,0 +1,85 @@
+---
+import Container from "./molecules/Container.astro";
+import Headline from "./atoms/Headline.astro";
+
+const cards = [
+    {
+        header: "Innovation Award 2024",
+        thumbnail:
+            "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=256&fit=crop",
+        intro: "Recognized for outstanding contribution to technology innovation and digital transformation.",
+    },
+    {
+        header: "Revolutionary Product Launch",
+        thumbnail:
+            "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=256&fit=crop",
+        intro: "Introducing our next-generation platform that's set to transform the industry landscape.",
+    },
+    {
+        header: "Strategic Partnership",
+        thumbnail:
+            "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=256&fit=crop",
+        intro: "Announcing our collaboration with industry leaders to drive innovation and excellence.",
+    },
+];
+---
+
+<section>
+    <Container>
+        <Headline
+            className="text-center uppercase"
+            headline="Designed For Impact"
+        />
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {
+                cards.map((post, index) => (
+                    <div
+                        id={index.toString()}
+                        class={`group p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-transparent to-white dark:to-stone-950 shadow-2xl shadow-gray-600/10 relative overflow-hidden ${index % 2 === 1 ? "mt-24 -mb-24" : ""}`}
+                    >
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-300 via-gray-200 to-transparent dark:from-gray-600 dark:via-gray-700 dark:to-transparent opacity-50 pointer-events-none rounded-3xl" />
+                        <div class="absolute inset-[1px] bg-gradient-to-b from-transparent to-white dark:to-stone-950 rounded-3xl" />
+
+                        <div class="relative z-10">
+                            {post?.thumbnail && (
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <img
+                                        src={post?.thumbnail}
+                                        alt={`Thumbnail for ${post.header}`}
+                                        loading="lazy"
+                                        class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                            )}
+                            <div class="mt-6 relative">
+                                {post?.link ? (
+                                    <a href={`/${post.link}`}>
+                                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                            {post?.header}
+                                        </h3>
+                                    </a>
+                                ) : (
+                                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
+                                        {post?.header}
+                                    </h3>
+                                )}
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                                    {post?.intro}
+                                </p>
+                                {post?.link && (
+                                    <a
+                                        class="inline-block mt-3 text-blue-600 dark:text-blue-300 hover:text-blue-700 dark:hover:text-blue-200 transition-colors"
+                                        href={`/${post.link}`}
+                                    >
+                                        Read more →
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </Container>
+</section>

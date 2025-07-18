@@ -3,44 +3,20 @@ import HeroCarousal from "@components/molecules/HeroCarousal.astro";
 import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
 import FocusText from "@components/molecules/FocusText.astro";
-import Carousel from "@components/molecules/Carousel.astro";
-import VideoBlock from "@components/molecules/VideoBlock.astro";
-// import LogoCloud from "@components/LogoCloud.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 
-// Media
-import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
-import mostavioSecondVid from "../assets/hero_media/mostavio-secondary-banner.mp4";
-import Video3 from "../assets/hero_media/Cybertruck-Dopamine-On-Tap-Desktop.mp4";
-// import FlightVideo from "../assets/hero_media/lilium.mp4";
-// import flightVideoPlaceholder from "../assets/hero_media/lilium.png";
-
-import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
-import VideoPlaceholder2 from "../assets/evtol_img/interiorCover.png";
-import SeatRender1 from "../assets/evtol_img/Seat1.png";
-import SeatRender2 from "../assets/evtol_img/Seat2.jpg";
-import SeatRender3 from "../assets/evtol_img/Seat3.png";
-
-import FeatureGrid from "@components/molecules/FeatureGrid.astro";
 import Models from "@components/Models.astro";
 import AboutSection from "@components/AboutSection.astro";
 import LatestNews from "@components/LatestNews.astro";
+import PaintedImage from "@components/atoms/PaintedImage.astro";
 
-import {
-	focusText1,
-	focusText2,
-	focusText3,
-	focusText4,
-	focusText5,
-	featureContent,
-} from "../content/home";
+import FeatureCards from "@components/FeatureCards.astro";
 
-// let media: Array<string | VideoSource | ImageMetadata> = [
-// 	{ source: Video1, poster: Banner2 }, // `src` collides with ImageMetadata
-// 	{ source: Video2, poster: Banner3 },
-// 	{ source: Video3, poster: Banner4 },
-// 	{ source: Video4, poster: Banner1 },
-// ];
+// Media
+import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
+import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
+import SeatRender1 from "../assets/evtol_img/Seat1.png";
+
 let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
@@ -60,33 +36,13 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			containerClass="w-3/5 ml-auto"
 			contentClass="text-right"
 		/>
-		<!-- <LogoCloud /> -->
-		<!-- <VideoBlock videoSrc={mostavioSecondVid} />
-		<FocusText
-		header={focusText2.header}
-		description={focusText2.description}
-		link={focusText2.link}
-		/>
-		<Carousel />
-		<FocusText
-		header={focusText3.header}
-		description={focusText3.description}
-		link={focusText3.link}
-		/>
-		<VideoBlock placeholderImage={SeatRender2} /> -->
-
-		<!-- <FeatureGrid content={featureContent}
-		><FocusText header={focusText4.header} /></FeatureGrid
-		> -->
-		<VideoBlock placeholderImage={SeatRender1} />
+		<PaintedImage image={SeatRender1} alt="Mostavio Painted Image" />
 		<Models />
 		<!-- <VideoBlock placeholderImage={SeatRender1} /> -->
-		<FocusText
-			header={focusText5.header}
-			description={focusText5.description}
-			link={focusText3.link}
-		/>
-		<VideoBlock videoSrc={Video3} placeholderImage={mostavioViewRight} />
+		<PaintedImage image={mostavioViewRight} alt="Mostavio Painted Image" />
+
+		<FeatureCards />
+
 		<AboutSection />
 		<LatestNews />
 		<NewsLetter />
