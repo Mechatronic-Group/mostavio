@@ -1,32 +1,59 @@
 ---
-import Frame from "../molecules/Frame.astro";
-
 interface Props {
     link: string;
     ctaLabel?: string;
+    variant?: "light" | "dark" | "transparent";
+    containerClass?: string;
 }
 
-const { link, ctaLabel = "Learn More" } = Astro.props;
+const {
+    link,
+    ctaLabel = "Learn More",
+    variant = "light",
+    containerClass = "",
+} = Astro.props;
+
+// Define styles based on variant
+const styles = {
+    light: {
+        border: "border-black",
+        background: "bg-white",
+        text: "text-black",
+        hoverText: "group-hover:text-white",
+    },
+    dark: {
+        border: "border-white",
+        background: "bg-black",
+        text: "text-white",
+        hoverText: "group-hover:text-black",
+    },
+    transparent: {
+        border: "border-white",
+        background: "bg-transparent",
+        text: "text-white",
+        hoverText: "group-hover:text-white",
+    },
+};
+
+const currentStyle = styles[variant];
 ---
 
-<div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
-    <Frame>
-        <a
-            href={link}
-            target="_blank"
-            class="relative inline-block group border border-black px-6 py-3 rounded-3xl font-medium overflow-hidden bg-white"
-        >
-            <!-- Sliding red-yellow gradient (invisible until hover) -->
-            <span
-                class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-400 transition-transform duration-500 transform -translate-x-full group-hover:translate-x-0 z-0"
-            ></span>
+<div
+    class={`flex flex-wrap justify-center gap-y-4 gap-x-6 mt-8 cursor-pointer  ${containerClass}`}
+>
+    <a
+        href={link}
+        target="_blank"
+        class={`relative inline-block group border ${currentStyle.border} px-6 py-3 rounded-3xl font-medium overflow-hidden ${currentStyle.background}`}
+    >
+        <span
+            class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-400 transition-transform duration-500 transform -translate-x-full group-hover:translate-x-0 z-0"
+        ></span>
 
-            <!-- Text stays visible above gradient -->
-            <span
-                class="relative z-10 text-black transition-colors duration-300 group-hover:text-white"
-            >
-                {ctaLabel}
-            </span>
-        </a>
-    </Frame>
+        <span
+            class={`relative z-10 ${currentStyle.text} transition-colors duration-300 ${currentStyle.hoverText}`}
+        >
+            {ctaLabel}
+        </span>
+    </a>
 </div>
