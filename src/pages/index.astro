@@ -46,7 +46,11 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 
 <Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
-		<HeroCarousal media={media} />
+		<HeroCarousal
+			contentClass="top-1/4 text-left"
+			headerClass="w-1/4"
+			media={media}
+		/>
 		<FocusText
 			header={focusText1.header}
 			description={focusText1.description}
