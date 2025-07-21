@@ -1,11 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import Button from "./Button.astro";
+import AVPattern from "../../assets/v2/AVPattern.png";
 
 interface PaintedImageProps {
     image: any;
     alt: string;
     imageClass?: string;
+    pattern?: boolean;
     containerClass?: string;
     content?: {
         tagline?: string;
@@ -22,6 +24,7 @@ const {
     imageClass = "",
     containerClass = "",
     content,
+    pattern = true,
     contentClass,
     headerClass,
 } = Astro.props as PaintedImageProps;
@@ -32,11 +35,35 @@ const {
 >
     <slot />
 
+    {
+        pattern && (
+            <div class="absolute top-0 left-0 w-full z-10 pointer-events-none rotate-180">
+                <Image
+                    src={AVPattern}
+                    alt="Pattern overlay"
+                    class="w-full h-32 md:h-20 object-cover opacity-80"
+                />
+            </div>
+        )
+    }
+
     <Image
         class={`w-full h-96 md:h-[95vh] object-cover ${imageClass}`}
         src={image}
         alt={alt}
     />
+
+    {
+        pattern && (
+            <div class="absolute bottom-0 left-0 w-full z-10 pointer-events-none transform">
+                <Image
+                    src={AVPattern}
+                    alt="Pattern overlay"
+                    class="w-full h-32 md:h-20 object-cover opacity-80"
+                />
+            </div>
+        )
+    }
 
     {
         content && (
@@ -69,4 +96,3 @@ const {
         )
     }
 </section>
-

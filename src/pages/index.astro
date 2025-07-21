@@ -3,7 +3,7 @@ import HeroCarousal from "@components/molecules/HeroCarousal.astro";
 import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
 import FocusText from "@components/molecules/FocusText.astro";
-import NewsLetter from "@components/NewsLetter.astro";
+// import NewsLetter from "@components/NewsLetter.astro";
 
 import Models from "@components/Models.astro";
 import SkyTechSection from "@components/SkyTechSection.astro";
@@ -16,6 +16,9 @@ import FeatureCards from "@components/FeatureCards.astro";
 import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
 import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
 import SeatRender1 from "../assets/evtol_img/Seat1.png";
+
+// Media V2
+import TeamPics from "../assets/v2/home/TeamPic.png";
 
 let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
@@ -36,7 +39,10 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			containerClass="w-3/5 ml-auto"
 			contentClass="text-right"
 		/>
-		<PaintedImage image={SeatRender1} alt="Mostavio Painted Image" />
+		<PaintedImage
+			image={TeamPics}
+			alt="Mostavio Team Working Candid Image"
+		/>
 		<Models />
 		<!-- <VideoBlock placeholderImage={SeatRender1} /> -->
 		<PaintedImage image={mostavioViewRight} alt="Mostavio Painted Image" />

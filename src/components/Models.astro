@@ -4,6 +4,8 @@ import smokeSplit1 from "../assets/evtol_img/design4.png";
 import smokeSplit2 from "../assets/evtol_img/design5.png";
 import smokeSplit3 from "../assets/evtol_img/design6.png";
 import Button from "./atoms/Button.astro";
+import Headline from "./atoms/Headline.astro";
+import Container from "./molecules/Container.astro";
 
 export interface ModelData {
     name: string;
@@ -46,7 +48,8 @@ const defaultModels: ModelData[] = [
     },
 ];
 
-const defaultSlideClasses = "swiper-slide relative mr-0 backdrop-blur-2xl";
+const defaultSlideClasses =
+    "bg-gradient-painted swiper-slide relative mr-0 backdrop-blur-2xl";
 
 const {
     models = defaultModels,
@@ -58,62 +61,65 @@ const {
 ---
 
 <section class="relative">
-    <div class={`swiper container ${containerClass}`}>
-        <div class="swiper-wrapper">
-            {
-                models.map((model, index) => (
-                    <div class={slideClass}>
-                        <div class="relative h-full">
-                            <div class="relative">
-                                <Image
-                                    class={imageClass}
-                                    src={model.preview}
-                                    alt={`${model.name} - ${model.tagline}`}
-                                    loading="lazy"
-                                />
+    <Container>
+        <Headline className="uppercase my-10" headline="Aircrafts" />
+        <div class={`swiper container ${containerClass}`}>
+            <div class="swiper-wrapper">
+                {
+                    models.map((model, index) => (
+                        <div class={slideClass}>
+                            <div class="relative h-full">
+                                <div class="relative">
+                                    <Image
+                                        class={imageClass}
+                                        src={model.preview}
+                                        alt={`${model.name} - ${model.tagline}`}
+                                        loading="lazy"
+                                    />
+                                </div>
+
+                                {showContent && (
+                                    <>
+                                        <div class="absolute top-4 ease-in-out left-4 z-10 max-w-xs">
+                                            <div class="backdrop-blur-sm p-4 text-white">
+                                                <p class="text-sm leading-relaxed">
+                                                    {model.content}
+                                                </p>
+                                            </div>
+                                            <Button
+                                                link="/models"
+                                                ctaLabel="Learn More"
+                                                containerClass="justify-start ml-2"
+                                                variant="light"
+                                            />
+                                        </div>
+
+                                        <div class="absolute top-4 ease-in-out right-4 z-10 text-right">
+                                            <div class="space-y-4  backdrop-blur-sm p-4 text-white">
+                                                <p class="uppercase font-medium">
+                                                    {model.tagline}
+                                                </p>
+                                                <h3 class="uppercase text-5xl font-bold mb-1">
+                                                    {model.name}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </div>
-
-                            {showContent && (
-                                <>
-                                    <div class="absolute top-4 ease-in-out left-4 z-10 max-w-xs">
-                                        <div class="backdrop-blur-sm p-4 text-white">
-                                            <p class="text-sm leading-relaxed">
-                                                {model.content}
-                                            </p>
-                                        </div>
-                                        <Button
-                                            link="/models"
-                                            ctaLabel="Learn More"
-                                            containerClass="justify-start ml-2"
-                                            variant="light"
-                                        />
-                                    </div>
-
-                                    <div class="absolute top-4 ease-in-out right-4 z-10 text-right">
-                                        <div class="space-y-4  backdrop-blur-sm p-4 text-white">
-                                            <p class="uppercase font-medium">
-                                                {model.tagline}
-                                            </p>
-                                            <h3 class="uppercase text-5xl font-bold mb-1">
-                                                {model.name}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </>
-                            )}
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
+
+            <div class="swiper-pagination mt-6"></div>
+
+            <div class="swiper-button swiper-button-prev"></div>
+            <div class="swiper-button swiper-button-next"></div>
+
+            <div class="swiper-scrollbar"></div>
         </div>
-
-        <div class="swiper-pagination mt-6"></div>
-
-        <div class="swiper-button swiper-button-prev"></div>
-        <div class="swiper-button swiper-button-next"></div>
-
-        <div class="swiper-scrollbar"></div>
-    </div>
+    </Container>
 </section>
 
 <script>

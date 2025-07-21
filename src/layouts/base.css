@@ -23,7 +23,7 @@
     }
 }
 
-section.bg-gradient-painted::before {
+.bg-gradient-painted::before {
     content: "";
     position: absolute;
     top: 0;
@@ -33,7 +33,7 @@ section.bg-gradient-painted::before {
     background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
 }
 
-section.bg-gradient-painted::after {
+.bg-gradient-painted::after {
     content: "";
     position: absolute;
     bottom: 0;
