@@ -6,7 +6,7 @@ import FocusText from "@components/molecules/FocusText.astro";
 import NewsLetter from "@components/NewsLetter.astro";
 
 import Models from "@components/Models.astro";
-import AboutSection from "@components/AboutSection.astro";
+import SkyTechSection from "@components/SkyTechSection.astro";
 import LatestNews from "@components/LatestNews.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
 
@@ -42,9 +42,8 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 		<PaintedImage image={mostavioViewRight} alt="Mostavio Painted Image" />
 
 		<FeatureCards />
-
-		<AboutSection />
+		<SkyTechSection image={mostavioViewRight} />
 		<LatestNews />
-		<NewsLetter />
+		<!-- <NewsLetter /> -->
 	</main>
 </Layout>

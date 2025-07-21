@@ -4,6 +4,7 @@ interface Props {
     ctaLabel?: string;
     variant?: "light" | "dark" | "transparent";
     containerClass?: string;
+    external?: boolean;
 }
 
 const {
@@ -11,7 +12,10 @@ const {
     ctaLabel = "Learn More",
     variant = "light",
     containerClass = "",
+    external,
 } = Astro.props;
+
+const isExternal = external ?? link.startsWith("http");
 
 // Define styles based on variant
 const styles = {
@@ -43,8 +47,9 @@ const currentStyle = styles[variant];
 >
     <a
         href={link}
-        target="_blank"
-        class={`relative inline-block group border ${currentStyle.border} px-6 py-3 rounded-3xl font-medium overflow-hidden ${currentStyle.background}`}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        class={`relative inline-block group border-2 rounded-3xl ${currentStyle.border} px-6 py-3 font-medium overflow-hidden ${currentStyle.background}`}
     >
         <span
             class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-400 transition-transform duration-500 transform -translate-x-full group-hover:translate-x-0 z-0"

@@ -1,12 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import Button from "./Button.astro";
+import Button from "./atoms/Button.astro";
 
-interface PaintedImageProps {
+interface SkyTechSectionProps {
     image: any;
     alt: string;
     imageClass?: string;
-    containerClass?: string;
     content?: {
         tagline?: string;
         header?: string;
@@ -16,20 +15,25 @@ interface PaintedImageProps {
     contentClass?: string;
     headerClass?: string;
 }
+
+const defaultContent = {
+    header: "INTRODUCING <br><span class='text-[#4167FF]'>SKYTECH</span>",
+    description:
+        "As an official DJI dealer and a Transport Canada-approved flight school,\
+				 Skytech delivers advanced drone solutions for commercial and industrial applications.",
+    link: "https://skyt.ca/",
+};
 const {
     image,
     alt = "Mostavio Painted Image",
     imageClass = "",
-    containerClass = "",
-    content,
-    contentClass,
+    content = defaultContent,
+    contentClass = "ml-auto top-1/2 text-left ",
     headerClass,
-} = Astro.props as PaintedImageProps;
+} = Astro.props as SkyTechSectionProps;
 ---
 
-<section
-    class={`relative overflow-hidden scroll-mt-24 bg-gradient-default ${containerClass}`}
->
+<section class={`relative overflow-hidden scroll-mt-24 bg-gradient-default`}>
     <slot />
 
     <Image
@@ -56,14 +60,20 @@ const {
                 )}
                 {content?.description && (
                     <div
-                        class="text-gray-900 dark:text-white py-4 max-w-xl"
+                        class="text-gray-900 dark:text-white py-4 md:w-md"
                         style="text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);"
                     >
                         {content?.description}
                     </div>
                 )}
                 {content?.link && (
-                    <Button link={content?.link}>{content?.link}</Button>
+                    <Button
+                        containerClass="text-left ml-auto justify-start uppercase"
+                        variant="dark"
+                        link={content?.link}
+                    >
+                        {content?.link}
+                    </Button>
                 )}
             </div>
         )
