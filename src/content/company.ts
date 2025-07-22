@@ -138,7 +138,7 @@ let jobList = [
 const timeline = [
     {
         year: "2021",
-        title: "Mostavio Founded",
+        title: "MOSTAVIO Founded",
         description:
             "Founded with the ambition to revolutionize personal air mobility. Infrastructure development and strategic planning began.",
         // image: step1Image.src,

@@ -1,0 +1,175 @@
+---
+import Container from "./molecules/Container.astro";
+import Headline from "./atoms/Headline.astro";
+import PaintedImage from "./atoms/PaintedImage.astro";
+import { Image } from "astro:assets";
+
+import image1 from "../assets/evtol_img/motor-propeller.jpg";
+import image2 from "../assets/evtol_img/frame-arm.jpg";
+import image3 from "../assets/evtol_img/mostavio-pcb.jpg";
+
+import CarIcon from "../assets/v2/aircrafts/CarIcon.png";
+import EvtolIcon from "../assets/v2/aircrafts/EvtolIcon.png";
+import BusIcon from "../assets/v2/aircrafts/BusIcon.png";
+
+import TorontoMapMini from "../assets/v2/aircrafts/TorontoMapMini.png";
+
+interface ImageMetadata {
+    src: any;
+    alt?: string;
+}
+
+interface TimeStatsProps {
+    drone: string;
+    car: string;
+    bus: string;
+}
+
+interface AircraftsSectionProps {
+    contentClass?: string;
+    tagline?: string;
+    headline: string;
+    description: string;
+    images?: ImageMetadata[];
+    stats?: TimeStatsProps;
+}
+
+const defaultImages: ImageMetadata[] = [
+    { src: image1, alt: "Motor Propeller" },
+    { src: image2, alt: "Frame Arm" },
+    { src: image3, alt: "Mostavio PCB" },
+];
+
+const defaultStats = {
+    drone: "10",
+    car: "38",
+    bus: "47",
+};
+
+const {
+    contentClass = "",
+    tagline,
+    headline,
+    description,
+    images = defaultImages,
+    stats = defaultStats,
+} = Astro.props as AircraftsSectionProps;
+---
+
+<section class="scroll-mt-24">
+    <Container>
+        <div
+            class={`flex flex-col md:flex-row justify-between ${contentClass}`}
+        >
+            <div class="md:w-1/2">
+                <p class="uppercase">{tagline}</p>
+                <Headline headline={headline} />
+            </div>
+            <div class="md:w-1/3 my-4">{description}</div>
+        </div>
+        <div
+            class="my-24 overflow-x-auto scrollbar-hide cursor-[url('/scroll-horizontal.svg')_2_2,_auto]"
+        >
+            <div class="flex gap-6">
+                {
+                    images.map((image) => (
+                        <Image
+                            src={image.src}
+                            alt={image.alt || "Aircraft Image"}
+                            class="w-auto h-96 object-cover rounded pointer-events-none"
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </Container>
+
+    <PaintedImage
+        image={TorontoMapMini}
+        pattern={false}
+        imageClass="object-top toronto-map"
+        alt="Toronto Map for Mostavio aircraft"
+    >
+        <div
+            class="absolute bottom-1/5 right-1/5 flex flex-col items-center justify-center text-white"
+        >
+            <h2
+                style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);"
+                class="text-2xl font-bold text-right"
+            >
+                DOWNTOWN TORONTO TO<br />YYZ
+            </h2>
+            <div
+                class="rounded-md bg-black space-y-6 max-w-3xl mx-auto px-10 p-6"
+            >
+                <!-- Row 1 -->
+                <div
+                    class="flex items-center space-x-12 border-b border-gray-600 pb-4"
+                >
+                    <Image
+                        src={EvtolIcon}
+                        alt="eVTOL Icon"
+                        class="w-20 h-auto object-cover rounded"
+                    />
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">25</p>
+                        <p class="text-sm text-gray-400">Distance(km)</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">{stats?.drone}</p>
+                        <p class="text-sm text-gray-400">Time(min)</p>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div
+                    class="flex items-center space-x-12 border-b border-gray-600 pb-4"
+                >
+                    <Image
+                        src={CarIcon}
+                        alt="Car Icon"
+                        class="w-20 h-auto object-cover rounded"
+                    />
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">28</p>
+                        <p class="text-sm text-gray-400">Distance(km)</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">{stats?.car}</p>
+                        <p class="text-sm text-gray-400">Time(min)</p>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="flex items-center space-x-12">
+                    <Image
+                        src={BusIcon}
+                        alt="Bus Icon"
+                        class="w-18 h-auto object-cover rounded"
+                    />
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">29</p>
+                        <p class="text-sm text-gray-400">Distance(km)</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">{stats?.bus}</p>
+                        <p class="text-sm text-gray-400">Time(min)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </PaintedImage>
+
+    <style>
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        /* .toronto-map {
+        object-position: 25% 50%;
+    } */
+    </style>
+</section>

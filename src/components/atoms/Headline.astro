@@ -7,9 +7,9 @@ export interface Props {
 const { headline, className = "" } = Astro.props;
 ---
 
-<h1
+<h2
     class={`text-6xl md:text-7xl font-extrabold leading-tight bg-gradient-to-b from-white via-gray-100 to-black bg-clip-text text-transparent ${className}`}
 >
     {headline}
     <slot />
-</h1>
+</h2>

@@ -17,19 +17,19 @@ let focusText2 = {
         "<strong>MOSTAVIO</strong> envisions a future where air travel isn't just for airports or long distances. With our innovative 2-3 passenger eVTOL (electric Vertical Take-Off and Landing) aircraft, we’re making short-range air mobility accessible, sustainable, and practical. \
 		Our mission is simple: to create smarter, greener ways to navigate cities and suburbs, while setting a new standard for safe and efficient air transportation.",
     ],
-    link: "/models",
+    link: "/aircrafts",
 };
 let focusText3 = {
     header: "Mastering the Art of Autonomous Flight",
     description:
         "Our eVTOL showcases the evolution of self-piloted aircraft, blending advanced technology with precision design. Focused on systems like AI-powered navigation, real-time collision avoidance, and extensive safety redundancies, it highlights how these innovations are shaping the future of aviation. \
 		With applications in transportation, logistics, and urban mobility, this resource explores the balance between efficiency, reliability, and regulatory progress in autonomous flight.",
-    link: "/models",
+    link: "/aircrafts",
 };
 
 let focusText4 = {
     header: "Safety. Simplicity. Sustainability.",
-    link: "/models",
+    link: "/aircrafts",
 };
 
 let featureContent = [
@@ -59,7 +59,7 @@ let focusText5 = {
         "Imagine turning a 45-minute drive into a swift 10-minute flight. MOSTAVIO's advanced eVTOL technology offers \
 		unparalleled efficiency, allowing you to bypass traffic and reach your destination faster than ever. Experience \
 		the freedom of urban air mobility and reclaim your valuable time.",
-    link: "/models",
+    link: "/aircrafts",
 };
 
 // let featureContent = [

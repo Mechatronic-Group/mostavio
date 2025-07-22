@@ -1,5 +1,5 @@
 ---
-header: Mostavio Advances In-House Battery Testing and Pack Development for eVTOL Applications
+header: MOSTAVIO Advances In-House Battery Testing and Pack Development for eVTOL Applications
 date: May 05, 2023
 tags: ["Innovation"]
 featured: false

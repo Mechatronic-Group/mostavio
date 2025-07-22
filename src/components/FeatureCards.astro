@@ -1,30 +1,30 @@
 ---
 import Container from "./molecules/Container.astro";
 import Headline from "./atoms/Headline.astro";
+import CircuitBoard from "../assets/v2/home/CircuitBoard_Card.jpg";
+import Propeller from "../assets/v2/home/Propeller_Card.jpg";
+import SeatRender from "../assets/v2/home/SeatRender_Card.png";
 
 const cards = [
     {
-        header: "Innovation Award 2024",
-        thumbnail:
-            "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=256&fit=crop",
-        intro: "Recognized for outstanding contribution to technology innovation and digital transformation.",
+        header: "Simplicity Through First-Principle Design",
+        thumbnail: SeatRender.src,
+        intro: "Every system is built around what works, eliminating unnecessary complexity to create a seamless, intuitive, and reliable flight experience.",
     },
     {
-        header: "Revolutionary Product Launch",
-        thumbnail:
-            "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=256&fit=crop",
-        intro: "Introducing our next-generation platform that's set to transform the industry landscape.",
+        header: "Extensive Redundancy Systems",
+        thumbnail: CircuitBoard.src,
+        intro: "From backup power systems to fail-safe controls, our aircraft ensures continuous operation even in the rare case of component failure.",
     },
     {
-        header: "Strategic Partnership",
-        thumbnail:
-            "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=256&fit=crop",
-        intro: "Announcing our collaboration with industry leaders to drive innovation and excellence.",
+        header: "Sustainability with Zero Emissions",
+        thumbnail: Propeller.src,
+        intro: "Powered entirely by electric energy, MOSTAVIO's eVTOL operates without producing emissions, making it a cleaner choice for the environment and urban airspaces.",
     },
 ];
 ---
 
-<section>
+<section class="relative mt-48 scroll-mt-24">
     <Container>
         <Headline
             className="text-center uppercase"
@@ -52,7 +52,7 @@ const cards = [
                                     />
                                 </div>
                             )}
-                            <div class="mt-6 relative">
+                            <div class="mt-6 relative text-center">
                                 {post?.link ? (
                                     <a href={`/${post.link}`}>
                                         <h3 class="text-2xl font-semibold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">

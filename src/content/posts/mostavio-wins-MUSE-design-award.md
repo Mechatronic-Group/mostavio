@@ -36,7 +36,7 @@ This recognition by the International Awards Associate (IAA) places MOSTAVIO amo
 
 Based in Canada, MOSTAVIO is a trailblazer in the field of autonomous electric aviation. Focused on enabling safe, intuitive, and beautifully designed personal air vehicles, the company's flagship MX1 is paving the way for the next generation of flight. By combining advanced autonomous systems, immersive VR control, and radical design, MOSTAVIO is making the dream of accessible, personal air travel a reality. 
 
-<video class='w-full max-w-64 md:max-w-96 mx-auto rounded-md shadow-md' src="/media/mostavio-muse-design.mp4" autoplay loop muted alt="Mostavio Design" width="250">
+<video class='w-full max-w-64 md:max-w-96 mx-auto rounded-md shadow-md' src="/media/mostavio-muse-design.mp4" autoplay loop muted alt="MOSTAVIO Design" width="250">
 </video>
 
 <a href="https://design.museaward.com/winner-info.php?id=30384" class="inline-block mt-4 py-2 text-white rounded-md transition-colors">Learn More About The Award</a>

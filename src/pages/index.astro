@@ -3,9 +3,8 @@ import HeroCarousal from "@components/molecules/HeroCarousal.astro";
 import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
 import FocusText from "@components/molecules/FocusText.astro";
-// import NewsLetter from "@components/NewsLetter.astro";
 
-import Models from "@components/Models.astro";
+import AircraftsSliderSection from "@components/AircraftsSliderSection.astro";
 import SkyTechSection from "@components/SkyTechSection.astro";
 import LatestNews from "@components/LatestNews.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
@@ -14,17 +13,17 @@ import FeatureCards from "@components/FeatureCards.astro";
 
 // Media
 import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
-import mostavioViewRight from "../assets/evtol_img/mostavio-view-right.jpeg";
-import SeatRender1 from "../assets/evtol_img/Seat1.png";
 
 // Media V2
-import TeamPics from "../assets/v2/home/TeamPic.png";
+import TeamPic from "../assets/v2/home/TeamPic.png";
+import TeamPic2 from "../assets/v2/home/TeamPic2.png";
+import SkyTechDrone from "../assets/v2/home/SkyTechDrone.jpg";
 
 let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
 <Layout>
-	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
+	<main class="space-y-28 sm:space-y-32 lg:space-y-38 pb-40 overflow-clip">
 		<HeroCarousal
 			contentClass="top-1/4 text-left"
 			headerClass="w-1/4"
@@ -36,20 +35,15 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 			 Our mission is to provide a seamless, eco-friendly, and efficient air travel experience\
 			 through electric Vertical Take-Off and Landing (eVTOL) technology.<br>\
 			 Join us as we redefine the skies."
-			containerClass="w-3/5 ml-auto"
+			containerClass="md:w-3/5 ml-auto"
 			contentClass="text-right"
 		/>
-		<PaintedImage
-			image={TeamPics}
-			alt="Mostavio Team Working Candid Image"
-		/>
-		<Models />
-		<!-- <VideoBlock placeholderImage={SeatRender1} /> -->
-		<PaintedImage image={mostavioViewRight} alt="Mostavio Painted Image" />
+		<PaintedImage image={TeamPic} alt="MOSTAVIO Team Work Candid" />
+		<AircraftsSliderSection />
+		<PaintedImage image={TeamPic2} alt="MOSTAVIO Team Work" />
 
 		<FeatureCards />
-		<SkyTechSection image={mostavioViewRight} />
+		<SkyTechSection image={SkyTechDrone} />
 		<LatestNews />
-		<!-- <NewsLetter /> -->
 	</main>
 </Layout>

@@ -6,7 +6,7 @@ export const SITE_IMAGE = '/og.png';
 
 export const internalLinks = [
     { title: "Home", url: "/" },
-    { title: "Aircraft", url: "/models" },
+    { title: "Aircraft", url: "/aircrafts" },
     { title: "Company", url: "/company" },
     { title: "SkyTech", url: "https://skyt.ca/", target: "_blank" },
     // { title: "Certification", url: "/certification" },
@@ -30,6 +30,7 @@ import FacebookIcon from "./assets/social_icons/FacebookIcon.svg?raw";
 import InstagramIcon from "./assets/social_icons/InstagramIcon.svg?raw";
 import LinkedInIcon from "./assets/social_icons/LinkedinIcon.svg?raw";
 import TwitterIcon from "./assets/social_icons/TwitterIcon.svg?raw";
+import XIcon from "./assets/social_icons/XIcon.svg?raw";
 import YouTubeIcon from "./assets/social_icons/YoutubeIcon.svg?raw";
 import PhoneIcon from "./assets/social_icons/PhoneIcon.svg?raw";
 import MailIcon from "./assets/social_icons/MailIcon.svg?raw";
