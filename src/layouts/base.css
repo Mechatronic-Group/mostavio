@@ -14,6 +14,7 @@
         --color-skytech: #0077FF;
         --color-orange: #FF8914;
         --swiper-theme-color: rgb(215, 119, 22);
+        --swiper-pagination-color: rgb(215, 119, 22);
         --swiper-pagination-bullet-inactive-opacity: 0.85;
     }
 

@@ -178,7 +178,7 @@ const {
     }
 
     .swiper-pagination-bullet-active {
-        background: #2563eb;
+        background: var(--swiper-pagination-color, rgb(215, 119, 22));
         opacity: 1;
         transform: scale(1.2);
     }
@@ -193,7 +193,7 @@ const {
         .swiper-button-next,
         .swiper-button-prev {
             background: rgba(0, 0, 0, 0.8);
-            color: #60a5fa;
+            color: var(--swiper-theme-color, rgb(215, 119, 22));
         }
 
         .swiper-button-next:hover,
@@ -202,7 +202,7 @@ const {
         }
 
         .swiper-pagination-bullet-active {
-            background: #60a5fa;
+            background: var(--swiper-theme-color, rgb(215, 119, 22));
         }
     }
 </style>
