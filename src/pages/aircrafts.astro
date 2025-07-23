@@ -1,35 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import HeroCarousal from "@components/molecules/HeroCarousal.astro";
 import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
-import FeatureGrid from "@components/molecules/FeatureGrid.astro";
 import CarouselTwo from "@components/molecules/CarouselTwo.astro";
-import VideoBlock from "@components/molecules/VideoBlock.astro";
 import FocusText from "@components/molecules/FocusText.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
 import AircraftsSection from "@components/AircraftsSection.astro";
 
 import motorPropeller from "../assets/evtol_img/motor-propeller.jpg";
-import frameArm from "../assets/evtol_img/frame-arm.jpg";
-import mostavioPcb from "../assets/evtol_img/mostavio-pcb.jpg";
 
 // Media v2
 import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
-
-import {
-	focusText1,
-	focusText2,
-	focusText3,
-	// focusText4,
-	featureContent,
-	// featureContent2,
-	mx1Banner,
-	aeroBanner,
-	ultralightBanner,
-} from "../content/aircrafts";
-
-let media: Array<string | VideoSource | ImageMetadata> = [BannerPlaceholder];
 ---
 
 <Layout>
@@ -53,8 +34,8 @@ let media: Array<string | VideoSource | ImageMetadata> = [BannerPlaceholder];
 		/>
 
 		<AircraftsSection
-			tagline="Personal Flight for Rural Exploration"
-			headline="Ultralight"
+			tagline="Built for Critical Missions"
+			headline="AEROGUARDIAN"
 			contentClass="md:flex-row-reverse"
 			description="Designed for emergency response and rapid intervention.\
 			 As a GOAERO Stage 1 Winner, Aeroguardian is built to meet the demands\
@@ -64,13 +45,14 @@ let media: Array<string | VideoSource | ImageMetadata> = [BannerPlaceholder];
 		/>
 
 		<AircraftsSection
-			tagline="Introducing the Prototype"
-			headline="THE MX1"
+			tagline="Personal Flight for Rural Exploration"
+			headline="ULTRALIGHT"
 			description="MOSTAVIO's Ultralight is a single passenger eVTOL designed for\
 			 personal recreational use in rural environments. With a lightweight frame\
 			 compliant with FAA Part 103 and Transport Canada ultralight standards, it offers\
 			 a safe and simple solution for off-grid flight. Perfect for scenic flights and\
 			 off-grid adventures."
+			comingSoon={true}
 		/>
 		<!-- <FeatureGrid content={featureContent}
 			><FocusText description={mx1Banner.description} /></FeatureGrid
@@ -83,31 +65,33 @@ let media: Array<string | VideoSource | ImageMetadata> = [BannerPlaceholder];
 			headerShadow={true}
 		/>
 		<CarouselTwo />
-		<FocusText
-			header={focusText2.header}
-			description={focusText2.description}
+		<PaintedImage
+			content={{
+				header: "Advanced Materials",
+				description:
+					"All our eVTOL aircraft are constructed using carbon fiber exteriors for\
+					 maximum strength and minimal weight,\
+					 ensuring optimal flight performance. Internally, Kevlar®-reinforced components provide critical\
+					 safety and structural integrity.",
+			}}
+			contentClass="top-3/5 text-left md:w-3/5 md:ml-32"
+			headerClass="uppercase"
+			image={motorPropeller}
+			alt="Motor Propeller Mostavio"
 		/>
-		<VideoBlock placeholderImage={motorPropeller} />
-		<FocusText
-			header={focusText3.header}
-			description={focusText3.description}
-			link="/aircrafts"
+		<PaintedImage
+			content={{
+				header: "Designed to be Safe",
+				description:
+					"Safety is our top priority. Our eVTOL arcrafts are equipped with a state-of-the-art\
+					 autopilot system that ensures a smooth, stable flight experience.\
+					 Our models also feature redundant systems, including multiple batteries and motors,\
+					 to ensure maximum safety and reliability.",
+			}}
+			contentClass="top-3/5 text-left md:w-3/5 md:ml-32"
+			headerClass="uppercase"
+			image={motorPropeller}
+			alt="Evtol Tail Mostavio"
 		/>
-		<!-- <BentoGrid /> -->
-		<!-- <FeatureGrid content={featureContent2} bordered /> -->
-		<!-- <VideoBlock placeholderImage={mostavioPcb} /> -->
-		<!-- <FocusText
-			header={focusText4.header}
-			description={focusText4.description}
-			link="/aircrafts"
-		/> -->
-		<!-- <CarouselThree />
-		<FocusText
-			header={focusText5.header}
-			description={focusText5.description}
-			link="/aircrafts"
-		/>
-		<VideoBlock videoSrc={Video3} /> -->
-		<!-- <NewsLetter /> -->
 	</main>
 </Layout>

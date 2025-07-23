@@ -11,6 +11,7 @@ interface FocusTextProps {
     ctaLabel?: string;
     contentClass?: string;
     containerClass?: string;
+    buttonClass?: string;
     headerShadow?: boolean;
 }
 
@@ -23,6 +24,7 @@ const {
     contentClass,
     containerClass,
     headerShadow,
+    buttonClass,
     ctaLabel = "Learn More",
 } = Astro.props as FocusTextProps;
 const shadowClass = headerShadow
@@ -64,7 +66,15 @@ const shadowClass = headerShadow
                     )
                 }
                 <slot />
-                {link && <Button link={link} ctaLabel={ctaLabel} />}
+                {
+                    link && (
+                        <Button
+                            containerClass={buttonClass}
+                            link={link}
+                            ctaLabel={ctaLabel}
+                        />
+                    )
+                }
             </div>
         </div>
     </Container>

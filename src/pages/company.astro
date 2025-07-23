@@ -5,41 +5,73 @@ import HeroCarousal from "@components/molecules/HeroCarousal.astro";
 // Media
 // import slide01 from "../assets/evtol_img/HeroBg4.png";
 import companyBanner from "../assets/hero_media/company-banner.jpg";
-import Newsletter from "@components/NewsLetter.astro";
 import FocusText from "@components/molecules/FocusText.astro";
 import Carousel from "@components/molecules/Carousel.astro";
 import FeatureGrid from "@components/molecules/FeatureGrid.astro";
 import JobListing from "@components/JobListing.astro";
 import OurTeam from "@components/OurTeam.astro";
 import DynamicTimeline from "@components/DynamicTimeline.astro";
+import PaintedImage from "@components/atoms/PaintedImage.astro";
 
-import splitImageA from "../assets/evtol-split-carousel/a.jpg";
-import splitImageB from "../assets/evtol-split-carousel/b.jpg";
-import splitImageC from "../assets/evtol-split-carousel/c.jpg";
+// import Newsletter from "@components/NewsLetter.astro";
+
+// import splitImageA from "../assets/evtol-split-carousel/a.jpg";
+// import splitImageB from "../assets/evtol-split-carousel/b.jpg";
+// import splitImageC from "../assets/evtol-split-carousel/c.jpg";
 
 import {
-	focusText,
+	// focusText,
 	focusText2,
 	featureContent,
 	jobList,
-	bannerContent,
+	// bannerContent,
 } from "../content/company";
 
-let media: Array<string | ImageMetadata> = [companyBanner];
+// v2 Assets
+import BatteryBanner from "../assets/v2/company/Batteries_Placeholder.png";
+import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 ---
 
 <Layout>
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
-		<HeroCarousal media={media} content={bannerContent} />
-		<div class="pt-3" id="about"></div>
-		<FocusText {...focusText} />
-		<Carousel images={[splitImageA, splitImageB, splitImageC]} />
-		<FeatureGrid content={featureContent} bordered />
-		<FocusText {...focusText2} />
+		<!-- <HeroCarousal media={media} content={bannerContent} /> -->
+		<PaintedImage
+			image={BatteryBanner}
+			alt="Battery Banner Mostavio"
+			content={{
+				tagline: "Where Innovation Takes Flight",
+				header: "Reshaping urban air mobility through advanced eVTOL innovation",
+			}}
+			contentClass="text-left md:top-2/3 md:w-2/3 md:ml-32"
+		/>
+		<FocusText
+			description="Founded in Toronto in 2021, we specialize in next generation\
+			 eVTOL solutions designed to transform urban mobility. With a focus on safety,\
+			 sustainability, and intelligent design, our mission is to make personal air\
+			 transportation more accessible, efficient, and environmentally responsible."
+			containerClass="md:w-3/5 ml-auto"
+			contentClass="text-right"
+		/>
+		<!-- <Carousel images={[splitImageA, splitImageB, splitImageC]} /> -->
+		<FeatureGrid content={featureContent} />
+		<PaintedImage
+			image={MostavioBillboard}
+			alt="Company Billboard Mostavio"
+		/>
+		<!-- <FocusText {...focusText2} /> -->
 		<!-- <Carousel /> -->
 		<DynamicTimeline />
 		<OurTeam />
+		<FocusText
+			header="PARTNER WITH US"
+			description="MOSTAVIO collaborates with leading investors, government agencies,\
+			 and top-tier suppliers to advance our mission. Our strategic partnerships ensure\
+			 we have the resources and expertise needed to bring our vision to life."
+			headerClass="uppercase"
+			headerShadow
+			link="/partners"
+		/>
 		<JobListing content={jobList} />
-		<Newsletter />
+		<!-- <Newsletter /> -->
 	</main>
 </Layout>

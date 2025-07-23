@@ -5,7 +5,7 @@ import Posts from "@components/Posts.astro";
 import { getCollection } from "astro:content";
 
 // Media
-import Newsletter from "@components/NewsLetter.astro";
+// import Newsletter from "@components/NewsLetter.astro";
 
 // import HeroBg from "../assets/evtol_img/HeroBg3.png";
 import motorPropeller from "../assets/evtol_img/propeller-focus.jpg";
@@ -28,6 +28,6 @@ const sortedPosts = posts.sort((a, b) => {
 	<main class="space-y-28 sm:space-y-32 lg:space-y-36 pb-40 overflow-clip">
 		<HeroCarousal media={media} content={bannerContent} />
 		<Posts posts={sortedPosts} />
-		<Newsletter />
+		<!-- <Newsletter /> -->
 	</main>
 </Layout>
