@@ -10,6 +10,7 @@ import LatestNews from "@components/LatestNews.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
 
 import FeatureCards from "@components/FeatureCards.astro";
+import { Image } from "astro:assets";
 
 // Media
 import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
@@ -18,32 +19,63 @@ import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
 import TeamPic from "../assets/v2/home/TeamPic.png";
 import TeamPic2 from "../assets/v2/home/TeamPic2.png";
 import SkyTechDrone from "../assets/v2/home/SkyTechDrone.jpg";
+import MostavioSmokeBG from "../assets/v2/home/MostavioSmokeBG.png";
+import EvtolOnly from "../assets/v2/home/EvtolOnly.png";
+import AVBadgeVertical from "../assets/v2/AV_TransparentBadgeVertical.png";
 
 let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
 <Layout>
 	<main class="space-y-28 sm:space-y-32 lg:space-y-38 pb-40 overflow-clip">
-		<HeroCarousal
+		<!-- <HeroCarousal
 			contentClass="top-1/4 text-left"
 			headerClass="w-1/4"
 			media={media}
-		/>
-		<FocusText
-			tagline="Elevate. Electrify. Explore."
-			description="At MOSTAVIO, we are at the forefront of urban transportation innovation.\
+		/> -->
+		<PaintedImage
+			image={MostavioSmokeBG}
+			alt="Mostavio Smoke Banner"
+			content={{
+				tagline: "Experience the Future of Flight",
+				header: "Transforming Urban Air Mobility With Next-Generation eVTOL Technology",
+			}}
+			pattern={false}
+			containerClass="relative h-96 md:h-[100vh]"
+			imageClass="absolute z-[1]"
+			contentClass="text-left top-1/4 z-[4]"
+			heightClass="h-96 md:h-[100vh]"
+			headerClass="md:w-4/6"
+		>
+			<Fragment slot="overlay">
+				<Image
+					src={EvtolOnly}
+					alt="Mostavio Evtol Banner"
+					class="absolute h-96 md:h-[100vh] object-cover object-center z-[3]"
+				/>
+				<Image
+					src={AVBadgeVertical}
+					alt="Pattern overlay"
+					class="absolute object-contain z-[2] h-32 md:h-96 opacity-50 bottom-1/4 right-0"
+				/>
+			</Fragment>
+		</PaintedImage>
+	</main>
+
+	<FocusText
+		tagline="Elevate. Electrify. Explore."
+		description="At MOSTAVIO, we are at the forefront of urban transportation innovation.\
 			 Our mission is to provide a seamless, eco-friendly, and efficient air travel experience\
 			 through electric Vertical Take-Off and Landing (eVTOL) technology.<br>\
 			 Join us as we redefine the skies."
-			containerClass="md:w-3/5 ml-auto"
-			contentClass="text-right"
-		/>
-		<PaintedImage image={TeamPic} alt="MOSTAVIO Team Work Candid" />
-		<AircraftsSliderSection />
-		<PaintedImage image={TeamPic2} alt="MOSTAVIO Team Work" />
+		containerClass="md:w-3/5 ml-auto"
+		contentClass="text-right"
+	/>
+	<PaintedImage image={TeamPic} alt="MOSTAVIO Team Work Candid" />
+	<AircraftsSliderSection />
+	<PaintedImage image={TeamPic2} alt="MOSTAVIO Team Work" />
 
-		<FeatureCards />
-		<SkyTechSection image={SkyTechDrone} />
-		<LatestNews />
-	</main>
+	<FeatureCards />
+	<SkyTechSection image={SkyTechDrone} />
+	<LatestNews />
 </Layout>

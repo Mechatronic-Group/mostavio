@@ -1,6 +1,4 @@
 ---
-import Frame from "./molecules/Frame.astro";
-import { button } from "@tailus/themer-button";
 import { cn } from "@lib/utils";
 ---
 
@@ -68,13 +66,14 @@ import { cn } from "@lib/utils";
             required></textarea>
     </div>
     <div class="mt-8 flex flex-wrap justify-center gap-y-4 gap-x-6">
-        <Frame>
-            <button
-                type="submit"
-                class={cn(button.primary.lg, "pb-[1px]", "relative z-[1]")}
-            >
-                Send Message
-            </button>
-        </Frame>
+        <button
+            type="submit"
+            class="relative overflow-hidden px-4 py-2 bg-transparent rounded-xl border border-white z-0 group hover:cursor-pointer"
+        >
+            <span class="relative z-10 text-white">Send Message</span>
+            <span
+                class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0"
+            ></span>
+        </button>
     </div>
 </form>
