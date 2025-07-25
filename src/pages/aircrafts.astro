@@ -1,11 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
-import CarouselTwo from "@components/molecules/CarouselTwo.astro";
+import DesignSwiperBlock from "@components/molecules/DesignSwiperBlock.astro";
 import FocusText from "@components/molecules/FocusText.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
-import AircraftsSection from "@components/AircraftsSection.astro";
+import AircraftSection from "@components/AircraftSection.astro";
 
 import motorPropeller from "../assets/evtol_img/motor-propeller.jpg";
 
@@ -24,7 +23,7 @@ import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
 			contentClass="top-1/4"
 			alt="MOSTAVIO Banner"
 		/>
-		<AircraftsSection
+		<AircraftSection
 			id="mx1"
 			tagline="Introducing the Prototype"
 			headline="THE MX1"
@@ -34,7 +33,7 @@ import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
                 avoidance, and advanced safety systems."
 		/>
 
-		<AircraftsSection
+		<AircraftSection
 			id="aeroguardian"
 			tagline="Built for Critical Missions"
 			headline="AEROGUARDIAN"
@@ -46,7 +45,7 @@ import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
 			 supplies from remote or high-risk zones."
 		/>
 
-		<AircraftsSection
+		<AircraftSection
 			id="ultralight"
 			tagline="Personal Flight for Rural Exploration"
 			headline="ULTRALIGHT"
@@ -57,17 +56,12 @@ import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
 			 off-grid adventures."
 			comingSoon={true}
 		/>
-		<!-- <FeatureGrid content={featureContent}
-			><FocusText description={mx1Banner.description} /></FeatureGrid
-		>
-		<FeatureGrid content={featureContent} />
-		<VideoBlock placeholderImage={frameArm} /> -->
 		<FocusText
-			header="Revolutionary Design"
+			header="REVOLUTIONARY DESIGN"
 			description="All MOSTAVIO eVTOL models feature a bold, angular design that merges innovative aesthetics with aerodynamic efficiency."
 			headerShadow={true}
 		/>
-		<CarouselTwo />
+		<DesignSwiperBlock />
 		<PaintedImage
 			content={{
 				header: "Advanced Materials",
