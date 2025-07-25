@@ -5,11 +5,13 @@ import DesignSwiperBlock from "@components/molecules/DesignSwiperBlock.astro";
 import FocusText from "@components/molecules/FocusText.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
 import AircraftSection from "@components/AircraftSection.astro";
+import ParallaxSlider from "@components/atoms/ParallaxSlider.astro";
 
-import motorPropeller from "../assets/evtol_img/motor-propeller.jpg";
+import MotorPropeller from "../assets/evtol_img/motor-propeller.jpg";
 
 // Media v2
 import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
+import MostavioRender from "../assets/v2/aircrafts/MostavioRenderAlt.jpg";
 ---
 
 <Layout>
@@ -62,33 +64,25 @@ import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
 			headerShadow={true}
 		/>
 		<DesignSwiperBlock />
-		<PaintedImage
-			content={{
-				header: "Advanced Materials",
-				description:
-					"All our eVTOL aircraft are constructed using carbon fiber exteriors for\
-					 maximum strength and minimal weight,\
-					 ensuring optimal flight performance. Internally, Kevlar®-reinforced components provide critical\
-					 safety and structural integrity.",
-			}}
+		<ParallaxSlider
+			slides={[
+				{
+					header: "Advanced Materials",
+					description:
+						"All our eVTOL aircraft are constructed using carbon fiber exteriors for maximum strength and minimal weight, ensuring optimal flight performance. Internally, Kevlar®-reinforced components provide critical safety and structural integrity.",
+					image: MotorPropeller,
+					alt: "Motor Propeller Mostavio",
+				},
+				{
+					header: "Designed to be Safe",
+					description:
+						"Safety is our top priority. Our eVTOL aircraft are equipped with a state-of-the-art autopilot system that ensures a smooth, stable flight experience. Our models also feature redundant systems, including multiple batteries and motors, to ensure maximum safety and reliability.",
+					image: MostavioRender,
+					alt: "Evtol Tail Mostavio",
+				},
+			]}
+			heightClass="h-96 md:h-[95vh]"
 			contentClass="top-3/5 text-left md:w-3/5 md:ml-32"
-			headerClass="uppercase"
-			image={motorPropeller}
-			alt="Motor Propeller Mostavio"
-		/>
-		<PaintedImage
-			content={{
-				header: "Designed to be Safe",
-				description:
-					"Safety is our top priority. Our eVTOL arcrafts are equipped with a state-of-the-art\
-					 autopilot system that ensures a smooth, stable flight experience.\
-					 Our models also feature redundant systems, including multiple batteries and motors,\
-					 to ensure maximum safety and reliability.",
-			}}
-			contentClass="top-3/5 text-left md:w-3/5 md:ml-32"
-			headerClass="uppercase"
-			image={motorPropeller}
-			alt="Evtol Tail Mostavio"
 		/>
 	</main>
 </Layout>

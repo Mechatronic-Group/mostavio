@@ -1,0 +1,435 @@
+---
+import { Image } from "astro:assets";
+
+interface SlideContent {
+    header: string;
+    description: string;
+    image: any;
+    alt: string;
+}
+
+interface ParallaxSliderProps {
+    slides: SlideContent[];
+    heightClass?: string;
+    contentClass?: string;
+}
+
+const {
+    slides = [],
+    heightClass = "h-96 md:h-[95vh]",
+    contentClass = "top-3/5 text-left md:w-3/5 md:ml-32",
+} = Astro.props as ParallaxSliderProps;
+
+const sliderId = `parallax-slider-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<section
+    class={`relative overflow-hidden scroll-mt-24 ${heightClass}`}
+    data-slider-id={sliderId}
+>
+    <!-- Vertical Line Controls -->
+    <div class="absolute top-8 right-8 z-30 flex flex-col space-y-2">
+        {
+            slides.map((_, index) => (
+                <button
+                    class="slider-control w-1 h-12 bg-white/30 hover:bg-white/60 transition-all duration-500 rounded-full"
+                    data-slide={index}
+                    data-slider-target={sliderId}
+                >
+                    <div class="slider-progress w-full h-0 bg-white rounded-full transition-all duration-500" />
+                </button>
+            ))
+        }
+    </div>
+
+    <!-- Slides Container -->
+    <div class={`slider-container relative w-full ${heightClass}`} data-slider-container={sliderId}>
+        {
+            slides.map((slide, index) => (
+                <div
+                    class={`slider-slide absolute inset-0 w-full ${heightClass} transition-all duration-700 ease-in-out ${index === 0 ? "opacity-100 visible" : "opacity-0 invisible"}`}
+                    data-slide-index={index}
+                    data-slider-slide={sliderId}
+                >
+                    <!-- Background Image -->
+                    <div class="parallax-bg-container absolute inset-0 w-full h-full overflow-hidden">
+                        <Image
+                            class="w-full h-full object-cover parallax-bg transition-transform duration-700 ease-out"
+                            src={slide.image}
+                            alt={slide.alt}
+                            data-parallax-bg={`${sliderId}-${index}`}
+                        />
+                    </div>
+
+                    <!-- Content Overlay -->
+                    <div
+                        class={`absolute inset-0 flex items-center justify-start max-w-6xl mx-auto px-6 md:px-12 xl:px-6 z-10`}
+                    >
+                        <div class={`parallax-content ${contentClass} max-w-2xl transition-all duration-700 ease-out`} data-parallax-content={`${sliderId}-${index}`}>
+                            <h2
+                                style="text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);"
+                                class="my-4 md:my-8 leading-tight text-white font-bold text-3xl sm:text-4xl md:text-5xl uppercase"
+                            >
+                                {slide.header}
+                            </h2>
+                            <div
+                                class="text-white py-4"
+                                style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"
+                            >
+                                {slide.description}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dark Overlay for Better Text Readability -->
+                    <div class="absolute inset-0 bg-black/20 z-5"></div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .parallax-bg {
+        will-change: transform;
+        transform: scale(1.05);
+    }
+
+    .parallax-content {
+        will-change: transform;
+    }
+
+    .slider-control.active {
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: scaleX(1.5);
+    }
+
+    .slider-control.active .slider-progress {
+        height: 100%;
+    }
+
+    .parallax-bg-container {
+        transform: translateZ(0);
+    }
+
+    /* Smooth slide transitions */
+    .slider-slide {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+                    visibility 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slider-slide.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .slider-slide.invisible {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Enhanced parallax animations for wheel scroll */
+    .parallax-bg {
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .parallax-content {
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+</style>
+
+<script>
+    interface SliderState {
+        currentSlide: number;
+        parallaxOffset: number;
+        isTransitioning: boolean;
+    }
+
+    class ParallaxSlider {
+        private sliderId: string;
+        private slides: NodeListOf<Element>;
+        private controls: NodeListOf<HTMLButtonElement>;
+        private container: Element;
+        private state: SliderState;
+        private rafId: number | null = null;
+
+        constructor(sliderId: string) {
+            this.sliderId = sliderId;
+            
+            this.slides = document.querySelectorAll(
+                `[data-slider-slide="${sliderId}"]`,
+            );
+            this.controls = document.querySelectorAll(
+                `[data-slider-target="${sliderId}"]`,
+            );
+            this.container = document.querySelector(
+                `[data-slider-container="${sliderId}"]`,
+            );
+
+            if (!this.container || this.slides.length === 0) {
+                console.warn(`ParallaxSlider: No slides found for ID ${sliderId}`);
+                return;
+            }
+
+            this.state = {
+                currentSlide: 0,
+                parallaxOffset: 0,
+                isTransitioning: false,
+            };
+
+            this.init();
+        }
+
+        private init() {
+            console.log(`Initializing slider ${this.sliderId} with ${this.slides.length} slides`);
+            this.setupControls();
+            this.setupParallax();
+            this.updateActiveControl();
+        }
+
+        private setupControls() {
+            // Button click controls
+            this.controls.forEach((control, index) => {
+                control.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    if (!this.state.isTransitioning) {
+                        this.goToSlide(index);
+                    }
+                });
+            });
+
+            // Wheel scroll controls
+            this.container.addEventListener("wheel", (e) => {
+                if (this.state.isTransitioning) {
+                    e.preventDefault();
+                    return;
+                }
+
+                const delta = e.deltaY;
+                const currentIndex = this.state.currentSlide;
+                let shouldPreventDefault = false;
+                
+                if (delta > 0 && currentIndex < this.slides.length - 1) {
+                    // Scroll down - next slide available
+                    e.preventDefault();
+                    shouldPreventDefault = true;
+                    this.goToSlideWithDirection(currentIndex + 1, 'down');
+                } else if (delta < 0 && currentIndex > 0) {
+                    // Scroll up - previous slide available
+                    e.preventDefault();
+                    shouldPreventDefault = true;
+                    this.goToSlideWithDirection(currentIndex - 1, 'up');
+                }
+                
+                // If no slide change, allow normal page scroll
+                if (!shouldPreventDefault) {
+                    // Let the browser handle normal scrolling
+                    return;
+                }
+            }, { passive: false });
+        }
+
+        private setupParallax() {
+            const updateParallax = () => {
+                if (!this.container) {
+                    this.rafId = requestAnimationFrame(updateParallax);
+                    return;
+                }
+                
+                const rect = this.container.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Check if slider is in viewport
+                if (rect.bottom >= 0 && rect.top <= windowHeight) {
+                    // Calculate parallax based on scroll position
+                    const scrollProgress = Math.max(0, Math.min(1, 
+                        (windowHeight - rect.top) / (windowHeight + rect.height)
+                    ));
+                    
+                    const parallaxIntensity = 50; // pixels of movement
+                    const yOffset = (scrollProgress - 0.5) * parallaxIntensity;
+
+                    // Apply smooth parallax to all slides
+                    this.slides.forEach((slideEl, index) => {
+                        const bg = slideEl.querySelector(
+                            `[data-parallax-bg="${this.sliderId}-${index}"]`,
+                        ) as HTMLElement;
+                        const content = slideEl.querySelector(
+                            `[data-parallax-content="${this.sliderId}-${index}"]`,
+                        ) as HTMLElement;
+
+                        if (bg) {
+                            // Background moves slower (parallax effect)
+                            const bgOffset = yOffset * 0.5;
+                            bg.style.transform = `translateY(${bgOffset}px) scale(1.05)`;
+                        }
+                        
+                        if (content) {
+                            // Content moves slightly in opposite direction
+                            const contentOffset = yOffset * -0.2;
+                            content.style.transform = `translateY(${contentOffset}px)`;
+                        }
+                    });
+                }
+
+                this.rafId = requestAnimationFrame(updateParallax);
+            };
+
+            // Start the animation loop
+            this.rafId = requestAnimationFrame(updateParallax);
+
+            // Clean up on page unload
+            window.addEventListener('beforeunload', () => {
+                if (this.rafId) {
+                    cancelAnimationFrame(this.rafId);
+                }
+            });
+        }
+
+        private goToSlide(index: number) {
+            if (index === this.state.currentSlide || index >= this.slides.length || this.state.isTransitioning) {
+                return;
+            }
+            // Default direction based on index comparison
+            const direction = index > this.state.currentSlide ? 'down' : 'up';
+            this.goToSlideWithDirection(index, direction);
+        }
+
+        private goToSlideWithDirection(index: number, direction: 'up' | 'down') {
+            if (index === this.state.currentSlide || index >= this.slides.length || this.state.isTransitioning) {
+                return;
+            }
+
+            console.log(`Going to slide ${index} from ${this.state.currentSlide} (direction: ${direction})`);
+            this.state.isTransitioning = true;
+
+            const currentSlide = this.slides[this.state.currentSlide] as HTMLElement;
+            const targetSlide = this.slides[index] as HTMLElement;
+
+            // Get slide elements for animation
+            const currentBg = currentSlide.querySelector(`[data-parallax-bg="${this.sliderId}-${this.state.currentSlide}"]`) as HTMLElement;
+            const targetBg = targetSlide.querySelector(`[data-parallax-bg="${this.sliderId}-${index}"]`) as HTMLElement;
+            const currentContent = currentSlide.querySelector(`[data-parallax-content="${this.sliderId}-${this.state.currentSlide}"]`) as HTMLElement;
+            const targetContent = targetSlide.querySelector(`[data-parallax-content="${this.sliderId}-${index}"]`) as HTMLElement;
+
+            // Make target slide visible first
+            targetSlide.classList.remove("opacity-0", "invisible");
+            targetSlide.classList.add("opacity-100", "visible");
+
+            // Set initial positions based on direction
+            if (direction === 'down') {
+                // Next slide starts from bottom
+                targetSlide.style.transform = 'translateY(100%)';
+                if (targetBg) targetBg.style.transform = 'translateY(50px) scale(1.05)';
+                if (targetContent) targetContent.style.transform = 'translateY(30px)';
+            } else {
+                // Previous slide starts from top
+                targetSlide.style.transform = 'translateY(-100%)';
+                if (targetBg) targetBg.style.transform = 'translateY(-50px) scale(1.05)';
+                if (targetContent) targetContent.style.transform = 'translateY(-30px)';
+            }
+
+            // Force a reflow to ensure initial position is set
+            targetSlide.offsetHeight;
+
+            // Start animation on next frame
+            requestAnimationFrame(() => {
+                // Animate current slide out
+                if (direction === 'down') {
+                    currentSlide.style.transform = 'translateY(-100%)';
+                    if (currentBg) currentBg.style.transform = 'translateY(-50px) scale(1.05)';
+                    if (currentContent) currentContent.style.transform = 'translateY(-30px)';
+                } else {
+                    currentSlide.style.transform = 'translateY(100%)';
+                    if (currentBg) currentBg.style.transform = 'translateY(50px) scale(1.05)';
+                    if (currentContent) currentContent.style.transform = 'translateY(30px)';
+                }
+
+                // Animate target slide in
+                targetSlide.style.transform = 'translateY(0)';
+                if (targetBg) targetBg.style.transform = 'translateY(0) scale(1.05)';
+                if (targetContent) targetContent.style.transform = 'translateY(0)';
+            });
+
+            // Update state and cleanup after animation
+            setTimeout(() => {
+                // Hide previous slide
+                currentSlide.classList.remove("opacity-100", "visible");
+                currentSlide.classList.add("opacity-0", "invisible");
+                
+                // Reset transforms
+                currentSlide.style.transform = '';
+                targetSlide.style.transform = '';
+                if (currentBg) currentBg.style.transform = 'scale(1.05)';
+                if (targetBg) targetBg.style.transform = 'scale(1.05)';
+                if (currentContent) currentContent.style.transform = '';
+                if (targetContent) targetContent.style.transform = '';
+
+                this.state.currentSlide = index;
+                this.updateActiveControl();
+                
+                // Allow new transitions
+                setTimeout(() => {
+                    this.state.isTransitioning = false;
+                }, 100);
+            }, 700); // Match CSS transition duration
+        }
+
+        private updateActiveControl() {
+            this.controls.forEach((control, index) => {
+                const progress = control.querySelector(
+                    ".slider-progress",
+                ) as HTMLElement;
+
+                if (index === this.state.currentSlide) {
+                    control.classList.add("active");
+                    if (progress) {
+                        progress.style.height = "100%";
+                    }
+                } else {
+                    control.classList.remove("active");
+                    if (progress) {
+                        progress.style.height = "0%";
+                    }
+                }
+            });
+        }
+
+        public destroy() {
+            if (this.rafId) {
+                cancelAnimationFrame(this.rafId);
+            }
+        }
+    }
+
+    function initParallaxSliders() {
+        const sliders = document.querySelectorAll("[data-slider-id]");
+        console.log(`Found ${sliders.length} sliders to initialize`);
+
+        sliders.forEach((slider) => {
+            const sliderId = slider.getAttribute("data-slider-id");
+            if (sliderId) {
+                new ParallaxSlider(sliderId);
+            }
+        });
+    }
+
+    // Initialize
+    function safeInit() {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initParallaxSliders);
+        } else {
+            initParallaxSliders();
+        }
+    }
+
+    safeInit();
+
+    // Re-initialize on navigation (for SPAs)
+    document.addEventListener("astro:page-load", initParallaxSliders);
+</script>
