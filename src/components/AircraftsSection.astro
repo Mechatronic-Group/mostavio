@@ -27,6 +27,7 @@ interface TimeStatsProps {
 }
 
 interface AircraftsSectionProps {
+    id?: string;
     contentClass?: string;
     tagline?: string;
     headline: string;
@@ -49,6 +50,7 @@ const defaultStats = {
 };
 
 const {
+    id,
     contentClass = "",
     tagline,
     headline,
@@ -59,7 +61,7 @@ const {
 } = Astro.props as AircraftsSectionProps;
 ---
 
-<section class="scroll-mt-24">
+<section id={id} class="scroll-mt-24">
     <Container>
         <div
             class={`flex flex-col md:flex-row justify-between ${contentClass}`}
@@ -72,7 +74,7 @@ const {
         </div>
         {
             !comingSoon && (
-                <div class="my-24 overflow-x-auto scrollbar-hide cursor-[url('/scroll-horizontal.svg')_2_2,_auto]">
+                <div class="my-24 overflow-x-auto scrollbar-hide cursor-[url('/scroll-horizontal.svg')_2_2,_auto] horizontal-scroll">
                     <div class="flex gap-6">
                         {images.map((image) => (
                             <Image
@@ -105,7 +107,6 @@ const {
             <div
                 class="rounded-md bg-black space-y-6 max-w-3xl mx-auto px-10 p-6"
             >
-                <!-- Row 1 -->
                 <div
                     class="flex items-center space-x-12 border-b border-gray-600 pb-4"
                 >
@@ -124,7 +125,6 @@ const {
                     </div>
                 </div>
 
-                <!-- Row 2 -->
                 <div
                     class="flex items-center space-x-12 border-b border-gray-600 pb-4"
                 >
@@ -143,7 +143,6 @@ const {
                     </div>
                 </div>
 
-                <!-- Row 3 -->
                 <div class="flex items-center space-x-12">
                     <Image
                         src={BusIcon}
@@ -183,3 +182,19 @@ const {
         }
     </style>
 </section>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const containers = document.querySelectorAll('.horizontal-scroll');
+        
+        containers.forEach(container => {
+            const handleWheel = (e) => {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+            };
+            
+            container.addEventListener('wheel', handleWheel, { passive: false });
+        });
+    });
+</script>

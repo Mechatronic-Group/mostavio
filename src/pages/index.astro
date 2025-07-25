@@ -27,7 +27,7 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
 <Layout>
-	<main class="space-y-28 sm:space-y-32 lg:space-y-38 pb-40 overflow-clip">
+	<main class="space-y-32 lg:space-y-38 pb-40 overflow-clip">
 		<!-- <HeroCarousal
 			contentClass="top-1/4 text-left"
 			headerClass="w-1/4"
@@ -60,22 +60,22 @@ let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 				/>
 			</Fragment>
 		</PaintedImage>
-	</main>
 
-	<FocusText
-		tagline="Elevate. Electrify. Explore."
-		description="At MOSTAVIO, we are at the forefront of urban transportation innovation.\
+		<FocusText
+			tagline="Elevate. Electrify. Explore."
+			description="At MOSTAVIO, we are at the forefront of urban transportation innovation.\
 			 Our mission is to provide a seamless, eco-friendly, and efficient air travel experience\
-			 through electric Vertical Take-Off and Landing (eVTOL) technology.<br>\
+			 through electric Vertical Take-Off and Landing (eVTOL) technology.\
 			 Join us as we redefine the skies."
-		containerClass="md:w-3/5 ml-auto"
-		contentClass="text-right"
-	/>
-	<PaintedImage image={TeamPic} alt="MOSTAVIO Team Work Candid" />
-	<AircraftsSliderSection />
-	<PaintedImage image={TeamPic2} alt="MOSTAVIO Team Work" />
+			containerClass="md:w-3/5 ml-auto mt-32 mb-96"
+			contentClass="text-right"
+		/>
+		<PaintedImage image={TeamPic} alt="MOSTAVIO Team Work Candid" />
+		<AircraftsSliderSection />
+		<PaintedImage image={TeamPic2} alt="MOSTAVIO Team Work" />
 
-	<FeatureCards />
-	<SkyTechSection image={SkyTechDrone} />
-	<LatestNews />
+		<FeatureCards />
+		<SkyTechSection image={SkyTechDrone} />
+		<LatestNews />
+	</main>
 </Layout>

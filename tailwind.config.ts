@@ -6,6 +6,13 @@ module.exports = {
         './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
         "./node_modules/@tailus/themer-**/dist/**/*.{js,ts}"
     ],
+    theme: {
+        extend: {
+            fontFamily: {
+                inter: 'var(--font-inter)',
+            },
+        },
+    },
     darkMode: 'selector',
     // plugins: [
     //     themer

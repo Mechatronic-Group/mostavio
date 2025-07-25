@@ -17,7 +17,7 @@ interface SkyTechSectionProps {
 }
 
 const defaultContent = {
-    header: "INTRODUCING <br><span class='text-[#4167FF]'>SKYTECH</span>",
+    header: "INTRODUCING <br><span class='text-[#0077FF]'>SKYTECH</span>",
     description:
         "As an official DJI dealer and a Transport Canada-approved flight school,\
 				 Skytech delivers advanced drone solutions for commercial and industrial applications.",
@@ -29,15 +29,15 @@ const {
     imageClass = "",
     content = defaultContent,
     contentClass = "md:ml-auto md:top-1/4 md:text-left",
-    headerClass,
+    headerClass = "",
 } = Astro.props as SkyTechSectionProps;
 ---
 
-<section class={`relative my-24 md:my-48 scroll-mt-24 bg-gradient-painted`}>
+<section class="relative my-24 md:my-48 scroll-mt-24 bg-gradient-painted">
     <slot />
 
     <Image
-        class={`w-full h-auto md:h-[95vh] object-cover ${imageClass}`}
+        class={`w-full h-auto md:h-[95vh] object-cover opacity-60 ${imageClass} `}
         src={image}
         alt={alt}
     />
@@ -57,7 +57,6 @@ const {
                 )}
                 {content?.header && (
                     <h2
-                        style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);"
                         class={`my-4 md:my-8 leading-tight text-white font-bold \
                                 text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${headerClass}`}
                     >
@@ -66,7 +65,6 @@ const {
                 )}
                 {content?.description && (
                     <div
-                        style="text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);"
                         class="text-white py-4 text-sm sm:text-base md:text-lg \
                                max-w-full md:max-w-md leading-relaxed opacity-95"
                     >

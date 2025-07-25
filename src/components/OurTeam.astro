@@ -66,31 +66,26 @@ const socialIcons = {
             >
                 {
                     team.map((member) => (
-                        <div class="group transition-transform duration-300 hover:-translate-y-2">
+                        <div class="group transition-transform duration-300 hover:-translate-y-2 relative max-w-xs bg-gradient-to-b from-transparent via-[#1A1A1A] to-[#1A1A1A] rounded-b-xl">
                             <div class="relative mx-auto">
                                 <img
                                     src={AVTransparentBadge.src}
                                     alt="Mostavio badge background"
-                                    class="absolute inset-0 h-full w-full object-contain opacity-30 z-0"
+                                    class="absolute bottom-0 h-auto w-full mx-auto opacity-50 object-contain z-0"
                                     loading="lazy"
                                 />
 
                                 <img
                                     src={member.image.src}
                                     alt={`Picture of Mostavio Team Member ${member.name}`}
-                                    class="relative h-full w-full object-cover shadow-lg transition-shadow duration-300 group-hover:shadow-2xl z-10"
+                                    class="relative h-48 w-auto mx-auto object-cover shadow-lg transition-shadow duration-300 group-hover:shadow-2xl z-10 rounded-t-2xl"
                                     loading="lazy"
-                                    width="267"
-                                    height="267"
-                                />
-
-                                <div
-                                    class="absolute inset-0 z-20 pointer-events-none"
-                                    style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(26, 26, 26, 1) 95%);"
+                                    width="192"
+                                    height="192"
                                 />
                             </div>
 
-                            <div class="py-6 z-20 text-center bg-[#1A1A1A] rounded-b-2xl">
+                            <div class="relative py-6 z-20 text-center">
                                 <h3 class="text-xl font-semibold text-white">
                                     {member.name}
                                 </h3>
@@ -102,13 +97,13 @@ const socialIcons = {
                                         {member.bio}
                                     </span>
                                 )}
-                                <div class="mt-6 flex items-center justify-center gap-4">
+                                <div class=" mt-6 flex items-center justify-center gap-4">
                                     {member.socials.map((social) => (
                                         <a
                                             href={social.href}
                                             target="_blank"
                                             aria-label={social.label}
-                                            class="text-gray-400 hover:text-blue-400 transition-colors duration-300"
+                                            class="text-gray-400"
                                         >
                                             <Fragment
                                                 set:html={
