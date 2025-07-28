@@ -35,7 +35,7 @@ const links = [
         to: "https://skyt.ca/",
         label: "SkyTech",
         target: "_blank",
-        class: "bg-[#0077FF] text-white hover:bg-[#0077FF] dark:hover:bg-[#0077FF]",
+        class: "bg-[#0077FF] text-white hover:bg-[#0077FF]",
     },
 ];
 
@@ -49,14 +49,13 @@ function isActiveLink(linkPath: string): boolean {
     return false;
 }
 
-// Function to check if a parent link has active children
 function hasActiveChild(children: any[]): boolean {
     return children.some((child) => isActiveLink(child.to.split("#")[0]));
 }
 ---
 
-<header>
-    <nav class="absolute z-50 w-full my-2">
+<header class="sticky top-0 z-50 backdrop-blur-lg">
+    <nav class="w-full my-2">
         <Container>
             <div
                 class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 lg:py-8"
@@ -71,21 +70,16 @@ function hasActiveChild(children: any[]): boolean {
                             id="hamburger"
                             class="fixed right-5 top-2 z-20 p-4"
                         >
-                            <div
-                                class="h-0.5 w-6 bg-sky-900 dark:bg-gray-300 mb-1 transition"
-                            >
+                            <div class="h-0.5 w-6 bg-sky-900 mb-1 transition">
                             </div>
-                            <div
-                                class="h-0.5 w-6 bg-sky-900 dark:bg-gray-300 transition"
-                            >
-                            </div>
+                            <div class="h-0.5 w-6 bg-sky-900 transition"></div>
                         </button>
                     </div>
                 </div>
 
                 <div
                     id="navLayer"
-                    class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-300 dark:bg-gray-900/70 lg:hidden"
+                    class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-300 bg-gray-900/70 lg:hidden"
                 >
                 </div>
 
@@ -112,10 +106,10 @@ function hasActiveChild(children: any[]): boolean {
                                         <li class="relative group">
                                             <a
                                                 class={cn(
-                                                    "p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
+                                                    "p-1 hover:bg-gray-100 hover:bg-white/5 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
                                                     shouldHighlight
                                                         ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                        : "hover:text-black dark:hover:text-white",
+                                                        : "hover:text-black hover:text-white",
                                                     link.class,
                                                 )}
                                                 href={link.to}
@@ -126,7 +120,7 @@ function hasActiveChild(children: any[]): boolean {
                                                     {link.label}
                                                 </span>
                                             </a>
-                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto lg:mt-0 mt-1">
+                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white bg-gray-900 shadow-lg border border-gray-100 border-gray-800 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto lg:mt-0 mt-1">
                                                 {link.children.map((child) => {
                                                     const childIsActive =
                                                         isActiveLink(
@@ -139,10 +133,10 @@ function hasActiveChild(children: any[]): boolean {
                                                             <a
                                                                 href={child.to}
                                                                 class={cn(
-                                                                    "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition",
+                                                                    "block px-4 py-2 hover:bg-gray-100 hover:bg-gray-800 transition",
                                                                     childIsActive
                                                                         ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                                        : "text-gray-700 dark:text-gray-200",
+                                                                        : "text-gray-700 text-gray-200",
                                                                 )}
                                                             >
                                                                 {child.label}
@@ -158,10 +152,10 @@ function hasActiveChild(children: any[]): boolean {
                                                 href={link.to}
                                                 target={link?.target}
                                                 class={cn(
-                                                    "p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded transition md:px-3 md:mx-2 block",
+                                                    "p-1 hover:bg-gray-100 hover:bg-white/5 rounded transition md:px-3 md:mx-2 block",
                                                     shouldHighlight
                                                         ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                        : "hover:text-black dark:hover:text-white",
+                                                        : "hover:text-black hover:text-white",
                                                     link.class,
                                                 )}
                                             >
@@ -176,7 +170,7 @@ function hasActiveChild(children: any[]): boolean {
                             <li class="sm:hidden">
                                 <a
                                     href={`tel:${phoneNumber}`}
-                                    class="px-3 py-2 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-black dark:hover:text-white rounded transition md:px-4 block"
+                                    class="px-3 py-2 hover:bg-gray-100 hover:bg-white/5 hover:text-black hover:text-white rounded transition md:px-4 block"
                                 >
                                     <span class="flex items-center gap-2">
                                         <Fragment set:html={phoneIconSvg} />
