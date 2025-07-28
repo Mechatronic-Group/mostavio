@@ -79,7 +79,7 @@ function hasActiveChild(children: any[]): boolean {
 
                 <div
                     id="navLayer"
-                    class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-300 bg-gray-900/70 lg:hidden"
+                    class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 backdrop-blur-2xl transition duration-300 lg:hidden"
                 >
                 </div>
 
@@ -106,10 +106,10 @@ function hasActiveChild(children: any[]): boolean {
                                         <li class="relative group">
                                             <a
                                                 class={cn(
-                                                    "p-1 hover:bg-gray-100 hover:bg-white/5 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
+                                                    "p-1 hover:bg-gray-700 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
                                                     shouldHighlight
                                                         ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                        : "hover:text-black hover:text-white",
+                                                        : "hover:text-white",
                                                     link.class,
                                                 )}
                                                 href={link.to}
@@ -120,23 +120,24 @@ function hasActiveChild(children: any[]): boolean {
                                                     {link.label}
                                                 </span>
                                             </a>
-                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-white bg-gray-900 shadow-lg border border-gray-100 border-gray-800 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto lg:mt-0 mt-1">
+                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-transparent shadow-lg border border-gray-700 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto lg:mt-0 mt-1">
                                                 {link.children.map((child) => {
-                                                    const childIsActive =
-                                                        isActiveLink(
-                                                            child.to.split(
-                                                                "#",
-                                                            )[0],
-                                                        );
+                                                    // const childIsActive =
+                                                    //     isActiveLink(
+                                                    //         child.to.split(
+                                                    //             "#",
+                                                    //         )[0],
+                                                    //     );
                                                     return (
                                                         <li>
                                                             <a
                                                                 href={child.to}
                                                                 class={cn(
-                                                                    "block px-4 py-2 hover:bg-gray-100 hover:bg-gray-800 transition",
-                                                                    childIsActive
-                                                                        ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                                        : "text-gray-700 text-gray-200",
+                                                                    "block px-4 py-2 hover:bg-gray-700 transition",
+                                                                    "text-white",
+                                                                    // childIsActive
+                                                                    //     ? "text-[#FF8914] hover:text-[#FF8914]"
+                                                                    //     : "text-white",
                                                                 )}
                                                             >
                                                                 {child.label}
@@ -152,10 +153,10 @@ function hasActiveChild(children: any[]): boolean {
                                                 href={link.to}
                                                 target={link?.target}
                                                 class={cn(
-                                                    "p-1 hover:bg-gray-100 hover:bg-white/5 rounded transition md:px-3 md:mx-2 block",
+                                                    "p-1 hover:bg-gray-700 rounded transition md:px-3 md:mx-2 block",
                                                     shouldHighlight
                                                         ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                        : "hover:text-black hover:text-white",
+                                                        : "hover:text-white",
                                                     link.class,
                                                 )}
                                             >
@@ -170,7 +171,7 @@ function hasActiveChild(children: any[]): boolean {
                             <li class="sm:hidden">
                                 <a
                                     href={`tel:${phoneNumber}`}
-                                    class="px-3 py-2 hover:bg-gray-100 hover:bg-white/5 hover:text-black hover:text-white rounded transition md:px-4 block"
+                                    class="px-3 py-2 hover:bg-gray-700 hover:text-black rounded transition md:px-4 block"
                                 >
                                     <span class="flex items-center gap-2">
                                         <Fragment set:html={phoneIconSvg} />
