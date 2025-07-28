@@ -1,31 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeroCarousal from "@components/molecules/HeroCarousal.astro";
-
-// Media
-// import slide01 from "../assets/evtol_img/HeroBg4.png";
-import companyBanner from "../assets/hero_media/company-banner.jpg";
 import FocusText from "@components/molecules/FocusText.astro";
-import Carousel from "@components/molecules/Carousel.astro";
 import FeatureGrid from "@components/molecules/FeatureGrid.astro";
 import JobListing from "@components/JobListing.astro";
 import OurTeam from "@components/OurTeam.astro";
 import DynamicTimeline from "@components/DynamicTimeline.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
 
-// import Newsletter from "@components/NewsLetter.astro";
-
-// import splitImageA from "../assets/evtol-split-carousel/a.jpg";
-// import splitImageB from "../assets/evtol-split-carousel/b.jpg";
-// import splitImageC from "../assets/evtol-split-carousel/c.jpg";
-
-import {
-	// focusText,
-	focusText2,
-	featureContent,
-	jobList,
-	// bannerContent,
-} from "../content/company";
+import { featureContent, jobList } from "../content/company";
 
 // v2 Assets
 import BatteryBanner from "../assets/v2/company/Batteries_Placeholder.png";
@@ -49,7 +31,7 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 			 eVTOL solutions designed to transform urban mobility. With a focus on safety,\
 			 sustainability, and intelligent design, our mission is to make personal air\
 			 transportation more accessible, efficient, and environmentally responsible."
-			containerClass="md:w-3/5 ml-auto"
+			containerClass="md:w-3/5 ml-auto my-64"
 			contentClass="text-right"
 		/>
 		<!-- <Carousel images={[splitImageA, splitImageB, splitImageC]} /> -->

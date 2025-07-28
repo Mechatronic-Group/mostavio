@@ -15,7 +15,13 @@ import MostavioEvtols from "../assets/v2/aircrafts/MostavioEvtols.png";
 import MostavioRender from "../assets/v2/aircrafts/MostavioRenderAlt.jpg";
 
 // Model sliders
-
+import Aeroguardian from "../assets/v2/aircrafts/slider/aeroguardian.jpg";
+import Battery from "../assets/v2/aircrafts/slider/battery.jpg";
+import EngineerWorking from "../assets/v2/aircrafts/slider/engineer-working.jpg";
+import MostavioStation from "../assets/v2/aircrafts/slider/mostavio-station.jpg";
+import MX1Render from "../assets/v2/aircrafts/slider/mx1-render.jpg";
+import Production from "../assets/v2/aircrafts/slider/production.jpg";
+import Tail from "../assets/v2/aircrafts/slider/tail.jpg";
 ---
 
 <Layout>
@@ -37,6 +43,19 @@ import MostavioRender from "../assets/v2/aircrafts/MostavioRenderAlt.jpg";
                 urban commuting. With seating for 2-3 passengers, MX1 combines\
                 sleek design with AI-powered navigation, real-time collision\
                 avoidance, and advanced safety systems."
+			images={[
+				{ src: MX1Render, alt: "MX1 Render Image" },
+				{ src: MostavioStation, alt: "Mostavio Station" },
+				{ src: Tail, alt: "Aircraft Tail Design" },
+				{ src: Production, alt: "Production Line" },
+				{ src: Battery, alt: "Battery Design" },
+				{ src: EngineerWorking, alt: "Engineer Working on Aircraft" },
+			]}
+			stats={{
+				drone: "10",
+				car: "38",
+				bus: "47",
+			}}
 		/>
 
 		<AircraftSection
@@ -49,6 +68,19 @@ import MostavioRender from "../assets/v2/aircrafts/MostavioRenderAlt.jpg";
 			 of high-stakes scenarios. With the ability to carry up to 160 kg, it\
 			 ensures fast and safe transport of patients, organs, and life-saving\
 			 supplies from remote or high-risk zones."
+			images={[
+				{ src: Aeroguardian, alt: "Aeroguardian Aircraft" },
+				{ src: MostavioStation, alt: "Mostavio Station" },
+				{ src: Tail, alt: "Aircraft Tail Design" },
+				{ src: Production, alt: "Production Line" },
+				{ src: Battery, alt: "Battery Design" },
+				{ src: EngineerWorking, alt: "Engineer Working on Aircraft" },
+			]}
+			stats={{
+				drone: "10",
+				car: "38",
+				bus: "47",
+			}}
 		/>
 
 		<AircraftSection
