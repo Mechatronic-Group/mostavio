@@ -88,7 +88,7 @@ function hasActiveChild(children: any[]): boolean {
 
                 <div
                     id="navlinks"
-                    class="hidden my-2 flex-wrap transition ease-in-out duration-500 gap-6 items-center w-full lg:flex lg:w-fit"
+                    class="hidden my-6 md:my-2 flex-wrap transition ease-in-out duration-500 gap-6 items-center w-full lg:flex lg:w-fit"
                 >
                     <div
                         class="fixed inset-x-0 lg:relative lg:inset-auto lg:w-fit lg:m-auto"
@@ -171,6 +171,16 @@ function hasActiveChild(children: any[]): boolean {
                                     );
                                 })
                             }
+                            <li class="sm:hidden">
+                                <a
+                                    href="/contact"
+                                    class="px-3 py-2 hover:bg-gray-700 hover:text-black rounded transition md:px-4 block"
+                                >
+                                    <span class="flex items-center gap-2">
+                                        Contact
+                                    </span>
+                                </a>
+                            </li>
                             <li class="sm:hidden">
                                 <a
                                     href={`tel:${phoneNumber}`}

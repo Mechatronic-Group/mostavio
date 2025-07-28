@@ -22,7 +22,7 @@ export const companyLinks = [
 export const policyLinks = [
     // { title: "Privacy Policy", url: "#" },
     // { title: "Terms of Use", url: "#" },
-    { title: "Media Inquiries", url: "mailto:info@mostavio.com" },
+    { title: "Media Inquiries", url: "/contact" },
     // { title: "Cookies Policy", url: "#" }
 ];
 
