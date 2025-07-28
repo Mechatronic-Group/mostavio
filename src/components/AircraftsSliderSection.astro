@@ -83,7 +83,7 @@ const {
 
                                 {showContent && (
                                     <>
-                                        <div class="absolute top-4 ease-in-out left-0 z-10 max-w-xs">
+                                        <div class="relative md:absolute top-4 ease-in-out left-0 z-10 max-w-xs">
                                             <div class="backdrop-blur-sm text-white">
                                                 <p class="text-sm leading-relaxed">
                                                     {model.content}
@@ -92,7 +92,7 @@ const {
                                             <Button
                                                 link="/aircrafts"
                                                 ctaLabel="Learn More"
-                                                containerClass="justify-start ml-2"
+                                                containerClass="justify-start ml-2 mb-15 md:mb-20"
                                                 variant="transparent"
                                             />
                                         </div>

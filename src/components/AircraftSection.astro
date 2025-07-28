@@ -234,9 +234,27 @@ const {
         containers.forEach(container => {
             const handleWheel = (e) => {
                 console.log('Scrolling Event', e);
-                e.preventDefault();
-                container.scrollLeft += e.deltaY;
-                container.scrollLeft += e.deltaX;
+                
+                const isScrollingHorizontally = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+                const scrollAmount = isScrollingHorizontally ? e.deltaX : e.deltaY;
+                
+                // Check if we're at the beginning or end of horizontal scroll
+                const isAtStart = container.scrollLeft <= 0;
+                const isAtEnd = container.scrollLeft >= (container.scrollWidth - container.clientWidth);
+                
+                // Only prevent default and handle horizontal scroll if:
+                //  We're not at the edges, OR  We're scrolling in the direction that would keep us within bounds
+                const shouldPreventDefault = !isAtStart && !isAtEnd || 
+                    (isAtStart && scrollAmount > 0) || 
+                    (isAtEnd && scrollAmount < 0);
+                
+                if (shouldPreventDefault) {
+                    e.preventDefault();
+                    container.scrollLeft += scrollAmount;
+                } else {
+                    // Allow normal vertical scrolling when at edges
+                    console.log('Allowing normal scroll at edge');
+                }
             };
             
             container.addEventListener('wheel', handleWheel, { passive: false });
