@@ -100,17 +100,17 @@ const {
         {
     !comingSoon && (
         <div class="relative my-24 overflow-x-auto scrollbar-hide cursor-[url('/scroll-horizontal.svg')_2_2,_auto] horizontal-scroll">
-            <div class="flex gap-6">
+            <div class="flex gap-4">
                 {images.map((image, index) => (
                     <div key={index} class="relative flex-shrink-0">
                         <Image
                             src={image.src}
                             alt={image.alt || "Aircraft Image"}
-                            class="w-auto h-96 object-cover rounded pointer-events-none"
+                            class="w-96 h-96 object-cover pointer-events-none opacity-70"
                         />
                         {overlayHeader[index] && (
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center text-white bg-opacity-50 p-4 rounded-lg">
+                                <div class="text-center text-white">
                                     <div class="relative flex items-center mb-4">
                                         <div class="flex-grow border-t border-gray-300"></div>
                                         <div class="mx-4">
@@ -122,7 +122,7 @@ const {
                                         </div>
                                         <div class="flex-grow border-t border-gray-300"></div>
                                     </div>
-                                    <h3 class="text-8xl my-7 font-bold">{overlayHeader[index].header}</h3>
+                                    <h3 class="text-4xl md:text-6xl my-7 font-bold">{overlayHeader[index].header}</h3>
                                     <p class="text-gray-300 font-extralight text-5xl">{overlayHeader[index].subtitle}</p>
                                 </div>
                             </div>
@@ -142,11 +142,11 @@ const {
         alt="Toronto Map for Mostavio aircraft"
     >
         <div
-            class="absolute bottom-1/5 right-1/5 flex flex-col items-center justify-center text-white"
+            class="absolute -bottom-2 md:bottom-1/5 right-0 md:right-20 xl:right-52 2xl:right-1/5 flex flex-col items-center justify-center text-white"
         >
             <h2
                 style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);"
-                class="text-2xl font-bold text-right"
+                class="text-lg md:text-2xl font-bold text-right"
             >
                 DOWNTOWN TORONTO TO<br />YYZ
             </h2>
@@ -159,10 +159,10 @@ const {
                     <Image
                         src={EvtolIcon}
                         alt="eVTOL Icon"
-                        class="w-20 h-auto object-cover rounded"
+                        class="w-10 md:w-20 h-auto object-cover rounded"
                     />
                     <div class="text-center">
-                        <p class="text-lg font-semibold">25</p>
+                        <p class=" md:text-lg font-semibold">25</p>
                         <p class="text-sm text-gray-400">Distance(km)</p>
                     </div>
                     <div class="text-center">
@@ -177,14 +177,14 @@ const {
                     <Image
                         src={CarIcon}
                         alt="Car Icon"
-                        class="w-20 h-auto object-cover rounded"
+                        class="w-10 md:w-20 h-auto object-cover rounded"
                     />
                     <div class="text-center">
                         <p class="text-lg font-semibold">28</p>
                         <p class="text-sm text-gray-400">Distance(km)</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-lg font-semibold">{stats?.car}</p>
+                        <p class="md:text-lg font-semibold">{stats?.car}</p>
                         <p class="text-sm text-gray-400">Time(min)</p>
                     </div>
                 </div>
@@ -193,14 +193,14 @@ const {
                     <Image
                         src={BusIcon}
                         alt="Bus Icon"
-                        class="w-18 h-auto object-cover rounded"
+                        class="w-8 md:w-18 h-auto object-cover rounded"
                     />
                     <div class="text-center">
-                        <p class="text-lg font-semibold">29</p>
+                        <p class="md:text-lg font-semibold">29</p>
                         <p class="text-sm text-gray-400">Distance(km)</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-lg font-semibold">{stats?.bus}</p>
+                        <p class="md:text-lg font-semibold">{stats?.bus}</p>
                         <p class="text-sm text-gray-400">Time(min)</p>
                     </div>
                 </div>
