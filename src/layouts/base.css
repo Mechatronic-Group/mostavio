@@ -3,13 +3,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-    --color-bg: #000000;
-    --color-text: #FFFFFF;
-    --font-inter: 'Inter', sans-serif;
-    --default-font-family: var(--font-inter);
-    --color-primary: var(--color-orange);
-}
 
 
 @layer base {
@@ -20,6 +13,8 @@
         --color-text: #FFFFFF;
         --color-skytech: #0077FF;
         --color-orange: #FF8914;
+        --default-font-family: var(--font-inter);
+        --color-primary: var(--color-orange);
         --swiper-theme-color: var(--color-orange);
         --swiper-pagination-color: var(--color-orange);
         --swiper-navigation-color: var(--color-orange);

@@ -5,12 +5,9 @@ import Posts from "@components/Posts.astro";
 import { getCollection } from "astro:content";
 
 // Media
-// import Newsletter from "@components/NewsLetter.astro";
+import PropellerFocusView from "../assets/v2/news/propeller-focus.jpg";
 
-// import HeroBg from "../assets/evtol_img/HeroBg3.png";
-import motorPropeller from "../assets/evtol_img/propeller-focus.jpg";
-
-let media: Array<string | ImageMetadata> = [motorPropeller];
+let media: Array<string | ImageMetadata> = [PropellerFocusView];
 let bannerContent = {
 	header: "Latest News and Updates",
 	description: "",

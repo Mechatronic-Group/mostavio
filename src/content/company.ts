@@ -1,6 +1,6 @@
 
-import museWinnerImage from "../assets/timeline/muse_winner.png";
-import goAeroLogo from "../assets/timeline/goaeroLogo.png";
+import museWinnerImage from "../assets/v2/timeline/muse_winner.png";
+import goAeroLogo from "../assets/v2/timeline/goaeroLogo.png";
 import skyTechLogo from "../assets/SkyTechTransparent.png"
 
 

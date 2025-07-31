@@ -1,6 +1,4 @@
 ---
-import HeroCarousal from "@components/molecules/HeroCarousal.astro";
-import type { VideoSource } from "@components/molecules/HeroCarousal.astro";
 import Layout from "../layouts/Layout.astro";
 import FocusText from "@components/molecules/FocusText.astro";
 
@@ -12,9 +10,6 @@ import PaintedImage from "@components/atoms/PaintedImage.astro";
 import FeatureCards from "@components/FeatureCards.astro";
 import { Image } from "astro:assets";
 
-// Media
-import mostiavioBannerVid from "../assets/hero_media/mostavio-banner.mp4";
-
 // Media V2
 import TeamPic from "../assets/v2/home/TeamPic.png";
 import TeamPic2 from "../assets/v2/home/TeamPic2.png";
@@ -22,17 +17,10 @@ import SkyTechDrone from "../assets/v2/home/SkyTechDrone.jpg";
 import MostavioSmokeBG from "../assets/v2/home/MostavioSmokeBG.png";
 import EvtolOnly from "../assets/v2/home/EvtolOnly.png";
 import AVBadgeVertical from "../assets/v2/AV_TransparentBadgeVertical.png";
-
-let media: Array<string | VideoSource | ImageMetadata> = [mostiavioBannerVid];
 ---
 
 <Layout>
 	<main class="space-y-32 lg:space-y-38 pb-40 overflow-clip">
-		<!-- <HeroCarousal
-			contentClass="top-1/4 text-left"
-			headerClass="w-1/4"
-			media={media}
-		/> -->
 		<PaintedImage
 			image={MostavioSmokeBG}
 			alt="Mostavio Smoke Banner"
