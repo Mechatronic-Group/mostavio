@@ -5,13 +5,13 @@ import DesignSwiperBlock from "@components/molecules/DesignSwiperBlock.astro";
 import FocusText from "@components/molecules/FocusText.astro";
 import PaintedImage from "@components/atoms/PaintedImage.astro";
 import AircraftSection from "@components/AircraftSection.astro";
-import ParallaxSlider from "@components/atoms/ParallaxSlider.astro";
+import ParallaxSlider from "@components/molecules/ParallaxSlider.astro";
 
 // Media v2
 import MotorPropeller from "../assets/v2/aircrafts/motor-propeller.jpg";
+import MostavioRender from "../assets/v2/aircrafts/MostavioRenderAlt.jpg";
 import BannerPlaceholder from "../assets/v2/aircrafts/Banner_Placeholder.png";
 import MostavioEvtols from "../assets/v2/aircrafts/MostavioEvtols.png";
-import MostavioRender from "../assets/v2/aircrafts/MostavioRenderAlt.jpg";
 
 // Model sliders
 import Aeroguardian from "../assets/v2/aircrafts/slider/aeroguardian.jpg";
@@ -39,10 +39,11 @@ import Tail from "../assets/v2/aircrafts/slider/tail.jpg";
 			id="mx1"
 			tagline="Introducing the Prototype"
 			headline="THE MX1"
-			description="Our next generation eVTOL prototype is designed to redefine\
-                urban commuting. With seating for 2-3 passengers, MX1 combines\
-                sleek design with AI-powered navigation, real-time collision\
-                avoidance, and advanced safety systems."
+			description="MX1 is the foundation of our journey at Mostavio,\
+			 a one-passenger prototype built to pave the way for a smarter,\
+			 cleaner, and safer future in city flight. It's the starting point\
+			 for our upcoming 2-3 passenger eVTOL, equipped with AI-powered navigation,\
+			 real-time obstacle avoidance, and robust safety architecture."
 			images={[
 				{ src: MX1Render, alt: "MX1 Render Image" },
 				{ src: MostavioStation, alt: "Mostavio Station" },
@@ -62,7 +63,6 @@ import Tail from "../assets/v2/aircrafts/slider/tail.jpg";
 			id="aeroguardian"
 			tagline="Built for Critical Missions"
 			headline="AEROGUARDIAN"
-			contentClass="md:flex-row-reverse"
 			description="Designed for emergency response and rapid intervention.\
 			 As a GOAERO Stage 1 Winner, Aeroguardian is built to meet the demands\
 			 of high-stakes scenarios. With the ability to carry up to 160 kg, it\
@@ -100,25 +100,6 @@ import Tail from "../assets/v2/aircrafts/slider/tail.jpg";
 			headerShadow={true}
 		/>
 		<DesignSwiperBlock />
-		<ParallaxSlider
-			slides={[
-				{
-					header: "Advanced Materials",
-					description:
-						"All our eVTOL aircraft are constructed using carbon fiber exteriors for maximum strength and minimal weight, ensuring optimal flight performance. Internally, Kevlar®-reinforced components provide critical safety and structural integrity.",
-					image: MotorPropeller,
-					alt: "Motor Propeller Mostavio",
-				},
-				{
-					header: "Designed to be Safe",
-					description:
-						"Safety is our top priority. Our eVTOL aircraft are equipped with a state-of-the-art autopilot system that ensures a smooth, stable flight experience. Our models also feature redundant systems, including multiple batteries and motors, to ensure maximum safety and reliability.",
-					image: MostavioRender,
-					alt: "Evtol Tail Mostavio",
-				},
-			]}
-			heightClass="h-96 md:h-[95vh]"
-			contentClass="top-3/5 text-left md:w-3/5 md:ml-32"
-		/>
+		<ParallaxSlider />
 	</main>
 </Layout>

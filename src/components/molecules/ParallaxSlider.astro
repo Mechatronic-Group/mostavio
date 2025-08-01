@@ -1,0 +1,143 @@
+---
+import { Image } from "astro:assets";
+
+import MotorPropeller from "../../assets/v2/aircrafts/motor-propeller.jpg";
+import MostavioRender from "../../assets/v2/aircrafts/MostavioRenderAlt.jpg";
+---
+
+<!-- <div
+    class="fixed top-8 right-8 md:top-20 md:right-48 z-50 opacity-0 transition-opacity duration-500 ease-in-out"
+    id="parallax-indicator"
+>
+    <div class="relative">
+        <div class="w-1 h-18 m:h-32 bg-white/30 rounded-full"></div>
+        <div
+            id="section-indicator-0"
+            class="absolute top-0 left-0 w-1 bg-white/50 rounded-t-full transition-all duration-300 ease-out"
+            style="height: 50%;"
+        >
+        </div>
+        <div
+            id="section-indicator-1"
+            class="absolute bottom-0 left-0 w-1 bg-white/50 rounded-b-full transition-all duration-300 ease-out"
+            style="height: 50%;"
+        >
+        </div>
+    </div>
+</div> --><!-- Parallax Container -->
+<div class="parallax-container mt-48 bg-gradient-painted">
+    <section
+        class="parallax h-screen w-full relative flex items-center justify-center bg-gradient-painted"
+        id="image-section-1"
+    >
+        <Image
+            src={MotorPropeller}
+            alt="Motor Propeller Aircraft"
+            class="absolute inset-0 w-full h-full object-cover bg-black/50"
+        />
+
+        <div
+            class="absolute top-1/2 md:left-20 w-full md:w-md text-white text-left p-8"
+        >
+            <h2 class="text-4xl font-bold mb-4 uppercase">
+                Advanced Materials
+            </h2>
+            <p class="text-lg">
+                All our eVTOL aircraft are constructed using carbon fiber
+                exteriors for maximum strength and minimal weight, ensuring
+                optimal flight performance. Internally, Kevlar®-reinforced
+                components provide critical safety and structural integrity.
+            </p>
+        </div>
+    </section>
+
+    <section class="h-screen w-full relative flex items-center justify-center">
+        <Image
+            src={MostavioRender}
+            alt="Motor Propeller Aircraft"
+            class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute top-1/2 md:left-20 w-full md:w-md text-left p-8">
+            <h2 class="text-4xl font-bold mb-4 uppercase">
+                Designed to Be Safe
+            </h2>
+            <p class="text-lg">
+                Cutting-edge aircraft design showcasing innovative aerodynamics
+                and modern engineering excellence.
+            </p>
+        </div>
+    </section>
+</div>
+
+<!-- Spacer to ensure proper flow for next content -->
+<!-- <div class="h-[60vh] w-full"></div> -->
+
+<script>
+    import ScrollMagic from "scrollmagic";
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const controller = new ScrollMagic.Controller({
+            globalSceneOptions: {
+                triggerHook: "onLeave",
+                duration: "100%",
+            },
+        });
+
+        const parallaxPanels = document.querySelectorAll("section.parallax");
+        const sectionIndicator0 = document.getElementById(
+            "section-indicator-0",
+        );
+        const sectionIndicator1 = document.getElementById(
+            "section-indicator-1",
+        );
+        const indicator = document.getElementById("parallax-indicator");
+        const totalParallaxSections = parallaxPanels.length;
+
+        let isInParallaxZone = false;
+
+        parallaxPanels.forEach((panel, index) => {
+            const scene = new ScrollMagic.Scene({
+                triggerElement: panel,
+            })
+                .setPin(panel, { pushFollowers: false })
+                // .on("enter", function () {
+                //     if (!isInParallaxZone) {
+                //         isInParallaxZone = true;
+                //         indicator.classList.remove("opacity-0");
+                //         indicator.classList.add("opacity-100");
+                //     }
+                // })
+                // .on("leave", function (event) {
+                //     if (
+                //         index === totalParallaxSections - 1 &&
+                //         event.scrollDirection === "FORWARD"
+                //     ) {
+                //         isInParallaxZone = false;
+                //         indicator.classList.remove("opacity-100");
+                //         indicator.classList.add("opacity-0");
+                //     }
+                //     if (index === 0 && event.scrollDirection === "REVERSE") {
+                //         isInParallaxZone = false;
+                //         indicator.classList.remove("opacity-100");
+                //         indicator.classList.add("opacity-0");
+                //     }
+                // })
+                // .on("progress", function (event) {
+                //     const sectionProgress = event.progress;
+
+                //     if (index === 0) {
+                //         sectionIndicator0.classList.remove("bg-white/50");
+                //         sectionIndicator0.classList.add("bg-white");
+                //         sectionIndicator1.classList.remove("bg-white");
+                //         sectionIndicator1.classList.add("bg-white/50");
+                //     } else if (index === 1) {
+                //         sectionIndicator1.classList.remove("bg-white/50");
+                //         sectionIndicator1.classList.add("bg-white");
+                //         sectionIndicator0.classList.remove("bg-white");
+                //         sectionIndicator0.classList.add("bg-white/50");
+                //     }
+                // })
+                .addTo(controller);
+        });
+    });
+</script>
