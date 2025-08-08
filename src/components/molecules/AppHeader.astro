@@ -39,18 +39,26 @@ const links = [
     },
 ];
 
-// Get current URL path for active link detection
 const currentPath = Astro.url.pathname;
+const currentHash = Astro.url.hash;
+const currentFullPath = currentPath + currentHash;
 
-// Function to check if a link is active
 function isActiveLink(linkPath: string): boolean {
     if (linkPath === "/" && currentPath === "/") return true;
-    if (linkPath !== "/" && currentPath.startsWith(linkPath)) return true;
+    if (linkPath !== "/" && currentPath.startsWith(linkPath.split("#")[0]))
+        return true;
     return false;
 }
 
+function isChildActive(childPath: string): boolean {
+    if (childPath.includes("#")) {
+        return currentFullPath === childPath;
+    }
+    return currentPath === childPath;
+}
+
 function hasActiveChild(children: any[]): boolean {
-    return children.some((child) => isActiveLink(child.to.split("#")[0]));
+    return children.some((child) => isChildActive(child.to));
 }
 ---
 
@@ -109,10 +117,10 @@ function hasActiveChild(children: any[]): boolean {
                                         <li class="relative group">
                                             <a
                                                 class={cn(
-                                                    "p-1 hover:bg-gray-700 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
+                                                    "p-1 rounded transition md:px-3 md:mx-2 flex items-center gap-1",
                                                     shouldHighlight
-                                                        ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                        : "hover:text-white",
+                                                        ? "text-[#FF8914]"
+                                                        : "text-white hover:text-[rgba(255,137,20,0.72)]",
                                                     link.class,
                                                 )}
                                                 href={link.to}
@@ -123,27 +131,47 @@ function hasActiveChild(children: any[]): boolean {
                                                     {link.label}
                                                 </span>
                                             </a>
-                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-gray-900/90 shadow-lg border border-gray-700 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto lg:mt-0 mt-1">
+                                            <ul class="absolute left-0 top-full z-30 hidden min-w-[8rem] rounded-md bg-gray-900/90 shadow-lg border border-gray-700 group-hover:block group-focus-within:block pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto mt-0 lg:block lg:hidden lg:group-hover:block">
                                                 {link.children.map((child) => {
-                                                    // const childIsActive =
-                                                    //     isActiveLink(
-                                                    //         child.to.split(
-                                                    //             "#",
-                                                    //         )[0],
-                                                    //     );
+                                                    const childIsActive =
+                                                        isChildActive(child.to);
                                                     return (
                                                         <li>
                                                             <a
                                                                 href={child.to}
                                                                 class={cn(
-                                                                    "block px-4 py-2 hover:bg-gray-700 transition",
-                                                                    "text-white",
-                                                                    // childIsActive
-                                                                    //     ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                                    //     : "text-white",
+                                                                    "block px-4 py-2 transition",
+                                                                    childIsActive
+                                                                        ? "text-[#FF8914]"
+                                                                        : "text-white hover:text-[rgba(255,137,20,0.72)]",
                                                                 )}
                                                             >
                                                                 {child.label}
+                                                            </a>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                            <ul class="flex flex-col gap-4 mt-4 ml-6 lg:hidden">
+                                                {link.children.map((child) => {
+                                                    const childIsActive =
+                                                        isChildActive(child.to);
+                                                    return (
+                                                        <li>
+                                                            <a
+                                                                href={child.to}
+                                                                class={cn(
+                                                                    "block p-1 rounded transition",
+                                                                    childIsActive
+                                                                        ? "text-[#FF8914]"
+                                                                        : "text-white hover:text-[rgba(255,137,20,0.72)]",
+                                                                )}
+                                                            >
+                                                                <span class="uppercase text-sm">
+                                                                    {
+                                                                        child.label
+                                                                    }
+                                                                </span>
                                                             </a>
                                                         </li>
                                                     );
@@ -156,10 +184,10 @@ function hasActiveChild(children: any[]): boolean {
                                                 href={link.to}
                                                 target={link?.target}
                                                 class={cn(
-                                                    "p-1 hover:bg-gray-700 rounded transition md:px-3 md:mx-2 block",
+                                                    "p-1 rounded transition md:px-3 md:mx-2 block",
                                                     shouldHighlight
-                                                        ? "text-[#FF8914] hover:text-[#FF8914]"
-                                                        : "hover:text-white",
+                                                        ? "text-[#FF8914]"
+                                                        : "text-white hover:text-[rgba(255,137,20,0.72)]",
                                                     link.class,
                                                 )}
                                             >
@@ -173,18 +201,8 @@ function hasActiveChild(children: any[]): boolean {
                             }
                             <li class="sm:hidden">
                                 <a
-                                    href="/contact"
-                                    class="px-3 py-2 hover:bg-gray-700 hover:text-black rounded transition md:px-4 block"
-                                >
-                                    <span class="flex items-center gap-2">
-                                        Contact
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="sm:hidden">
-                                <a
                                     href={`tel:${phoneNumber}`}
-                                    class="px-3 py-2 hover:bg-gray-700 hover:text-black rounded transition md:px-4 block"
+                                    class="px-3 py-2 rounded transition md:px-4 block text-white hover:text-[rgba(255,137,20,0.72)]"
                                 >
                                     <span class="flex items-center gap-2">
                                         <Fragment set:html={phoneIconSvg} />
@@ -228,7 +246,6 @@ function hasActiveChild(children: any[]): boolean {
             opacity 0.3s ease;
     }
 
-    /* Transform lines into an "X" when the button has the "open" class */
     #hamburger.open .line-1 {
         transform: rotate(45deg) translateY(0.25rem);
     }

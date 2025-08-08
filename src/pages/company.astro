@@ -16,7 +16,6 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 
 <Layout>
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
-		<!-- <HeroCarousal media={media} content={bannerContent} /> -->
 		<PaintedImage
 			image={BatteryBanner}
 			alt="Battery Banner Mostavio"
@@ -26,6 +25,7 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 			}}
 			contentClass="text-left md:top-2/3 md:w-2/3 md:ml-32"
 		/>
+		<div id="about"></div>
 		<FocusText
 			description="Founded in Toronto in 2021, we specialize in next generation\
 			 eVTOL solutions designed to transform urban mobility. With a focus on safety,\
@@ -34,14 +34,11 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 			containerClass="md:w-3/5 ml-auto my-64"
 			contentClass="text-right"
 		/>
-		<!-- <Carousel images={[splitImageA, splitImageB, splitImageC]} /> -->
 		<FeatureGrid content={featureContent} />
 		<PaintedImage
 			image={MostavioBillboard}
 			alt="Company Billboard Mostavio"
 		/>
-		<!-- <FocusText {...focusText2} /> -->
-		<!-- <Carousel /> -->
 		<DynamicTimeline />
 		<OurTeam />
 		<FocusText
@@ -54,6 +51,5 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 			link="/partners"
 		/>
 		<JobListing content={jobList} />
-		<!-- <Newsletter /> -->
 	</main>
 </Layout>
