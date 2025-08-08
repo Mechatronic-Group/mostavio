@@ -1,0 +1,29 @@
+---
+const { className, src, alt = "Mostavio Evtol Model" } = Astro.props;
+---
+
+<div class={className}>
+    <model-viewer
+        id="model-viewer"
+        src={src}
+        alt={alt}
+        class={className}
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        disable-zoom
+        touch-action="pan-y"
+        loading="eager"
+        shadow-intensity="1"></model-viewer>
+</div>
+
+<script>
+    import "@google/model-viewer";
+</script>
+
+<style>
+    #model-viewer {
+        width: auto;
+        height: 80vh;
+    }
+</style>

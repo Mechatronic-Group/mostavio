@@ -15,6 +15,7 @@
         "@astrojs/partytown": "^2.1.4",
         "@astrojs/sitemap": "^3.4.1",
         "@astrojs/vercel": "^8.2.2",
+        "@google/model-viewer": "^4.1.0",
         "@tailus/themer": "^0.1.8",
         "@tailus/themer-button": "^0.0.7",
         "@tailus/themer-card": "^0.0.1",
@@ -26,6 +27,7 @@
         "scrollmagic": "^2.0.8",
         "swiper": "^11.2.10",
         "tailwind-merge": "^3.3.1",
+        "three": "^0.179.1",
         "vite": "^7.0.4"
     },
     "devDependencies": {
