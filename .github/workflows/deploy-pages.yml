@@ -3,8 +3,8 @@ name: Deploy Pages
 on:
   push:
     branches:
-      # - release
-      - main
+      - release
+      # - main
 
 jobs:
   build-and-deploy:
