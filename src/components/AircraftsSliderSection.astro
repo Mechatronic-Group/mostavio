@@ -11,6 +11,7 @@ import ModelPlaceholder from "../assets/v2/home/Model_Placeholder.png";
 import MuseWinner from "../assets/v2/timeline/muse_winner.png";
 import GoAreoLogo from "../assets/v2/timeline/goaeroLogo.png";
 import RedDotLogo from "../assets/v2/timeline/RedDot.png";
+import goAeroAward from "../assets/v2/home/goAEROaward.png";
 
 // import EvtolModel from "../assets/EvtolModel.glb";
 import MX1ModelCompressed from "../assets/EvtolModelCompressed.glb";
@@ -68,7 +69,7 @@ const defaultModels: ModelData[] = [
         glbSrc: MX1ModelCompressed,
         awards: [
             {
-                logo: GoAreoLogo,
+                logo: goAeroAward,
                 name: "GOAERO Stage 1 Winner",
                 link: "/news/mostavio-wins-goaero-stage-1",
             },
@@ -169,12 +170,13 @@ const {
                 }
             </div>
 
-            <div class="swiper-pagination mt-6"></div>
+            <div class="flex items-center justify-center space-x-4">
+                <div class="swiper-button swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button swiper-button-next"></div>
+            </div>
 
-            <div class="swiper-button swiper-button-prev"></div>
-            <div class="swiper-button swiper-button-next"></div>
-
-            <div class="swiper-scrollbar"></div>
+            <!-- <div class="swiper-scrollbar"></div> -->
         </div>
     </Container>
 </section>
@@ -185,7 +187,7 @@ const {
     import "swiper/css/bundle";
 
     const swiperConfig = {
-        modules: [Navigation, Pagination, Mousewheel],
+        modules: [Navigation, Pagination],
         loop: true,
         spaceBetween: 30,
         slidesPerView: 1,
@@ -210,18 +212,28 @@ const {
     .swiper.aircrafts-container {
         margin: 0;
     }
-    .swiper-button-next:hover,
-    .swiper-button-prev:hover {
-        transform: scale(1.1);
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        color: #6b7280;
+        position: relative !important;
+        left: unset !important;
+        right: unset !important;
+        font-size: 20px !important;
     }
 
     .swiper-pagination-bullet {
-        background: #6b7280;
+        background-color: #fff;
         opacity: 0.5;
         width: 12px;
         height: 12px;
         margin: 0 6px;
         transition: all 0.2s ease;
+    }
+
+    .swiper-pagination-bullets.swiper-pagination-horizontal {
+        width: auto !important;
     }
 
     .swiper-pagination-bullet-active {
@@ -231,7 +243,9 @@ const {
     }
 
     .swiper-pagination {
-        position: relative;
-        margin-top: 20px;
+        position: relative !important;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        /* margin-top: 20px; */
     }
 </style>
