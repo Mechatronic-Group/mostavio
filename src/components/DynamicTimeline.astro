@@ -18,10 +18,9 @@ import AVTransparentBadge from "../assets/v2/AV_TransparentBadge.png";
             <div class="space-y-16">
                 {
                     timeline.map((step, i) => (
-                        <div key={i} class="relative flex items-center">
-                            <!-- Timeline dot - positioned differently for mobile vs desktop -->
+                        <div class="relative flex items-center">
                             <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 z-10">
-                                <div class="w-12 h-12 rounded-full border-1 border-gray-600 bg-gray-900 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full border-1 border-gray-600 flex items-center justify-center">
                                     <img
                                         class="w-6 h-6 object-contain rounded-full"
                                         src={AVTransparentBadge.src}
@@ -31,7 +30,6 @@ import AVTransparentBadge from "../assets/v2/AV_TransparentBadge.png";
                                 </div>
                             </div>
 
-                            <!-- Content positioning - all right on mobile, alternating on desktop -->
                             <div
                                 class={`w-full pl-20 md:w-5/12 md:pl-0 ${i % 2 === 0 ? "md:ml-auto md:pl-8" : "md:mr-auto md:pr-8"}`}
                             >
