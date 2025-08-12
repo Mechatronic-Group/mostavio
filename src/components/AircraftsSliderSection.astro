@@ -91,7 +91,7 @@ const {
     aircrafts = defaultModels,
     containerClass = "aircrafts-container",
     slideClass = defaultSlideClasses,
-    imageClass = "object-contain w-full h-96 md:h-[85vh]",
+    imageClass = "object-contain w-full h-[50vh]",
     showContent = true,
 } = Astro.props as ModelsCarouselProps;
 ---
@@ -160,6 +160,7 @@ const {
                                         <ModelViewer
                                             class={imageClass}
                                             src={model.glbSrc}
+                                            height="60vh"
                                             alt={`${model.name} - ${model.tagline}`}
                                         />
                                     )}
@@ -208,7 +209,7 @@ const {
     const swiper = new Swiper(".swiper", swiperConfig);
 </script>
 
-<style is:global>
+<style>
     .swiper.aircrafts-container {
         margin: 0;
     }
@@ -216,7 +217,6 @@ const {
     .swiper-button-prev,
     .swiper-button-prev:after,
     .swiper-button-next:after {
-        color: #6b7280;
         position: relative !important;
         left: unset !important;
         right: unset !important;

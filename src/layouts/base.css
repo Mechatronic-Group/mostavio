@@ -17,8 +17,8 @@
         --color-primary: var(--color-orange);
         --swiper-theme-color: var(--color-orange);
         --swiper-pagination-color: var(--color-orange);
-        --swiper-navigation-color: var(--color-orange);
-        --swiper-pagination-bullet-inactive-color: #6b7280;
+        --swiper-navigation-color: #6b7280;
+        --swiper-pagination-bullet-inactive-color: #fff;
         --swiper-pagination-bullet-inactive-opacity: 0.85;
     }
 }

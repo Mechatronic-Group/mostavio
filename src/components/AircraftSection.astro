@@ -10,11 +10,14 @@ import EvtolIcon from "../assets/v2/aircrafts/EvtolIcon.png";
 import BusIcon from "../assets/v2/aircrafts/BusIcon.png";
 import AVBadge from "../assets/v2/AV_TransparentBadge.png";
 
-import FrameArm from "../assets/v2/aircrafts/frame-arm.jpg";
-import MostavioPCB from "../assets/v2/aircrafts/mostavio-pcb.jpg";
-import MotorPropeller from "../assets/v2/aircrafts/motor-propeller.jpg";
+import Slide1 from "../assets/v2/aircrafts/slider/Slide1.png";
+import Slide2 from "../assets/v2/aircrafts/slider/Slide2.png";
+import Slide3 from "../assets/v2/aircrafts/slider/Slide3.png";
+import Slide4 from "../assets/v2/aircrafts/slider/Slide4.png";
+
 import TorontoMapMini from "../assets/v2/aircrafts/TorontoMapMini.png";
 import EvtolComingSoon from "../assets/v2/aircrafts/Evtol_ComingSoon.png";
+
 
 interface ImageMetadata {
     src: any;
@@ -39,10 +42,10 @@ interface AircraftsSectionProps {
 }
 
 const defaultImages: ImageMetadata[] = [
-    { src: MotorPropeller, alt: "Evtol Motor Propeller" },
-    { src: FrameArm, alt: "Evtol Frame Arm" },
-    { src: MostavioPCB, alt: "Mostavio Evtol PCB" },
-    { src: MotorPropeller, alt: "Motor Propeller" },
+    { src: Slide1, alt: "Mostavio Design Image" },
+    { src: Slide2, alt: "Mostavio Tail and CNC Machine" },
+    { src: Slide3, alt: "Mostavio Design and Battery pack" },
+    { src: Slide4, alt: "Mostavio top view and Production" },
 ];
 
 const overlayHeader = [
@@ -93,12 +96,13 @@ const {
             </div>
             <div class="pt-4">{description}</div>
         </div>
+
         {
             !comingSoon && (
                 <div class="relative my-24">
                     <button 
                         id="scroll-left"
-                        class="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100 backdrop-blur-sm"
+                        class="cursor-pointer absolute left-4 top-1/3 -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100 backdrop-blur-sm"
                         aria-label="Scroll left"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +112,7 @@ const {
                     
                     <button 
                         id="scroll-right"
-                        class="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100 backdrop-blur-sm"
+                        class="cursor-pointer absolute right-4 top-1/3 -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100 backdrop-blur-sm"
                         aria-label="Scroll right"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +130,7 @@ const {
                                     <Image
                                         src={image.src}
                                         alt={image.alt || "Aircraft Image"}
-                                        class="w-96 h-96 object-cover pointer-events-none opacity-70"
+                                        class="w-auto h-96 object-cover pointer-events-none opacity-70"
                                     />
                                     {overlayHeader[index] && (
                                         <div class="absolute inset-0 flex items-center justify-center">
@@ -151,6 +155,7 @@ const {
                             ))}
                         </div>
                     </div>
+                    <slot name="awards" />
                 </div>
             )
         }
@@ -230,8 +235,9 @@ const {
     </PaintedImage>}
     {comingSoon && (
         <Headline
-            headline="COMING SOON"
-            className="text-center text-4xl font-bold mt-32 mb-20"
+            headline="Coming Soon"
+            className="mt-32 text-6xl md:text-9xl uppercase text-[#1c1c1c] text-center"
+            gradient={false}
         />
         <PaintedImage
             image={EvtolComingSoon}

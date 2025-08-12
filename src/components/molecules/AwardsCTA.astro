@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import Button from "../atoms/Button.astro";
+
+interface Content {
+    header: string;
+    description: string;
+}
+
+interface Props {
+    awardImages: any[];
+    content?: Content;
+    link?: string;
+}
+
+const defaultContent: Content = {
+    header: "Pioneering Emergency Mobility",
+    description:
+        "Chosen as a Stage 1 winner from over 100 teams in a NASA-supported global challenge.",
+};
+
+const {
+    awardImages,
+    content = defaultContent,
+    link = "/news/mostavio-wins-muse-design-award",
+} = Astro.props;
+---
+
+<div class="my-18">
+    <div class="flex items-center justify-between">
+        <div class="flex gap-4">
+            {
+                awardImages.map((image) => (
+                    <Image
+                        src={image.src}
+                        alt={image.name}
+                        class="h-12 md:h-20 w-auto object-cover"
+                    />
+                ))
+            }
+        </div>
+        <div class="flex flex-col md:w-1/3 text-right">
+            <h2 class="text-lg font-bold">{content.header}</h2>
+            <p class="text-sm mt-2">{content.description}</p>
+            <Button
+                link={link}
+                containerClass="justify-end"
+                variant="transparent"
+            />
+        </div>
+    </div>
+</div>

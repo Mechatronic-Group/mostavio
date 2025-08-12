@@ -2,13 +2,19 @@
 export interface Props {
     headline?: string;
     className?: string;
+    gradient?: boolean;
 }
 
-const { headline, className = "" } = Astro.props;
+const { headline, className = "", gradient = true } = Astro.props;
+let gradientClass = "";
+if (gradient) {
+    gradientClass =
+        "bg-gradient-to-b from-white via-gray-100 to-black bg-clip-text text-transparent";
+}
 ---
 
 <h2
-    class={`text-5xl md:text-7xl font-extrabold leading-tight bg-gradient-to-b from-white via-gray-100 to-black bg-clip-text text-transparent ${className}`}
+    class={`text-5xl md:text-7xl font-extrabold leading-tight ${gradientClass} ${className}`}
 >
     {headline}
     <slot />

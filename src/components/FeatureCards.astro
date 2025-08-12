@@ -4,12 +4,14 @@ import Headline from "./atoms/Headline.astro";
 import CircuitBoard from "../assets/v2/home/CircuitBoard_Card.jpg";
 import Propeller from "../assets/v2/home/Propeller_Card.jpg";
 import SeatRender from "../assets/v2/home/SeatRender_Card.png";
+import { undefined } from "astro:schema";
 
 const cards = [
     {
         header: "Simplicity Through First-Principle Design",
         thumbnail: SeatRender.src,
         intro: "Every system is built around what works, eliminating unnecessary complexity to create a seamless, intuitive, and reliable flight experience.",
+        link: null,
     },
     {
         header: "Extensive Redundancy Systems",
@@ -36,11 +38,8 @@ const cards = [
                 cards.map((post, index) => (
                     <div
                         id={index.toString()}
-                        class={`group p-6 sm:p-8 rounded-3xl bg-gradient-to-b to-stone-950 shadow-2xl shadow-gray-600/10 relative overflow-hidden ${index % 2 === 1 ? "mt-24 -mb-24" : ""}`}
+                        class={`group p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-transparent via-transparent to-stone-950 shadow-2xl shadow-gray-600/10 relative overflow-hidden ${index % 2 === 1 ? "mt-24 -mb-24" : ""}`}
                     >
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-600 via-transparent to-black opacity-50 pointer-events-none rounded-3xl" />
-                        <div class="absolute inset-[1px] bg-gradient-to-b from-transparent to-stone-950 rounded-3xl" />
-
                         <div class="relative z-10">
                             {post?.thumbnail && (
                                 <div class="relative overflow-hidden rounded-xl">

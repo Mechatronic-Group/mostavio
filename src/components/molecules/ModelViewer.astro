@@ -1,5 +1,10 @@
 ---
-const { className, src, alt = "Mostavio Evtol Model" } = Astro.props;
+const {
+    className,
+    src,
+    alt = "Mostavio Evtol Model",
+    height = "60vh",
+} = Astro.props;
 ---
 
 <div class={className}>
@@ -14,7 +19,8 @@ const { className, src, alt = "Mostavio Evtol Model" } = Astro.props;
         disable-zoom
         touch-action="pan-y"
         loading="eager"
-        shadow-intensity="1"></model-viewer>
+        shadow-intensity="1"
+        style={`width: 100%; height: ${height};`}></model-viewer>
 </div>
 
 <script>
@@ -23,7 +29,8 @@ const { className, src, alt = "Mostavio Evtol Model" } = Astro.props;
 
 <style>
     #model-viewer {
-        width: auto;
-        height: 80vh;
+        width: 100%;
+        min-height: 400px;
+        display: block;
     }
 </style>
