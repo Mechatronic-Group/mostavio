@@ -11,6 +11,7 @@ interface FocusTextProps {
     ctaLabel?: string;
     contentClass?: string;
     containerClass?: string;
+    headerClass?: string;
     buttonClass?: string;
     headerShadow?: boolean;
 }
@@ -24,13 +25,14 @@ const {
     contentClass,
     containerClass,
     headerShadow,
+    headerClass = "",
     buttonClass,
     ctaLabel = "Learn More",
 } = Astro.props as FocusTextProps;
 const shadowClass = headerShadow
     ? "leading-tight bg-gradient-to-b from-white \
      via-gray-100 to-black bg-clip-text text-transparent"
-    : "text-white";
+    : "";
 ---
 
 <section>
@@ -44,7 +46,7 @@ const shadowClass = headerShadow
                     {
                         header && (
                             <h2
-                                class={`text-4xl font-bold  md:text-6xl ${shadowClass}`}
+                                class={`text-4xl font-bold  md:text-6xl ${shadowClass} ${headerClass}`}
                             >
                                 {header}
                             </h2>
@@ -69,6 +71,7 @@ const shadowClass = headerShadow
                 {
                     link && (
                         <Button
+                            variant="transparent"
                             containerClass={buttonClass}
                             link={link}
                             ctaLabel={ctaLabel}

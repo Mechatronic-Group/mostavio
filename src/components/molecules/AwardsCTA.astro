@@ -27,8 +27,33 @@ const {
 ---
 
 <div class="my-18">
-    <div class="flex items-center justify-between">
-        <div class="flex gap-4">
+    <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+    >
+        <div class="flex flex-col md:w-1/3 text-left md:text-right md:order-2">
+            <h2 class="text-lg font-bold">{content.header}</h2>
+            <p class="text-sm mt-2">{content.description}</p>
+
+            <div class="flex gap-4 mt-4 justify-start md:hidden">
+                {
+                    awardImages.map((image) => (
+                        <Image
+                            src={image.src}
+                            alt={image.name}
+                            class="h-12 w-auto object-cover"
+                        />
+                    ))
+                }
+            </div>
+
+            <Button
+                link={link}
+                containerClass="justify-start md:justify-end mt-4"
+                variant="transparent"
+            />
+        </div>
+
+        <div class="hidden md:flex gap-4 md:order-1">
             {
                 awardImages.map((image) => (
                     <Image
@@ -38,15 +63,6 @@ const {
                     />
                 ))
             }
-        </div>
-        <div class="flex flex-col md:w-1/3 text-right">
-            <h2 class="text-lg font-bold">{content.header}</h2>
-            <p class="text-sm mt-2">{content.description}</p>
-            <Button
-                link={link}
-                containerClass="justify-end"
-                variant="transparent"
-            />
         </div>
     </div>
 </div>

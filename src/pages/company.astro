@@ -37,6 +37,9 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 		<FeatureGrid content={featureContent} />
 		<PaintedImage
 			image={MostavioBillboard}
+			containerClass="h-[55vh] md:h-[95vh]"
+			imageClass="object-center"
+			heightClass="h-[55vh] md:h-[95vh]"
 			alt="Company Billboard Mostavio"
 		/>
 		<DynamicTimeline />
@@ -46,8 +49,10 @@ import MostavioBillboard from "../assets/v2/company/MostavioBillboard.png";
 			description="MOSTAVIO collaborates with leading investors, government agencies,\
 			 and top-tier suppliers to advance our mission. Our strategic partnerships ensure\
 			 we have the resources and expertise needed to bring our vision to life."
-			headerClass="uppercase"
-			headerShadow
+			headerClass="uppercase font-bold text-[#1c1c1c]"
+			contentClass="text-left"
+			headerShadow={false}
+			buttonClass="justify-start"
 			link="/partners"
 		/>
 		<JobListing content={jobList} />

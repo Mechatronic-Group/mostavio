@@ -14,40 +14,25 @@ import { Image } from "astro:assets";
 import TeamPic from "../assets/v2/home/TeamPic.png";
 import TeamPic2 from "../assets/v2/home/TeamPic2.png";
 import SkyTechDrone from "../assets/v2/home/SkyTechDrone.jpg";
-import MostavioSmokeBG from "../assets/v2/home/MostavioSmokeBG.png";
-import EvtolOnly from "../assets/v2/home/EvtolOnly.png";
-import AVBadgeVertical from "../assets/v2/AV_TransparentBadgeVertical.png";
+import IntroSectionImage from "../assets/v2/home/IntroSection.png";
 ---
 
 <Layout>
 	<main class="space-y-32 lg:space-y-38 pb-40 overflow-clip">
 		<PaintedImage
-			image={MostavioSmokeBG}
+			image={IntroSectionImage}
 			alt="Mostavio Smoke Banner"
 			content={{
 				tagline: "Experience the Future of Flight",
 				header: "Transforming Urban Air Mobility With Next-Generation eVTOL Technology",
 			}}
 			pattern={false}
-			containerClass="relative h-96 md:h-[100vh]"
-			imageClass="absolute z-[1]"
-			contentClass="text-left top-1/4 z-[4]"
-			heightClass="h-96 md:h-[100vh]"
+			containerClass="relative h-[90vh] md:h-[95vh]"
+			heightClass="h-[90vh] md:h-[95vh]"
+			imageClass="absolute z-[1] object-bottom"
+			contentClass="text-left top-1/5 z-[4]"
 			headerClass="md:w-4/6"
-		>
-			<Fragment slot="overlay">
-				<Image
-					src={EvtolOnly}
-					alt="Mostavio Evtol Banner"
-					class="absolute h-96 md:h-[100vh] object-cover object-center z-[3]"
-				/>
-				<Image
-					src={AVBadgeVertical}
-					alt="Pattern overlay"
-					class="absolute object-contain z-[2] h-32 md:h-96 opacity-50 bottom-1/4 right-0"
-				/>
-			</Fragment>
-		</PaintedImage>
+		/>
 
 		<FocusText
 			tagline="Elevate. Electrify. Explore."
@@ -60,13 +45,21 @@ import AVBadgeVertical from "../assets/v2/AV_TransparentBadgeVertical.png";
 		/>
 		<PaintedImage
 			image={TeamPic}
+			containerClass="h-[50vh]  md:h-[95vh]"
+			heightClass="h-[50vh]  md:h-[95vh]"
 			imageClass="object-top"
 			alt="MOSTAVIO Team Work Candid"
 		/>
 		<AircraftsSliderSection />
 		<ModelViewer />
 
-		<PaintedImage image={TeamPic2} alt="MOSTAVIO Team Work" />
+		<PaintedImage
+			image={TeamPic2}
+			containerClass="h-[55vh] md:h-[95vh]"
+			imageClass="object-center"
+			heightClass="h-[55vh] md:h-[95vh]"
+			alt="MOSTAVIO Team Work"
+		/>
 
 		<FeatureCards />
 		<SkyTechSection image={SkyTechDrone} />

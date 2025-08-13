@@ -1,0 +1,116 @@
+---
+import PaintedImage from "@components/atoms/PaintedImage.astro";
+import Container from "@components/molecules/Container.astro";
+import { Image } from "astro:assets";
+
+import Layout from "@layouts/Layout.astro";
+
+import MostavioEvtols from "../assets/v2/aircrafts/MostavioEvtols.png";
+// awards images
+import MuseAward from "../assets/v2/timeline/MuseAward.png";
+import RedDotLogo from "../assets/v2/timeline/RedDot.png";
+import GoAeroAward from "../assets/v2/home/goAEROaward.png";
+
+const awards = [
+    {
+        title: "Muse Design Award - Gold Winner",
+        model: "MX1",
+        year: "2025",
+        image: { src: MuseAward, alt: "Muse Design Award" },
+        // link: "https://www.muse.com/awards",
+        description:
+            "MOSTAVIO proudly announces that its MX1 prototype \
+            has been awarded the Gold Award at the 2025 MUSE \
+            Design Awards in the category of Transportation \
+            Design - Flying Cars / Personal Aerial Vehicles\
+            (PAVs).<br /><br /> \
+            This international recognition highlights MX1's seamless \
+            integration of advanced engineering and elegant design \
+            — reinforcing Mostavio's mission to redefine how people \
+            experience urban air mobility.<br /><br />\
+            The MUSE Design Awards celebrate global excellence in \
+            design and innovation, honoring creators who push boundaries \
+            and set new industry benchmarks. Receiving this award \
+            places Mostavio among the top-tier pioneers shaping the \
+            future of transportation through purposeful and visionary \
+            design.",
+    },
+    {
+        title: "Red Dot Award - Product Design",
+        image: { src: RedDotLogo, alt: "Red Dot Award" },
+        model: "MX1",
+        year: "2025",
+        // link: "https://www.red-dot.org/awards",
+        description:
+            "MOSTAVIO is honored to receive the Red Dot Award in \
+         Product Design 2025 for its MX1 prototype — recognizing our commitment\
+         to functional innovation and refined aesthetics in next-generation air mobility.<br/><br/>\
+         The Red Dot Design Award is one of the world's most respected design competitions,\
+         celebrating products that demonstrate exceptional quality, clarity, and purpose.\
+         This award affirms Mostavio's role as a forward-thinking leader in shaping the evolution\
+         of personal aerial transportation.",
+    },
+    {
+        title: "GoAero Prize - Stage 1 Winner",
+        image: { src: GoAeroAward, alt: "GoAero Prize Stage 1 Winner" },
+        model: "AeroGuardian",
+        year: "2025",
+        // link: "https://www.go-aero.com/awards",
+        description:
+            "MOSTAVIO's AeroGuardian was selected as a Stage 1 Winner in the GoAero Prize,\
+            a global innovation challenge supported by NASA and HeroX. Chosen from over\
+            100 international teams, this recognition highlights Mostavio's commitment\
+            to building safe, practical, and accessible aerial mobility solutions for\
+            emergency response and beyond.<br/><br/>\
+            The GoAero Prize seeks visionary teams developing real-world flying solutions that\
+            can save lives. Being named a Stage 1 winner affirms Mostavio's position among the\
+            world's leading innovators in next-generation aviation.",
+    },
+];
+---
+
+<Layout>
+    <main class="space-y-28 sm:space-y-32 lg:space-y-36">
+        <PaintedImage
+            image={MostavioEvtols}
+            content={{
+                header: "Awards and <br> Certifications",
+            }}
+            contentClass="top-1/4"
+            imageClass="object-bottom"
+            alt="Awards and Certifications Mostavio"
+        />
+        <Container>
+            <div class="flex flex-col space-y-12 my-32 md:my-42">
+                {
+                    awards.map((award) => (
+                        <div class="p-6 md:p-12 border border-gray-600 rounded-md">
+                            <div class="flex flex-col md:flex-row gap-8 md:gap-12 my-12">
+                                <div class="md:min-w-60">
+                                    <Image
+                                        src={award.image.src}
+                                        alt={award.image.alt}
+                                        class="h-16 w-auto mr-auto mb-4"
+                                    />
+                                </div>
+                                <div class="">
+                                    <h2 class="text-4xl font-bold">
+                                        {award.title}
+                                    </h2>
+                                    <div class="my-4 font-extralight uppercase">
+                                        <p>Model: {award.model}</p>
+                                        <p>Year: {award.year}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-12">
+                                <p class="font-bold my-2">About</p>
+                                <p set:html={award.description} />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </main>
+</Layout>
