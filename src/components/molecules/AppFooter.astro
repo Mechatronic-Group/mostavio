@@ -1,5 +1,4 @@
 ---
-// import BrandIcon from "./BrandIcon.astro";
 import Container from "./Container.astro";
 import {
   internalLinks,
@@ -24,38 +23,40 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="pb-6 sm:pb-12 lg:pb-20">
-  <div
-    class="p-6 mx-auto w-full sm:p-12 border-b border-gray-800 dark:border-white"
-  >
+  <div class="py-6 md:p-6 mx-auto w-full sm:p-12 border-b">
     <Container>
-      <div class="flex justify-between gap-4">
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-start gap-4"
+      >
         <Image
           src={LogoWhite}
           alt="MOSTAVIO logo"
-          class="h-12 w-auto py-1"
+          class="h-7 md:h-12 w-auto py-1"
           loading="lazy"
         />
         <div
-          class="flex flex-wrap gap-1 overflow-hidden text-gray-700 dark:text-gray-300"
+          class="text-center sm:text-right text-gray-400 text-sm md:text-base"
         >
-          © {currentYear}, MOSTAVIO Inc.<br /> All rights reserved.
+          <span class="whitespace-nowrap">© {currentYear}, MOSTAVIO Inc</span>
+          <br class="hidden sm:inline" />
+          <span class="sm:ml-1">All rights reserved.</span>
         </div>
       </div>
     </Container>
   </div>
 
   <Container>
-    <div class="mt-12 mb-6 flex justify-between gap-4">
-      <div>
-        <span class="text-gray-950 dark:text-white font-medium">Links</span>
-        <ul class="mt-6 space-y-2">
+    <div class="mt-12 mb-6 flex flex-col md:flex-row justify-between gap-4">
+      <div class="my-6">
+        <span class="font-medium">Links</span>
+        <ul class="mt-2 md:mt-4 space-y-2">
           {
             internalLinks.map((link: Link) => (
               <li>
                 <a
                   href={link.url}
                   target={link?.target}
-                  class="text-gray-600 dark:text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
+                  class="text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   {link.title}
                 </a>
@@ -64,15 +65,15 @@ const currentYear = new Date().getFullYear();
           }
         </ul>
       </div>
-      <div>
-        <span class="text-gray-950 dark:text-white font-medium">Company</span>
-        <ul class="mt-6 space-y-2">
+      <div class="my-6">
+        <span class="font-medium">Company</span>
+        <ul class="mt-2 md:mt-4 space-y-2">
           {
             companyLinks.map((link: Link) => (
               <li>
                 <a
                   href={link.url}
-                  class="text-gray-600 dark:text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
+                  class="text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   {link.title}
                 </a>
@@ -81,15 +82,15 @@ const currentYear = new Date().getFullYear();
           }
         </ul>
       </div>
-      <div>
-        <span class="text-gray-950 dark:text-white font-medium">Community</span>
-        <ul class="mt-6 space-y-2">
+      <div class="my-6">
+        <span class="font-medium">Community</span>
+        <ul class="mt-2 md:mt-4 space-y-2">
           {
             policyLinks.map((link: Link) => (
               <li>
                 <a
                   href={link.url}
-                  class="text-gray-600 dark:text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
+                  class="text-gray-400 transition hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   {link.title}
                 </a>
@@ -100,33 +101,42 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
     <div
-      class="mt-9 text-gray-950 flex flex-col md:flex-row dark:text-white justify-between items-center"
+      class="my-8 flex flex-col md:flex-row justify-between md:items-center gap-6 md:gap-0"
     >
-      <div class="flex gap-4 mb-3">
+      <div class="flex-shrink-0">
+        <a
+          href={`mailto:${emailAddress}`}
+          class="flex items-center gap-2 hover:text-stone-400 transition-colors"
+        >
+          <Fragment set:html={emailIconSvg} />
+          <span class="text-gray-400">{emailAddress}</span>
+        </a>
+      </div>
+
+      <div class="flex-shrink-0">
+        <a
+          href={`tel:${phoneNumber}`}
+          class="flex items-center gap-2 hover:text-stone-400 transition-colors"
+        >
+          <Fragment set:html={phoneIconSvg} />
+          <span class="text-gray-400">{phoneNumber}</span>
+        </a>
+      </div>
+
+      <div class="flex gap-4">
         {
           externalLinks.map((item, index) => (
             <a
               href={item?.url}
               target="_blank"
-              class="relative align-middle select-none hover:text-stone-400"
-              type="button"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center hover:text-stone-400 transition-colors"
+              aria-label={`Visit ${item?.name || "external link"}`}
             >
               <Fragment set:html={item?.icon} />
             </a>
           ))
         }
-      </div>
-      <div class="mb-2">
-        <a href={`mailto:${emailAddress}`} class="flex items-center gap-2">
-          <Fragment set:html={emailIconSvg} />
-          <span class="text-gray-600 dark:text-gray-400">{emailAddress}</span>
-        </a>
-      </div>
-      <div class="text-right mb-2">
-        <a href=`tel:${phoneNumber}` class="flex items-center gap-1"
-          ><Fragment set:html={phoneIconSvg} />
-          <span class="text-gray-600 dark:text-gray-400">{phoneNumber}</span></a
-        >
       </div>
     </div>
   </Container>

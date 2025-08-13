@@ -6,23 +6,22 @@ export const SITE_IMAGE = '/og.png';
 
 export const internalLinks = [
     { title: "Home", url: "/" },
-    { title: "Aircraft", url: "/aircrafts" },
-    { title: "Company", url: "/company" },
+    { title: "Aircrafts", url: "/aircrafts" },
+    { title: "Awards & Certifications", url: "/awards-certifications" },
     { title: "SkyTech", url: "https://skyt.ca/", target: "_blank" },
-    // { title: "Certification", url: "/certification" },
 ];
 
 export const companyLinks = [
     { title: "About Us", url: "/company/#about" },
-    // { title: "News", url: "/news" },
+    { title: "News", url: "/news" },
     { title: "Careers", url: "/company/#careers" },
-    { title: "Contact", url: "/contact" }
+    // { title: "Contact", url: "/contact" }
 ];
 
 export const policyLinks = [
     // { title: "Privacy Policy", url: "#" },
     // { title: "Terms of Use", url: "#" },
-    { title: "Media Inquiries", url: "/contact" },
+    { title: "Media Inquiries / Contact", url: "/contact" },
     // { title: "Cookies Policy", url: "#" }
 ];
 
