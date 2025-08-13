@@ -60,12 +60,12 @@ const {
                                             href={each.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="text-gray-600 dark:text-gray-400 text-base hover:underline"
+                                            class="text-gray-400 text-base hover:underline"
                                         >
                                             {each.preHeader}
                                         </a>
                                     ) : (
-                                        <span class="text-gray-600 dark:text-gray-400 text-base">
+                                        <span class="text-gray-400 text-base">
                                             {each.preHeader}
                                         </span>
                                     ))}
@@ -76,7 +76,7 @@ const {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             class={cn(
-                                                "my-2 font-semibold text-gray-700 dark:text-white hover:underline",
+                                                "my-2 font-semibold hover:underline",
                                                 each.headerClass || "text-lg",
                                             )}
                                         >
@@ -85,7 +85,7 @@ const {
                                     ) : (
                                         <h2
                                             class={cn(
-                                                "my-2 font-semibold text-gray-700 dark:text-white",
+                                                "my-2 font-semibold",
                                                 each.headerClass || "text-lg",
                                             )}
                                         >

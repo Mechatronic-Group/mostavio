@@ -66,7 +66,7 @@ const socialIcons = {
             >
                 {
                     team.map((member) => (
-                        <div class="group relative w-full max-w-xs flex-shrink-0 transition-transform duration-300 hover:-translate-y-2 bg-gradient-to-b from-transparent via-[#1A1A1A] to-[#1A1A1A] rounded-b-xl overflow-hidden">
+                        <div class="group relative w-full max-w-xs flex-shrink-0 transition-transform duration-300 hover:-translate-y-2 bg-gradient-to-b from-transparent via-[#1A1A1A] to-[#1A1A1A] rounded-2xl overflow-hidden">
                             <div class="relative mx-auto">
                                 <img
                                     src={AVTransparentBadge.src}
@@ -78,13 +78,13 @@ const socialIcons = {
                                 <img
                                     src={member.image.src}
                                     alt={`Picture of Mostavio Team Member ${member.name}`}
-                                    class="relative h-60 w-auto mx-auto object-cover shadow-lg transition-shadow duration-300 group-hover:opacity-0 group-hover:translate-y-6 rounded-t-2xl"
+                                    class="relative h-60 w-auto mx-auto object-cover shadow-lg transition-shadow duration-300 group-hover:opacity-0 group-hover:translate-y-6 rounded-2xl"
                                     loading="lazy"
                                 />
                                 <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1A1A1A] to-transparent" />
                             </div>
 
-                            <div class="relative py-6 px-4 text-center transition-all duration-300 group-hover:translate-y-[-100%] group-hover:opacity-0">
+                            <div class="relative py-6 px-4 text-center transition-all duration-300 group-hover:translate-y-[-110%]  group-hover:opacity-0">
                                 <h3 class="text-xl font-semibold text-white">
                                     {member.name}
                                 </h3>
@@ -93,7 +93,7 @@ const socialIcons = {
                                 </span>
                                 {member.socials && (
                                     <div class="mt-6 flex items-center justify-center gap-4">
-                                        {member.socials.map((social) => (
+                                        {member?.socials.map((social) => (
                                             <a
                                                 href={social.href}
                                                 target="_blank"

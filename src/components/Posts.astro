@@ -9,10 +9,8 @@ const latestPosts = posts.filter((post) => !post.data.featured);
 <section id="news">
   <Container>
     <div class="mb-12 space-y-2 text-center">
-      <h2 class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">
-        Latest News and Highlights
-      </h2>
-      <p class="lg:mx-auto lg:w-6/12 text-gray-600 dark:text-gray-300">
+      <h2 class="text-3xl font-bold md:text-4xl">Latest News and Highlights</h2>
+      <p class="lg:mx-auto lg:w-6/12 text-gray-300">
         Catch up on the most important news, current events and highlights.
       </p>
     </div>
@@ -24,7 +22,7 @@ const latestPosts = posts.filter((post) => !post.data.featured);
               id={post.slug}
               data-post={post.data.intro}
               data-featured={post.data.featured}
-              class={`group p-6 sm:p-8 bg-white border-t ${index === featuredPosts.length - 1 ? "border-b" : ""} border-gray-100 dark:shadow-none dark:border-gray-700  dark:bg-stone-950 bg-opacity-50  shadow-2xl shadow-gray-600/10 flex flex-col md:flex-row md:space-x-10`}
+              class={`group p-6 sm:p-8 border-t ${index === featuredPosts.length - 1 ? "border-b" : ""}  border-gray-800 bg-opacity-50  shadow-none flex flex-col md:flex-row md:space-x-10`}
             >
               {post?.data.thumbnail && (
                 <div class="relative overflow-hidden rounded-xl md:w-1/3">
@@ -32,24 +30,20 @@ const latestPosts = posts.filter((post) => !post.data.featured);
                     src={post?.data?.thumbnail}
                     alt={`Thumbnail for ${post?.data.header}`}
                     loading="lazy"
-                    class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                    class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105 opacity-85 group-hover:opacity-100"
                   />
                 </div>
               )}
               <div class="md:w-2/3">
                 <div class="mt-6 relative">
                   <a href={`/news/${post.slug}`}>
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                      {post?.data.header}
-                    </h3>
+                    <h3 class="text-2xl font-semibold ">{post?.data.header}</h3>
                   </a>
                   {post?.data?.intro && (
-                    <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                      {post?.data?.intro}
-                    </p>
+                    <p class="mt-6 mb-8 ">{post?.data?.intro}</p>
                   )}
                   <a class="inline-block" href={`/news/${post.slug}`}>
-                    <span class="text-info dark:text-blue-300">Read more</span>
+                    <span class="text-[#FF8914]">Read more</span>
                   </a>
                 </div>
               </div>
@@ -66,7 +60,7 @@ const latestPosts = posts.filter((post) => !post.data.featured);
               id={post.slug}
               data-featured={post.data.featured}
               data-post={post.data.intro}
-              class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700  dark:bg-stone-950 bg-opacity-50 shadow-2xl shadow-gray-600/10"
+              class="group p-6 sm:p-8 rounded-3xl border border-gray-800"
             >
               {post?.data?.thumbnail && (
                 <div class="relative overflow-hidden rounded-xl">
@@ -80,17 +74,13 @@ const latestPosts = posts.filter((post) => !post.data.featured);
               )}
               <div class="mt-6 relative">
                 <a href={`/news/${post.slug}`}>
-                  <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                    {post?.data.header}
-                  </h3>
+                  <h3 class="text-2xl font-semibold">{post?.data.header}</h3>
                 </a>
                 {post?.data?.intro && (
-                  <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                    {post?.data?.intro}
-                  </p>
+                  <p class="mt-6 mb-8">{post?.data?.intro}</p>
                 )}
                 <a class="inline-block" href={`/news/${post.slug}`}>
-                  <span class="text-info dark:text-blue-300">Read more</span>
+                  <span class="text-[#FF8914]">Read more</span>
                 </a>
               </div>
             </div>
